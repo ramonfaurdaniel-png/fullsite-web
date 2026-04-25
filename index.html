@@ -323,10 +323,11 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 /* ========== HERO ========== */
 .hero{
   position:relative;
-  min-height:100vh;
-  padding:clamp(96px,11vh,140px) var(--pad) clamp(60px,8vh,100px);
+  z-index:1;
+  background:var(--bg);
+  padding:clamp(72px,9vh,110px) var(--pad) clamp(60px,8vh,100px);
   overflow:hidden;
-  display:flex;align-items:flex-start;
+  box-shadow:0 -48px 100px 0 rgba(0,0,0,0.9);
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -1193,23 +1194,58 @@ footer{
 }
 .footer-right a:hover{color:var(--ink)}
 
-/* ========== HERO LOGO MARK ========== */
+/* ========== COVER ========== */
+.cover-wrap{
+  position:relative;
+  height:100vh;
+  z-index:0;
+}
+.cover{
+  position:sticky;
+  top:0;
+  height:100vh;
+  min-height:600px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:var(--bg);
+  z-index:0;
+}
+.cover-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 72% 60% at 50% 52%, rgba(0,255,136,0.10) 0%, transparent 62%),
+    radial-gradient(ellipse 45% 38% at 18% 22%, rgba(139,92,246,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 38% at 82% 76%, rgba(255,200,87,0.05) 0%, transparent 52%);
+}
+.cover-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 68% 62% at 50% 50%, black, transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 68% 62% at 50% 50%, black, transparent 78%);
+}
+
+/* ========== HERO (slides over cover) ========== */
+/* (hero CSS already in next block — just ensure z-index & bg here) */
+
+/* ========== LOGO MARK ========== */
 .hl3-scene{
   display:flex;flex-direction:column;align-items:center;
   position:relative;z-index:1;
   user-select:none;
-  margin-bottom:clamp(24px,3.5vw,48px);
 }
 .hl3-inner{
   display:inline-flex;
   align-items:flex-end;
   gap:0;
   font-family:var(--sans);
-  font-size:clamp(52px, 10vw, 136px);
+  font-size:clamp(64px, 14vw, 180px);
   font-weight:800;
   line-height:0.92;
   color:#fff;
-  will-change:transform;
+  will-change:transform,opacity;
   transition:transform 0.10s cubic-bezier(0.22,1,0.36,1);
 }
 .hl3-letter{
@@ -1227,15 +1263,15 @@ footer{
 .hl3-dot{
   display:inline-block;
   position:relative;
-  width:clamp(12px, 2.2vw, 30px);
-  height:clamp(12px, 2.2vw, 30px);
+  width:clamp(16px, 3vw, 42px);
+  height:clamp(16px, 3vw, 42px);
   background:var(--accent);
-  margin-left:clamp(3px, 0.45vw, 7px);
-  margin-bottom:clamp(6px, 1vw, 14px);
+  margin-left:clamp(4px, 0.6vw, 9px);
+  margin-bottom:clamp(7px, 1.3vw, 18px);
   flex-shrink:0;
   opacity:0;
-  animation:hl3-dot-in 0.6s var(--ease-spring) 0.56s both;
-  box-shadow:0 0 20px 2px rgba(0,255,136,0.32),0 0 50px 8px rgba(0,255,136,0.13);
+  animation:hl3-dot-in 0.65s var(--ease-spring) 0.57s both;
+  box-shadow:0 0 24px 3px rgba(0,255,136,0.30),0 0 60px 10px rgba(0,255,136,0.12);
 }
 @keyframes hl3-dot-in{
   0%  {opacity:0;transform:scale(0.1)}
@@ -1249,19 +1285,13 @@ footer{
   animation:hl3-ring 2.8s ease-out 1.3s infinite;
 }
 @keyframes hl3-ring{
-  0%  {transform:scale(1);opacity:0.55}
-  100%{transform:scale(3.5);opacity:0}
+  0%  {transform:scale(1);opacity:0.5}
+  100%{transform:scale(3.4);opacity:0}
 }
 
-/* Chain hero element delays after logo lands */
-.hero-badge{animation-delay:0.60s!important}
-h1.hero-title{animation-delay:0.74s!important}
-.hero-sub{animation-delay:0.90s!important}
-.hero-ctas{animation-delay:1.04s!important}
-.hero-visual{animation-delay:1.18s!important}
-.hero-logos{animation-delay:1.52s!important}
+/* Hero entrance delays — logo already visible when hero enters viewport */
 
-@media (max-width:760px){.hl3-scene{margin-bottom:24px}}
+@media (max-width:760px){.hl3-scene{margin-bottom:0}}
 
 /* ========== ANIMATIONS ========== */
 @keyframes fm-enter{
@@ -1414,7 +1444,7 @@ nav.top.scrolled{
 @media (max-width: 760px){
   :root{--pad:20px}
   section{padding:80px 0}
-  .hero{padding:88px var(--pad) 60px;min-height:auto}
+  .hero{padding:72px var(--pad) 60px}
   h1.hero-title{letter-spacing:-0.035em}
   .section-head{margin-bottom:40px}
   .hero-dash{padding:20px 16px}
@@ -1440,18 +1470,23 @@ nav.top.scrolled{
   </div>
 </nav>
 
+<!-- =================== COVER =================== -->
+<div class="cover-wrap">
+  <section class="cover" id="cover">
+    <div class="cover-bg"></div>
+    <div class="hl3-scene">
+      <div class="hl3-inner" id="hl3Inner">
+        <span class="hl3-letter" style="--i:0">f</span><span class="hl3-letter" style="--i:1">u</span><span class="hl3-letter" style="--i:2">l</span><span class="hl3-letter" style="--i:3">l</span><span class="hl3-letter" style="--i:4">s</span><span class="hl3-letter" style="--i:5">i</span><span class="hl3-letter" style="--i:6">t</span><span class="hl3-letter" style="--i:7">e</span><span class="hl3-dot"></span>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- =================== HERO =================== -->
 <section class="hero" id="pitch">
   <div class="hero-bg"></div>
 
   <div class="hero-wrap">
-
-    <!-- Logo mark -->
-    <div class="hl3-scene" id="hl3Scene">
-      <div class="hl3-inner" id="hl3Inner">
-        <span class="hl3-letter" style="--i:0">f</span><span class="hl3-letter" style="--i:1">u</span><span class="hl3-letter" style="--i:2">l</span><span class="hl3-letter" style="--i:3">l</span><span class="hl3-letter" style="--i:4">s</span><span class="hl3-letter" style="--i:5">i</span><span class="hl3-letter" style="--i:6">t</span><span class="hl3-letter" style="--i:7">e</span><span class="hl3-dot" id="hl3Dot"></span>
-      </div>
-    </div>
 
     <div class="hero-badge">
       <span class="hero-badge-tag">Nuevo · 2026</span>
@@ -2282,23 +2317,35 @@ nav.top.scrolled{
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  /* ── LOGO MOUSE PARALLAX ─────────────────────────────────── */
+  /* ── COVER: MOUSE PARALLAX + SCROLL FADE ────────────────── */
   var hl3Inner = document.getElementById('hl3Inner');
   if (hl3Inner && !reducedMotion) {
-    var ticking = false, mx = 0, my = 0;
+    var ticking = false, mx = 0, my = 0, scrollP = 0;
+
+    /* mouse parallax */
     document.addEventListener('mousemove', function(e){
       mx = (e.clientX / window.innerWidth  - 0.5) * 2;
       my = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(function(){
-          /* subtle translate — max ±10px, no rotation */
-          hl3Inner.style.transform =
-            'translate(' + (mx * 10) + 'px,' + (my * 6) + 'px)';
-          ticking = false;
-        });
-      }
+      if (!ticking) { ticking = true; requestAnimationFrame(applyLogo); }
     });
+
+    /* scroll fade — logo fades + lifts as hero slides over */
+    window.addEventListener('scroll', function(){
+      var vh = window.innerHeight;
+      /* progress 0→1 while cover is scrolling (first 100vh) */
+      scrollP = Math.min(Math.max(window.scrollY / vh, 0), 1);
+      if (!ticking) { ticking = true; requestAnimationFrame(applyLogo); }
+    }, { passive: true });
+
+    function applyLogo(){
+      /* fade starts at 25% scroll, gone by 65% */
+      var fade = scrollP < 0.25 ? 1 : Math.max(0, 1 - (scrollP - 0.25) / 0.40);
+      var liftY = scrollP * -40; /* logo rises as page scrolls */
+      hl3Inner.style.opacity   = fade;
+      hl3Inner.style.transform =
+        'translate(' + (mx * 10) + 'px,' + (my * 5 + liftY) + 'px)';
+      ticking = false;
+    }
   }
 
   /* ── SMOOTH ANCHOR SCROLL ────────────────────────────────── */
