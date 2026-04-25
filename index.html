@@ -323,12 +323,20 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 /* ========== HERO ========== */
 .hero{
   position:relative;
-  z-index:1;
   background:var(--bg);
   padding:clamp(72px,9vh,110px) var(--pad) clamp(60px,8vh,100px);
   overflow:hidden;
-  box-shadow:0 -48px 100px 0 rgba(0,0,0,0.9);
 }
+/* top gradient that blends seamlessly with cover background */
+.hero::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:180px;
+  background:linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+  z-index:0;
+  pointer-events:none;
+}
+.hero-bg,.hero-wrap{position:relative;z-index:1;}
 .hero-bg{
   position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
@@ -1198,17 +1206,14 @@ footer{
 .cover-wrap{
   position:relative;
   height:100vh;
-  z-index:0;
 }
 .cover{
-  position:sticky;
-  top:0;
+  position:relative;
   height:100vh;
   min-height:600px;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
   background:var(--bg);
-  z-index:0;
 }
 .cover-bg{
   position:absolute;inset:0;pointer-events:none;
@@ -1225,6 +1230,14 @@ footer{
   background-size:52px 52px;
   mask-image:radial-gradient(ellipse 68% 62% at 50% 50%, black, transparent 78%);
   -webkit-mask-image:radial-gradient(ellipse 68% 62% at 50% 50%, black, transparent 78%);
+}
+/* bottom fade so cover bleeds seamlessly into hero */
+.cover::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:200px;
+  background:linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  pointer-events:none;
+  z-index:2;
 }
 
 /* ========== HERO (slides over cover) ========== */
