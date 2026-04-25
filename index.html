@@ -1214,6 +1214,7 @@ footer{
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
   background:var(--bg);
+  padding-top:60px; /* offset for fixed nav so logo is visually centered */
 }
 .cover-bg{
   position:absolute;inset:0;pointer-events:none;
@@ -2330,35 +2331,26 @@ nav.top.scrolled{
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  /* ── COVER: MOUSE PARALLAX + SCROLL FADE ────────────────── */
+  /* ── COVER: SCROLL FADE ─────────────────────────────────── */
   var hl3Inner = document.getElementById('hl3Inner');
   if (hl3Inner && !reducedMotion) {
-    var ticking = false, mx = 0, my = 0, scrollP = 0;
+    var ticking = false, scrollP = 0;
 
-    /* mouse parallax */
-    document.addEventListener('mousemove', function(e){
-      mx = (e.clientX / window.innerWidth  - 0.5) * 2;
-      my = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (!ticking) { ticking = true; requestAnimationFrame(applyLogo); }
-    });
-
-    /* scroll fade — logo fades + lifts as hero slides over */
     window.addEventListener('scroll', function(){
       var vh = window.innerHeight;
-      /* progress 0→1 while cover is scrolling (first 100vh) */
       scrollP = Math.min(Math.max(window.scrollY / vh, 0), 1);
-      if (!ticking) { ticking = true; requestAnimationFrame(applyLogo); }
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(function(){
+          /* fade starts at 25% scroll, fully gone by 65% */
+          var fade  = scrollP < 0.25 ? 1 : Math.max(0, 1 - (scrollP - 0.25) / 0.40);
+          var liftY = scrollP * -36;
+          hl3Inner.style.opacity   = fade;
+          hl3Inner.style.transform = 'translateY(' + liftY + 'px)';
+          ticking = false;
+        });
+      }
     }, { passive: true });
-
-    function applyLogo(){
-      /* fade starts at 25% scroll, gone by 65% */
-      var fade = scrollP < 0.25 ? 1 : Math.max(0, 1 - (scrollP - 0.25) / 0.40);
-      var liftY = scrollP * -40; /* logo rises as page scrolls */
-      hl3Inner.style.opacity   = fade;
-      hl3Inner.style.transform =
-        'translate(' + (mx * 10) + 'px,' + (my * 5 + liftY) + 'px)';
-      ticking = false;
-    }
   }
 
   /* ── SMOOTH ANCHOR SCROLL ────────────────────────────────── */
