@@ -323,7 +323,7 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 /* ========== HERO ========== */
 .hero{
   position:relative;
-  padding:72px var(--pad) 80px;
+  padding:56px var(--pad) 80px;
   overflow:hidden;
 }
 .hero-bg{
@@ -1424,7 +1424,7 @@ nav.top.scrolled{
 @media (max-width: 760px){
   :root{--pad:20px}
   section{padding:80px 0}
-  .hero{padding:80px var(--pad) 60px}
+  .hero{padding:56px var(--pad) 60px}
   h1.hero-title{letter-spacing:-0.035em}
   .section-head{margin-bottom:40px}
   .hero-dash{padding:20px 16px}
@@ -2295,13 +2295,16 @@ nav.top.scrolled{
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  /* ── HERO PARALLAX ───────────────────────────────────────── */
-  if (!reducedMotion) {
-    var heroBg = document.querySelector('.hero-bg');
+  /* ── COVER LOGO FADE ON SCROLL ──────────────────────────── */
+  var coverLogo = document.querySelector('.hl3-inner');
+  if (coverLogo && !reducedMotion) {
     window.addEventListener('scroll', function(){
-      if (!heroBg) return;
-      var y = window.scrollY;
-      heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px)';
+      var y    = window.scrollY;
+      var vh   = window.innerHeight;
+      // start fading at 20% scroll through cover, fully gone by 55%
+      var p    = Math.min(Math.max((y / vh - 0.20) / 0.35, 0), 1);
+      coverLogo.style.opacity  = 1 - p;
+      coverLogo.style.transform = 'translateY(' + (-p * 32) + 'px)';
     }, { passive: true });
   }
 
