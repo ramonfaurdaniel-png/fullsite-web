@@ -323,10 +323,8 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 /* ========== HERO ========== */
 .hero{
   position:relative;
-  padding:140px var(--pad) 100px;
+  padding:100px var(--pad) 80px;
   overflow:hidden;
-  min-height:100vh;
-  display:flex;align-items:center;
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -348,7 +346,6 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
   max-width:var(--max);margin:0 auto;
   position:relative;z-index:1;
   text-align:center;
-  width:100%;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
@@ -1194,10 +1191,64 @@ footer{
 }
 .footer-right a:hover{color:var(--ink)}
 
+/* ========== COVER (logo full screen) ========== */
+.cover{
+  position:relative;
+  height:100vh;min-height:600px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:var(--bg);
+}
+.cover-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,255,136,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 35% at 20% 25%, rgba(139,92,246,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 80% 75%, rgba(255,200,87,0.05) 0%, transparent 55%);
+}
+.cover-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 65% 60% at 50% 50%, black, transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 65% 60% at 50% 50%, black, transparent 78%);
+}
+.cover-scroll{
+  position:absolute;bottom:44px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  text-decoration:none;
+  opacity:0;
+  animation:fm-enter 0.9s var(--ease-spring) 1.1s both;
+}
+.cover-scroll-label{
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;
+}
+.cover-scroll-line{
+  width:1px;height:52px;
+  background:linear-gradient(to bottom, var(--ink-3), transparent);
+  position:relative;overflow:hidden;
+}
+.cover-scroll-line::after{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:16px;
+  background:linear-gradient(to bottom, var(--accent), transparent);
+  animation:cover-drip 1.8s var(--ease-spring) infinite;
+  box-shadow:0 0 8px var(--accent-glow);
+}
+@keyframes cover-drip{
+  0%  {transform:translateY(-16px);opacity:0}
+  20% {opacity:1}
+  80% {opacity:1}
+  100%{transform:translateY(52px);opacity:0}
+}
+
 /* ========== HERO LOGO MARK ========== */
 .hl3-scene{
   display:flex;flex-direction:column;align-items:center;
-  margin-bottom:56px;
+  position:relative;z-index:1;
   user-select:none;
 }
 .hl3-inner{
@@ -1240,12 +1291,7 @@ footer{
   100%{opacity:1;transform:scale(1)}
 }
 
-/* Override hero entrance delays to follow logo */
-.hero-badge{animation-delay:0.68s!important}
-h1.hero-title{animation-delay:0.82s!important}
-.hero-sub{animation-delay:0.98s!important}
-.hero-ctas{animation-delay:1.12s!important}
-.hero-visual{animation-delay:1.28s!important}
+/* Hero entrance — cover is separate section, delays reset to natural */
 
 @media (max-width:760px){
   .hl3-scene{margin-bottom:40px}
@@ -1402,7 +1448,8 @@ nav.top.scrolled{
 @media (max-width: 760px){
   :root{--pad:20px}
   section{padding:80px 0}
-  .hero{padding:110px var(--pad) 60px;min-height:auto}
+  .hero{padding:80px var(--pad) 60px}
+  .cover-scroll{bottom:32px}
   h1.hero-title{letter-spacing:-0.035em}
   .section-head{margin-bottom:40px}
   .hero-dash{padding:20px 16px}
@@ -1428,18 +1475,25 @@ nav.top.scrolled{
   </div>
 </nav>
 
+<!-- =================== COVER (logo full screen) =================== -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="hl3-scene">
+    <div class="hl3-inner">
+      <span class="hl3-letter" style="--i:0">f</span><span class="hl3-letter" style="--i:1">u</span><span class="hl3-letter" style="--i:2">l</span><span class="hl3-letter" style="--i:3">l</span><span class="hl3-letter" style="--i:4">s</span><span class="hl3-letter" style="--i:5">i</span><span class="hl3-letter" style="--i:6">t</span><span class="hl3-letter" style="--i:7">e</span><span class="hl3-dot"></span>
+    </div>
+  </div>
+  <a href="#pitch" class="cover-scroll" aria-label="Continuar">
+    <span class="cover-scroll-label">Descubre cómo</span>
+    <div class="cover-scroll-line"></div>
+  </a>
+</section>
+
 <!-- =================== HERO =================== -->
 <section class="hero" id="pitch">
   <div class="hero-bg"></div>
 
   <div class="hero-wrap">
-
-    <!-- ── LOGO MARK ── -->
-    <div class="hl3-scene">
-      <div class="hl3-inner">
-        <span class="hl3-letter" style="--i:0">f</span><span class="hl3-letter" style="--i:1">u</span><span class="hl3-letter" style="--i:2">l</span><span class="hl3-letter" style="--i:3">l</span><span class="hl3-letter" style="--i:4">s</span><span class="hl3-letter" style="--i:5">i</span><span class="hl3-letter" style="--i:6">t</span><span class="hl3-letter" style="--i:7">e</span><span class="hl3-dot"></span>
-      </div>
-    </div>
 
     <div class="hero-badge">
       <span class="hero-badge-tag">Nuevo · 2026</span>
