@@ -1215,35 +1215,6 @@ footer{
   mask-image:radial-gradient(ellipse 65% 60% at 50% 50%, black, transparent 78%);
   -webkit-mask-image:radial-gradient(ellipse 65% 60% at 50% 50%, black, transparent 78%);
 }
-.cover-scroll{
-  position:absolute;bottom:44px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  text-decoration:none;
-  opacity:0;
-  animation:fm-enter 0.9s var(--ease-spring) 1.1s both;
-}
-.cover-scroll-label{
-  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;
-}
-.cover-scroll-line{
-  width:1px;height:52px;
-  background:linear-gradient(to bottom, var(--ink-3), transparent);
-  position:relative;overflow:hidden;
-}
-.cover-scroll-line::after{
-  content:'';position:absolute;top:0;left:0;right:0;
-  height:16px;
-  background:linear-gradient(to bottom, var(--accent), transparent);
-  animation:cover-drip 1.8s var(--ease-spring) infinite;
-  box-shadow:0 0 8px var(--accent-glow);
-}
-@keyframes cover-drip{
-  0%  {transform:translateY(-16px);opacity:0}
-  20% {opacity:1}
-  80% {opacity:1}
-  100%{transform:translateY(52px);opacity:0}
-}
 
 /* ========== HERO LOGO MARK ========== */
 .hl3-scene{
@@ -1254,18 +1225,23 @@ footer{
 .hl3-inner{
   display:inline-flex;
   align-items:flex-end;
+  gap:0;
   font-family:var(--sans);
   font-size:clamp(72px, 15vw, 192px);
   font-weight:800;
-  letter-spacing:-0.055em;
   line-height:0.92;
   color:#fff;
 }
 .hl3-letter{
   display:inline-block;
+  letter-spacing:-0.055em;
   opacity:0;
   animation:hl3-in 0.9s var(--ease-spring) both;
   animation-delay:calc(var(--i) * 0.06s + 0.1s);
+}
+/* last letter before the dot shouldn't carry trailing space */
+.hl3-letter:last-of-type{
+  letter-spacing:-0.055em;
 }
 @keyframes hl3-in{
   0%  {opacity:0;transform:translateY(32px);filter:blur(8px)}
@@ -1449,7 +1425,6 @@ nav.top.scrolled{
   :root{--pad:20px}
   section{padding:80px 0}
   .hero{padding:80px var(--pad) 60px}
-  .cover-scroll{bottom:32px}
   h1.hero-title{letter-spacing:-0.035em}
   .section-head{margin-bottom:40px}
   .hero-dash{padding:20px 16px}
@@ -1483,10 +1458,6 @@ nav.top.scrolled{
       <span class="hl3-letter" style="--i:0">f</span><span class="hl3-letter" style="--i:1">u</span><span class="hl3-letter" style="--i:2">l</span><span class="hl3-letter" style="--i:3">l</span><span class="hl3-letter" style="--i:4">s</span><span class="hl3-letter" style="--i:5">i</span><span class="hl3-letter" style="--i:6">t</span><span class="hl3-letter" style="--i:7">e</span><span class="hl3-dot"></span>
     </div>
   </div>
-  <a href="#pitch" class="cover-scroll" aria-label="Continuar">
-    <span class="cover-scroll-label">Descubre cómo</span>
-    <div class="cover-scroll-line"></div>
-  </a>
 </section>
 
 <!-- =================== HERO =================== -->
