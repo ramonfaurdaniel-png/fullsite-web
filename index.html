@@ -324,7 +324,7 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 .hero{
   position:relative;
   background:var(--bg);
-  padding:clamp(72px,9vh,110px) var(--pad) clamp(60px,8vh,100px);
+  padding:clamp(48px,6vh,90px) var(--pad) clamp(40px,5vh,60px);
   overflow:hidden;
 }
 /* top gradient that blends seamlessly with cover background */
@@ -374,7 +374,7 @@ h2.display em{font-family:var(--serif);font-style:italic;font-weight:400;color:v
 }
 h1.hero-title{
   font-family:var(--sans);
-  font-size:clamp(44px, 7.5vw, 92px);
+  font-size:clamp(40px, 6vw, 76px);
   font-weight:500;
   letter-spacing:-0.045em;
   line-height:0.98;
@@ -393,22 +393,13 @@ h1.hero-title em{
   font-size:clamp(18px, 1.8vw, 22px);
   color:var(--ink-2);
   max-width:640px;
-  margin:0 auto 40px;
+  margin:0 auto 24px;
   line-height:1.5;
   font-weight:400;
 }
 .hero-ctas{
   display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
-  margin-bottom:32px;
-  position:relative;
-}
-.hero-ctas::after{
-  content:'';display:block;
-  position:absolute;bottom:-16px;
-  left:50%;transform:translateX(-50%);
-  width:340px;height:1px;
-  background:radial-gradient(ellipse at center, rgba(0,255,136,0.35) 0%, transparent 70%);
-  pointer-events:none;
+  margin-bottom:40px;
 }
 
 /* ========== HERO VISUAL (dashboard mockup) ========== */
@@ -1360,8 +1351,7 @@ nav.top{opacity:0;animation:fm-enter 0.6s var(--ease-soft) 0.05s both}
 h1.hero-title{opacity:0;animation:fm-enter 1s var(--ease-spring) 0.22s both}
 .hero-sub{opacity:0;animation:fm-enter 0.9s var(--ease-spring) 0.4s both}
 .hero-ctas{opacity:0;animation:fm-enter 0.9s var(--ease-spring) 0.55s both}
-.hero-visual{opacity:0;transform:translateY(28px) scale(0.97);transition:opacity 1.1s var(--ease-spring),transform 1.1s var(--ease-spring)}
-.hero-visual.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.hero-visual{opacity:0;animation:fm-enter-scale 1.3s var(--ease-spring) 0.7s both}
 .hero-logos{opacity:0;animation:fm-enter 0.9s var(--ease-spring) 1.1s both}
 
 /* Pills float after visual appears */
@@ -2213,22 +2203,6 @@ nav.top.scrolled{
   /* ── SCROLL REVEAL ───────────────────────────────────────── */
   function addRevealClass(selector, cls) {
     document.querySelectorAll(selector).forEach(function(el){ el.classList.add(cls || 'in'); });
-  }
-
-  /* Hero visual scroll-triggered reveal */
-  var heroVisual = document.querySelector('.hero-visual');
-  if (heroVisual) {
-    if (reducedMotion) {
-      heroVisual.classList.add('is-visible');
-    } else {
-      var heroVisualIo = new IntersectionObserver(function(entries){
-        if (entries[0].isIntersecting) {
-          heroVisual.classList.add('is-visible');
-          heroVisualIo.disconnect();
-        }
-      }, { threshold: 0.08 });
-      heroVisualIo.observe(heroVisual);
-    }
   }
 
   if (reducedMotion) {
