@@ -1,7 +1,8 @@
-const CACHE_NAME = 'fullsite-v1';
+const CACHE_NAME = 'fullsite-v2';
 const ASSETS = [
   '/',
   '/index.html',
+  '/dashboard.html',
   '/pwa/icons/icon-192.png',
   '/pwa/icons/icon-512.png',
   '/pwa/icons/apple-touch-icon.png',
