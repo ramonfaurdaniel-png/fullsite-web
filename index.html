@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fullsite — POS con IA para restaurantes</title>
-<meta name="description" content="El primer POS con inteligencia artificial. Pregunta lo que quieras, actua en 2 segundos. Monterrey, MX.">
+<meta name="description" content="El primer POS con inteligencia artificial. 26 agentes autonomos. Monterrey, MX.">
 <link rel="icon" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#000000">
 <meta property="og:title" content="Fullsite — POS con IA para restaurantes">
-<meta property="og:description" content="Punto de venta inteligente. Pregunta lo que quieras, actua en 2 segundos.">
+<meta property="og:description" content="Punto de venta inteligente. 26 agentes de IA. Pregunta lo que quieras por WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fullsite.mx">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,90 +17,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--g:#00ff88;--bg:#000;--s1:#0a0a0c;--s2:#111114;--w:#fff;--sans:'Inter',system-ui,sans-serif}
+:root{--g:#00ff88;--bg:#000;--s1:#080809;--s2:#111114;--s3:#19191d;--w:#fff;--sans:'Inter',system-ui,sans-serif}
 html{background:#000;scroll-behavior:smooth}
 body{background:#000;color:#fff;font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--g);color:#000}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
-.n-logo{font-weight:900;font-size:20px;letter-spacing:-.04em;display:flex;align-items:flex-end;gap:2px}
-.n-dot{width:6px;height:6px;background:var(--g);margin-bottom:3px}
+/* NAV — transparent, minimal */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border-color .4s}
+nav.scrolled{background:rgba(0,0,0,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
+.n-logo{font-weight:900;font-size:18px;letter-spacing:-.04em;display:flex;align-items:flex-end;gap:2px;opacity:.7;transition:opacity .2s}
+.n-logo:hover{opacity:1}
+.n-dot{width:5px;height:5px;background:var(--g);margin-bottom:3px}
 .n-links{display:flex;gap:28px;align-items:center}
-.n-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.5);transition:color .2s}
+.n-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);transition:color .2s;letter-spacing:.01em}
 .n-links a:hover{color:#fff}
-.n-cta{background:var(--g)!important;color:#000!important;padding:8px 20px;border-radius:8px;font-weight:700!important}
+.n-cta{background:var(--g)!important;color:#000!important;padding:8px 20px;border-radius:8px;font-weight:700!important;font-size:12px!important}
 .n-ham{display:none;width:24px;height:24px;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:0}
 .n-ham span{display:block;width:18px;height:1.5px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
-.n-mob{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);flex-direction:column;padding:20px 24px;gap:16px;z-index:99}
+.n-mob{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(0,0,0,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);flex-direction:column;padding:24px;gap:16px;z-index:99}
 .n-mob.open{display:flex}
 .n-mob a{font-size:15px;font-weight:500;color:rgba(255,255,255,.6);padding:8px 0}
 .n-mob .n-cta{text-align:center;margin-top:8px}
 @media(max-width:768px){.n-links{display:none}.n-ham{display:flex}}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(0,255,136,.08),transparent 60%);pointer-events:none}
-.hero-logo{font-size:clamp(72px,13vw,180px);font-weight:900;letter-spacing:-.07em;line-height:1;margin-bottom:20px}
-.hero-logo .dot{display:inline-block;width:clamp(12px,1.8vw,24px);height:clamp(12px,1.8vw,24px);background:var(--g);margin-left:2px;margin-bottom:clamp(6px,1vw,14px)}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:7px 18px;border-radius:99px;font-size:12px;font-weight:500;color:rgba(255,255,255,.6);margin-bottom:28px}
-.hero-tag-dot{width:5px;height:5px;border-radius:50%;background:var(--g);box-shadow:0 0 8px rgba(0,255,136,.5)}
-.hero h2{font-size:clamp(20px,3vw,32px);font-weight:500;color:rgba(255,255,255,.5);max-width:640px;line-height:1.5;margin-bottom:16px}
-.hero-sub{font-size:clamp(14px,1.6vw,16px);color:rgba(255,255,255,.35);max-width:520px;line-height:1.7;margin-bottom:32px;text-align:center}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;font-family:var(--sans);border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.btn-primary{background:var(--g);color:#000;box-shadow:0 4px 20px rgba(0,255,136,.2)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,.3)}
-.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.15)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.3)}
+/* HERO — massive centered logo */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:min(800px,100vw);height:min(800px,100vw);background:radial-gradient(circle,rgba(0,255,136,.12) 0%,rgba(0,255,136,.04) 30%,transparent 65%);pointer-events:none;animation:glowPulse 6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:translate(-50%,-55%) scale(1)}50%{opacity:1;transform:translate(-50%,-55%) scale(1.08)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 20%,transparent 70%);pointer-events:none}
+.hero-logo{font-size:clamp(90px,16vw,220px);font-weight:900;letter-spacing:-.07em;line-height:.85;position:relative;z-index:1}
+.hero-logo .dot{display:inline-block;width:clamp(14px,2.2vw,32px);height:clamp(14px,2.2vw,32px);background:var(--g);margin-left:2px;margin-bottom:clamp(8px,1.2vw,18px);box-shadow:0 0 40px rgba(0,255,136,.4),0 0 80px rgba(0,255,136,.15)}
+.hero-sub{font-size:clamp(16px,2vw,22px);font-weight:400;color:rgba(255,255,255,.45);max-width:560px;line-height:1.6;margin-top:24px;position:relative;z-index:1}
+.hero-sub strong{color:rgba(255,255,255,.8);font-weight:600}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px;position:relative;z-index:1}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:14px;font-weight:700;font-family:var(--sans);border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:var(--g);color:#000;box-shadow:0 4px 24px rgba(0,255,136,.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,255,136,.3)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.12)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.2);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.hero-scroll::after{content:'';width:1px;height:24px;background:linear-gradient(rgba(255,255,255,.2),transparent);animation:scrollDown 2s ease-in-out infinite}
+@keyframes scrollDown{0%{opacity:0;transform:translateY(-8px)}50%{opacity:1}100%{opacity:0;transform:translateY(8px)}}
 
 /* STATS BAR */
-.stats{padding:0 24px;margin-top:-20px;position:relative;z-index:2}
-.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
+.stats{padding:0 24px;margin-top:-40px;position:relative;z-index:2}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;backdrop-filter:blur(20px)}
 .stat{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.04)}
 .stat:last-child{border-right:none}
-.stat-num{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1}
-.stat-label{font-size:11px;color:rgba(255,255,255,.35);margin-top:4px}
+.stat-num{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat-label{font-size:10px;color:rgba(255,255,255,.3);margin-top:6px;letter-spacing:.04em;text-transform:uppercase}
 @media(max-width:600px){.stats-inner{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid rgba(255,255,255,.04)}}
+
+/* SECTION */
+section{padding:clamp(80px,12vh,140px) 0}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:16px}
+.sec-title{font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:16px}
+.sec-desc{font-size:16px;color:rgba(255,255,255,.45);max-width:520px;line-height:1.7}
 
 /* PROOF */
 .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.proof-metrics{display:flex;gap:32px;margin-top:32px}
-.proof-m{display:flex;flex-direction:column;gap:2px}
-.proof-num{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.02em}
-.proof-lab{font-size:11px;color:rgba(255,255,255,.35)}
-.proof-terminal{background:var(--s1);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
-.proof-term-bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.05)}
-.proof-term-bar span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.08)}
+.proof-metrics{display:flex;gap:36px;margin-top:36px}
+.proof-m{display:flex;flex-direction:column;gap:3px}
+.proof-num{font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.proof-lab{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.02em}
+.proof-terminal{background:var(--s1);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden}
+.proof-term-bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+.proof-term-bar span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.06)}
 .proof-term-bar span:first-child{background:#ff5f57}
 .proof-term-bar span:nth-child(2){background:#febc2e}
 .proof-term-bar span:last-child{background:#28c840}
-.proof-term-body{padding:20px;font-family:monospace;font-size:12px;color:rgba(255,255,255,.6);line-height:1.7}
-@media(max-width:860px){.proof-grid{grid-template-columns:1fr}.proof-metrics{flex-wrap:wrap;gap:20px}}
+.proof-term-body{padding:20px;font-family:'SF Mono',SFMono-Regular,Menlo,monospace;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8}
+@media(max-width:860px){.proof-grid{grid-template-columns:1fr}.proof-metrics{flex-wrap:wrap;gap:24px}}
 
-/* SECTION */
-section{padding:clamp(80px,10vh,120px) 0}
-.sec-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:16px}
-.sec-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-.sec-desc{font-size:16px;color:rgba(255,255,255,.5);max-width:520px;line-height:1.7}
-
-/* FEATURES GRID */
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.feat{background:var(--s2);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:28px;transition:border-color .3s,transform .3s}
-.feat:hover{border-color:rgba(255,255,255,.1);transform:translateY(-3px)}
-.feat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);margin-top:48px;border-radius:20px;overflow:hidden}
+.feat{background:var(--s1);padding:32px 28px;transition:background .3s}
+.feat:hover{background:var(--s2)}
+.feat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
 .feat-icon svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none}
-.feat h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.feat p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6}
+.feat h3{font-size:14px;font-weight:700;margin-bottom:6px}
+.feat p{font-size:13px;color:rgba(255,255,255,.35);line-height:1.6}
 @media(max-width:768px){.features{grid-template-columns:1fr}}
 
 /* WA SECTION */
-.wa-sec{border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.wa-sec{background:var(--s1);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
 .wa-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
-.wa-phone{max-width:360px;background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:14px}
+.wa-phone{max-width:360px;background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .wa-header{display:flex;align-items:center;gap:10px;padding:6px 10px;margin-bottom:10px}
 .wa-avatar{width:28px;height:28px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#000}
 .wa-name{font-size:12px;font-weight:600;color:rgba(255,255,255,.7)}
@@ -122,7 +127,7 @@ section{padding:clamp(80px,10vh,120px) 0}
 /* AGENTS */
 .ag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
 .ag{background:var(--s2);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:22px;transition:border-color .3s,transform .3s}
-.ag:hover{border-color:rgba(255,255,255,.1);transform:translateY(-2px)}
+.ag:hover{border-color:rgba(0,255,136,.15);transform:translateY(-2px)}
 .ag-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .ag-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}
 .ag-icon svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none}
@@ -131,22 +136,22 @@ section{padding:clamp(80px,10vh,120px) 0}
 .ag-st::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .ag p{font-size:11px;color:rgba(255,255,255,.35);line-height:1.5}
-.ag-term{background:rgba(0,0,0,.3);border-radius:7px;padding:8px;font-family:monospace;font-size:10px;color:var(--g);line-height:1.8;margin-top:10px}
+.ag-term{background:rgba(0,0,0,.3);border-radius:7px;padding:8px;font-family:'SF Mono',Menlo,monospace;font-size:10px;color:var(--g);line-height:1.8;margin-top:10px}
 @media(max-width:960px){.ag-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.ag-grid{grid-template-columns:1fr}}
 
 /* PRICING */
-.price-card{max-width:480px;margin:48px auto 0;background:linear-gradient(180deg,rgba(0,255,136,.03),transparent);border:1px solid rgba(0,255,136,.1);border-radius:24px;padding:40px;text-align:center;position:relative}
+.price-card{max-width:480px;margin:48px auto 0;background:linear-gradient(180deg,rgba(0,255,136,.04),transparent 60%);border:1px solid rgba(0,255,136,.1);border-radius:24px;padding:44px;text-align:center;position:relative}
 .price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--g);color:#000;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 16px;border-radius:99px}
-.price-amt{font-size:clamp(40px,6vw,56px);font-weight:900;letter-spacing:-.04em;margin:20px 0 4px}
-.price-amt span{font-size:14px;color:rgba(255,255,255,.35);font-weight:400}
-.price-setup{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.05)}
-.price-list{list-style:none;margin-bottom:28px;text-align:left}
-.price-list li{font-size:13px;color:rgba(255,255,255,.7);padding:6px 0;display:flex;gap:8px;align-items:center}
+.price-amt{font-size:clamp(40px,6vw,56px);font-weight:900;letter-spacing:-.04em;margin:24px 0 4px}
+.price-amt span{font-size:14px;color:rgba(255,255,255,.3);font-weight:400}
+.price-setup{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.05)}
+.price-list{list-style:none;margin-bottom:32px;text-align:left}
+.price-list li{font-size:13px;color:rgba(255,255,255,.65);padding:7px 0;display:flex;gap:10px;align-items:center}
 .price-list li::before{content:'';width:14px;height:14px;flex-shrink:0;border-radius:50%;background:rgba(0,255,136,.1);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%2300ff88' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
 .price-cta{display:block;width:100%;background:var(--g);color:#000;padding:16px;border-radius:12px;font-size:15px;font-weight:800;text-align:center;transition:transform .2s,box-shadow .2s}
-.price-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,255,136,.25)}
-.price-note{margin-top:14px;font-size:11px;color:rgba(255,255,255,.3)}
+.price-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,255,136,.25)}
+.price-note{margin-top:14px;font-size:11px;color:rgba(255,255,255,.25)}
 
 /* TRUST */
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);margin-top:48px;border-radius:16px;overflow:hidden}
@@ -158,36 +163,39 @@ section{padding:clamp(80px,10vh,120px) 0}
 .trust-desc{font-size:11px;color:rgba(255,255,255,.3);line-height:1.5}
 .trust-badge{display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:10px;padding:4px 10px;border-radius:99px}
 .trust-badge.on{background:rgba(0,255,136,.1);color:var(--g);border:1px solid rgba(0,255,136,.12)}
-.trust-badge.soon{background:rgba(255,255,255,.04);color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.06)}
+.trust-badge.soon{background:rgba(255,255,255,.04);color:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.06)}
 @media(max-width:860px){.trust-grid{grid-template-columns:1fr 1fr}}
 
 /* FAQ */
 .faq{max-width:680px;margin:48px auto 0}
-.faq-i{border-bottom:1px solid rgba(255,255,255,.06);padding:20px 0;cursor:pointer}
+.faq-i{border-bottom:1px solid rgba(255,255,255,.05);padding:20px 0;cursor:pointer}
 .faq-q{font-size:15px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-q::after{content:'+';font-size:20px;color:rgba(255,255,255,.3);transition:transform .3s}
+.faq-q::after{content:'+';font-size:20px;color:rgba(255,255,255,.2);transition:transform .3s,color .3s}
 .faq-i.open .faq-q::after{transform:rotate(45deg);color:var(--g)}
 .faq-a{max-height:0;overflow:hidden;opacity:0;transition:all .4s;font-size:14px;color:rgba(255,255,255,.4);line-height:1.7}
 .faq-i.open .faq-a{max-height:200px;opacity:1;margin-top:12px}
 
 /* CTA */
-.cta-sec{padding:clamp(100px,14vh,180px) 24px;text-align:center;position:relative}
-.cta-sec h2{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:-.05em;line-height:.9;margin-bottom:20px}
-.cta-sec p{font-size:16px;color:rgba(255,255,255,.4);max-width:420px;margin:0 auto 36px;line-height:1.7}
-.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:16px 32px;border-radius:12px;font-size:16px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.cta-sec{padding:clamp(100px,14vh,180px) 24px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,255,136,.06),transparent 60%);pointer-events:none}
+.cta-sec h2{font-size:clamp(40px,7vw,80px);font-weight:900;letter-spacing:-.05em;line-height:.85;margin-bottom:20px;position:relative}
+.cta-sec p{font-size:16px;color:rgba(255,255,255,.4);max-width:420px;margin:0 auto 36px;line-height:1.7;position:relative}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:16px 32px;border-radius:12px;font-size:16px;font-weight:700;transition:transform .2s,box-shadow .2s;position:relative}
 .btn-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.3)}
 .btn-wa svg{width:20px;height:20px;fill:#fff}
 
 /* FOOTER */
-footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.05)}
+footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.04)}
 .foot-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .foot-links{display:flex;gap:20px}
-.foot-links a{font-size:11px;color:rgba(255,255,255,.3);transition:color .2s}
+.foot-links a{font-size:11px;color:rgba(255,255,255,.25);transition:color .2s}
 .foot-links a:hover{color:#fff}
 
 /* REVEAL */
-.rv{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .rv.in{opacity:1;transform:translateY(0)}
+.rv-d1{transition-delay:.1s}
+.rv-d2{transition-delay:.2s}
 </style>
 </head>
 <body>
@@ -217,55 +225,55 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-tag"><span class="hero-tag-dot"></span>POS + IA para restaurantes · Monterrey, MX</div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
   <div class="hero-logo">fullsite<span class="dot"></span></div>
-  <h2>Tu restaurante genera los datos.<br><strong style="color:#fff">Nosotros los convertimos en decisiones.</strong></h2>
-  <p class="hero-sub">26 agentes de IA que monitorean ventas, meseros, fraude e inventario — y te avisan por WhatsApp antes de que sea problema.</p>
+  <p class="hero-sub">El POS con <strong>26 agentes de IA</strong> que monitorean tu restaurante 24/7 y te avisan por WhatsApp antes de que sea problema.</p>
   <div class="hero-ctas">
     <a href="#cta" class="btn btn-primary">Agendar demo →</a>
     <a href="#proof" class="btn btn-ghost">Ver caso real</a>
   </div>
+  <div class="hero-scroll">scroll</div>
 </section>
 
 <!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num">$70M+</div><div class="stat-label">MXN analizados</div></div>
-    <div class="stat"><div class="stat-num">181K+</div><div class="stat-label">tickets procesados</div></div>
+    <div class="stat"><div class="stat-num">$70M<span style="font-size:.5em;color:var(--g)">+</span></div><div class="stat-label">MXN analizados</div></div>
+    <div class="stat"><div class="stat-num">181K<span style="font-size:.5em;color:var(--g)">+</span></div><div class="stat-label">tickets procesados</div></div>
     <div class="stat"><div class="stat-num">869</div><div class="stat-label">dias operando</div></div>
     <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">autonomo</div></div>
   </div>
 </div>
 
 <!-- SOCIAL PROOF -->
-<section id="proof" style="border-bottom:1px solid rgba(255,255,255,.05)">
+<section id="proof">
   <div class="wrap">
     <div class="proof-grid rv">
-      <div class="proof-text">
+      <div>
         <div class="sec-label">Caso real</div>
         <div class="sec-title">Operando en AMALAY<br>desde el dia 1.</div>
         <div class="sec-desc">869 dias de datos reales. No es una demo — es un restaurante en Monterrey con mas de 181,000 tickets procesados y $70M MXN analizados.</div>
         <div class="proof-metrics">
-          <div class="proof-m"><span class="proof-num">2.4 seg</span><span class="proof-lab">Respuesta promedio del bot</span></div>
-          <div class="proof-m"><span class="proof-num">26</span><span class="proof-lab">Agentes activos 24/7</span></div>
-          <div class="proof-m"><span class="proof-num">7:01 AM</span><span class="proof-lab">Briefing diario automatico</span></div>
+          <div class="proof-m"><span class="proof-num">2.4s</span><span class="proof-lab">Respuesta del bot</span></div>
+          <div class="proof-m"><span class="proof-num">26</span><span class="proof-lab">Agentes activos</span></div>
+          <div class="proof-m"><span class="proof-num">7:01</span><span class="proof-lab">Briefing diario</span></div>
         </div>
       </div>
-      <div class="proof-terminal">
+      <div class="proof-terminal rv rv-d1">
         <div class="proof-term-bar"><span></span><span></span><span></span></div>
         <div class="proof-term-body">
-<span style="color:rgba(255,255,255,.3)">$ fullsite status --client amalay</span>
+<span style="color:rgba(255,255,255,.25)">$ fullsite status --client amalay</span>
 <br><br>
-<span style="color:var(--g)">✓</span> POS sync &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--g)">live</span> (last: 4s ago)
-<br><span style="color:var(--g)">✓</span> Agentes activos &nbsp;&nbsp; <span style="color:#fff">26/26</span>
-<br><span style="color:var(--g)">✓</span> Anomalias hoy &nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#fff">0 alertas</span>
-<br><span style="color:var(--g)">✓</span> WhatsApp bot &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--g)">online</span>
+<span style="color:var(--g)">✓</span> POS sync &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--g)">live</span> <span style="color:rgba(255,255,255,.2)">(4s ago)</span>
+<br><span style="color:var(--g)">✓</span> Agentes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#fff">26/26</span>
+<br><span style="color:var(--g)">✓</span> Anomalias &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#fff">0 alertas</span>
+<br><span style="color:var(--g)">✓</span> WhatsApp &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--g)">online</span>
 <br><span style="color:var(--g)">✓</span> Briefing 7AM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:var(--g)">enviado</span>
 <br><br>
-<span style="color:rgba(255,255,255,.3)">ventas_hoy:</span> <span style="color:#fff;font-weight:700">$18,420</span> <span style="color:var(--g)">+12% vs ayer</span>
-<br><span style="color:rgba(255,255,255,.3)">tickets:</span> &nbsp;&nbsp;&nbsp; <span style="color:#fff">74</span>
-<br><span style="color:rgba(255,255,255,.3)">top_mesero:</span> <span style="color:#fff">Omar $4,200</span>
+<span style="color:rgba(255,255,255,.25)">ventas_hoy:</span> <span style="color:#fff;font-weight:700">$18,420</span> <span style="color:var(--g)">+12%</span>
+<br><span style="color:rgba(255,255,255,.25)">tickets:</span> &nbsp;&nbsp;&nbsp; <span style="color:#fff">74</span>
+<br><span style="color:rgba(255,255,255,.25)">top_mesero:</span> <span style="color:#fff">Omar $4,200</span>
         </div>
       </div>
     </div>
@@ -278,28 +286,28 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
     <div class="rv">
       <div class="sec-label">Todo incluido</div>
       <div class="sec-title">Construido para<br>restaurantes reales.</div>
-      <div class="sec-desc">No es un dashboard generico. Cada feature fue disenado con duenos de restaurante.</div>
+      <div class="sec-desc">No es un dashboard generico. Cada feature nacio de problemas reales de operadores.</div>
     </div>
-    <div class="features rv">
+    <div class="features rv rv-d1">
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><svg viewBox="0 0 24 24"><path d="M3 12l6-6 4 4 8-8"/><path d="M21 6v7"/><path d="M14 13h7"/></svg></div>
         <h3>Ventas en tiempo real</h3>
-        <p>Cada venta se refleja al instante. Compara con ayer o la semana pasada en un segundo.</p>
+        <p>Cada venta al instante. Compara vs ayer o la semana pasada en un click.</p>
       </div>
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 22v-2a7 7 0 0114 0v2"/></svg></div>
         <h3>Performance por mesero</h3>
-        <p>Ticket promedio, mesas, productos, propinas — todo desglosado por persona.</p>
+        <p>Ticket promedio, mesas, propinas — todo desglosado por persona.</p>
       </div>
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <h3>Bot WhatsApp 24/7</h3>
-        <p>Pregunta en palabras normales. Respuestas con numeros reales. Sin interfaces nuevas.</p>
+        <p>Pregunta en palabras normales. Respuestas con datos reales en segundos.</p>
       </div>
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Anti-fraude</h3>
-        <p>Cancelaciones, descuentos y patrones sospechosos detectados automaticamente.</p>
+        <p>Cancelaciones y descuentos sospechosos detectados automaticamente.</p>
       </div>
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#22d3ee,#06b6d4)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
@@ -309,7 +317,7 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
       <div class="feat">
         <div class="feat-icon" style="background:linear-gradient(135deg,#ec4899,#db2777)"><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
         <h3>Alertas proactivas</h3>
-        <p>Merma rara, caida de ventas, resena urgente — solo lo que necesita tu atencion.</p>
+        <p>Merma, caida de ventas, resena urgente — solo lo que necesita tu atencion.</p>
       </div>
     </div>
   </div>
@@ -321,10 +329,10 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
     <div class="wa-grid">
       <div class="rv">
         <div class="sec-label">Tu asistente 24/7</div>
-        <div class="sec-title">Pregunta lo que quieras.</div>
+        <div class="sec-title">Pregunta lo<br>que quieras.</div>
         <div class="sec-desc">Fullsite vive donde ya vives: WhatsApp. Pregunta en palabras normales, recibe datos reales de tu operacion en segundos.</div>
       </div>
-      <div class="wa-phone rv" id="waDemo">
+      <div class="wa-phone rv rv-d1" id="waDemo">
         <div class="wa-header">
           <div class="wa-avatar">F</div>
           <div><div class="wa-name">Fullsite Bot</div><div class="wa-online">en linea</div></div>
@@ -349,7 +357,7 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
       <div class="sec-label">Agentes de IA</div>
       <div class="sec-title">26 agentes. <em style="font-style:italic;color:var(--g)">Ahora mismo.</em></div>
     </div>
-    <div class="ag-grid rv">
+    <div class="ag-grid rv rv-d1">
       <div class="ag"><div class="ag-top"><div class="ag-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div><div><h4>Coach operativo</h4><div class="ag-st">Monitoreando</div></div></div><p>Insights accionables cuando detecta patrones.</p><div class="ag-term">→ Julio: 0 postres 3d<br>→ Alerta enviada<br>→ Sugerencia: reasignar</div></div>
       <div class="ag"><div class="ag-top"><div class="ag-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div><div><h4>Anomalias</h4><div class="ag-st">Escaneando</div></div></div><p>Compara cada metrica vs historico.</p><div class="ag-term">→ Merma almendra: 3.2x<br>→ 4 dias consecutivos<br><span style="color:#ff6b4a">→ ALERTA enviada</span></div></div>
       <div class="ag"><div class="ag-top"><div class="ag-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><svg viewBox="0 0 24 24"><path d="M3 12l6-6 4 4 8-8M21 6v7M14 13h7"/></svg></div><div><h4>Cierre diario</h4><div class="ag-st">Calculando</div></div></div><p>Predice como cierra tu dia a las 2pm.</p><div class="ag-term">→ Proyeccion: $18,400<br>→ Meta: $22k (-16%)<br><span style="color:#ffc857">→ Promo happy hour</span></div></div>
@@ -357,9 +365,9 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
       <div class="ag"><div class="ag-top"><div class="ag-icon" style="background:linear-gradient(135deg,#ec4899,#db2777)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Anti-fraude</h4><div class="ag-st">Vigilando</div></div></div><p>Cancelaciones y descuentos sospechosos.</p><div class="ag-term">→ 12 cancelaciones/sem<br>→ 8 del mismo mesero<br><span style="color:#ff6b4a">→ Reporte listo</span></div></div>
       <div class="ag"><div class="ag-top"><div class="ag-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb)"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><div><h4>Menu engineering</h4><div class="ag-st">Optimizando</div></div></div><p>Clasifica tus platillos: estrellas, vacas, perros.</p><div class="ag-term">→ Margaritas: 78% ★<br>→ Sandwich: 18% ↓<br>→ Mover pag 1: +$12k</div></div>
     </div>
-    <div class="ag-more rv" style="text-align:center;margin-top:28px">
-      <p style="font-size:14px;color:rgba(255,255,255,.4)">+ 20 agentes mas: briefing diario, reporte semanal, KB 24/7, staffing, waste, suppliers, tips, CRM...</p>
-      <a href="#cta" class="btn btn-ghost" style="margin-top:16px;display:inline-flex">Agenda demo para verlos todos →</a>
+    <div class="rv rv-d2" style="text-align:center;margin-top:32px">
+      <p style="font-size:14px;color:rgba(255,255,255,.35)">+ 20 agentes mas: briefing diario, reporte semanal, KB 24/7, waste, suppliers, tips, CRM...</p>
+      <a href="#cta" class="btn btn-ghost" style="margin-top:16px;display:inline-flex">Verlos todos en la demo →</a>
     </div>
   </div>
 </section>
@@ -372,7 +380,7 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
       <div class="sec-title">Un plan. Todo.</div>
       <div class="sec-desc" style="margin:0 auto">POS + IA + 26 agentes + soporte. Sin modulos extra.</div>
     </div>
-    <div class="price-card rv">
+    <div class="price-card rv rv-d1">
       <div class="price-badge">Todo incluido</div>
       <div class="price-amt">$4,999 <span>MXN/mes</span></div>
       <div class="price-setup">Setup: $4,999 una vez · Sin hardware propietario</div>
@@ -390,20 +398,20 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
         <li>Menu engineering semanal</li>
       </ul>
       <a href="#cta" class="price-cta">Agendar demo →</a>
-      <div class="price-note">60 dias de garantia — sin valor, devolvemos el mes.</div>
+      <div class="price-note">60 dias de garantia — si no ves valor, devolvemos el mes.</div>
     </div>
   </div>
 </section>
 
 <!-- SECURITY -->
-<section id="security" style="border-top:1px solid rgba(255,255,255,.05)">
+<section id="security">
   <div class="wrap">
     <div class="rv" style="text-align:center">
       <div class="sec-label">Seguridad</div>
       <div class="sec-title">Tu data, blindada.</div>
       <div class="sec-desc" style="margin:0 auto">Los mismos estandares que usan instituciones financieras.</div>
     </div>
-    <div class="trust-grid rv">
+    <div class="trust-grid rv rv-d1">
       <div class="trust-item">
         <div class="trust-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
         <div class="trust-name">AES-256</div>
@@ -433,13 +441,13 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
 </section>
 
 <!-- FAQ -->
-<section style="background:rgba(255,255,255,.02)">
+<section style="background:var(--s1)">
   <div class="wrap">
     <div class="rv" style="text-align:center">
       <div class="sec-label">FAQ</div>
       <div class="sec-title">Preguntas frecuentes.</div>
     </div>
-    <div class="faq rv">
+    <div class="faq rv rv-d1">
       <div class="faq-i"><div class="faq-q">Que necesito para empezar?</div><div class="faq-a">Solo una tablet o computadora con navegador. Corre en cualquier dispositivo sin hardware especial.</div></div>
       <div class="faq-i"><div class="faq-q">Puedo migrar desde mi POS actual?</div><div class="faq-a">Si. Importamos menu, recetas e historial. Lo hacemos nosotros — tu no tocas nada.</div></div>
       <div class="faq-i"><div class="faq-q">Mi data esta segura?</div><div class="faq-a">Encriptacion bancaria. Nunca compartimos data. Si cancelas, exportamos y borramos en 60 dias.</div></div>
@@ -451,6 +459,7 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
 
 <!-- CTA -->
 <section class="cta-sec" id="cta">
+  <div class="cta-glow"></div>
   <h2>Pide tu demo.</h2>
   <p>20 minutos. El sistema corriendo en un restaurante real. Si tiene sentido, cerramos.</p>
   <a href="https://wa.me/528115324371?text=Hola%20Daniel%2C%20vi%20fullsite.mx%20y%20quiero%20una%20demo." target="_blank" class="btn-wa">
@@ -463,7 +472,7 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
   <div class="foot-inner">
     <div style="display:flex;align-items:center;gap:12px">
       <a href="#" class="n-logo" style="font-size:16px">fullsite<span class="n-dot"></span></a>
-      <span style="font-size:11px;color:rgba(255,255,255,.2)">© 2026 Monterrey, MX</span>
+      <span style="font-size:11px;color:rgba(255,255,255,.15)">© 2026 Monterrey, MX</span>
     </div>
     <div class="foot-links">
       <a href="https://app.fullsite.mx/seguridad" target="_blank">Seguridad</a>
@@ -475,7 +484,11 @@ footer{padding:32px clamp(20px,4vw,48px);border-top:1px solid rgba(255,255,255,.
 
 <script>
 (function(){
-/* Reveal on scroll — lightweight, no library needed */
+/* Nav scroll state */
+var nav=document.querySelector('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+
+/* Reveal */
 var els=document.querySelectorAll('.rv');
 if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
   els.forEach(function(el){el.classList.add('in')});
