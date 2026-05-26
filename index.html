@@ -30,7 +30,7 @@ nav.scrolled{background:rgba(0,0,0,.85);backdrop-filter:blur(24px);-webkit-backd
 .nav-inner{max-width:1200px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
 .n-logo{display:flex;align-items:center;opacity:.8;transition:opacity .2s}
 .n-logo:hover{opacity:1}
-.n-logo img{height:22px;filter:brightness(0) invert(1)}
+.n-logo img{height:22px;filter:invert(1);mix-blend-mode:screen}
 .n-links{display:flex;gap:28px;align-items:center}
 .n-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);transition:color .2s;letter-spacing:.01em}
 .n-links a:hover{color:#fff}
@@ -49,7 +49,7 @@ nav.scrolled{background:rgba(0,0,0,.85);backdrop-filter:blur(24px);-webkit-backd
 @keyframes glowPulse{0%,100%{opacity:.7;transform:translate(-50%,-55%) scale(1)}50%{opacity:1;transform:translate(-50%,-55%) scale(1.08)}}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,#000 20%,transparent 70%);pointer-events:none}
 .hero-logo{position:relative;z-index:1;margin-bottom:8px}
-.hero-logo img{width:clamp(320px,55vw,650px);filter:brightness(0) invert(1)}
+.hero-logo img{width:clamp(320px,55vw,650px);filter:invert(1);mix-blend-mode:screen}
 .hero-sub{font-size:clamp(16px,2vw,20px);font-weight:400;color:rgba(255,255,255,.4);max-width:540px;line-height:1.6;margin-top:16px;position:relative;z-index:1}
 .hero-sub strong{color:rgba(255,255,255,.75);font-weight:600}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px;position:relative;z-index:1}
