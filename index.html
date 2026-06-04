@@ -2563,13 +2563,70 @@ nav.top.scrolled{
     <!-- Trust stats + link -->
     <div class="reveal" style="text-align:center;margin-top:32px">
       <div style="display:flex;justify-content:center;gap:32px;margin-bottom:16px">
-        <div><span style="font-size:20px;font-weight:700;color:var(--ink)">16/16</span><br><span style="font-size:11px;color:var(--ink-3)">controles activos</span></div>
+        <div><span style="font-size:20px;font-weight:700;color:var(--ink)">21/21</span><br><span style="font-size:11px;color:var(--ink-3)">controles activos</span></div>
         <div><span style="font-size:20px;font-weight:700;color:var(--ink)">6</span><br><span style="font-size:11px;color:var(--ink-3)">proveedores SOC 2</span></div>
         <div><span style="font-size:20px;font-weight:700;color:var(--ink)">5</span><br><span style="font-size:11px;color:var(--ink-3)">certificaciones</span></div>
       </div>
       <a href="https://app.fullsite.mx/seguridad" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;transition:opacity 0.2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
         Ver Trust Center completo →
       </a>
+    </div>
+
+    <!-- AI GOVERNANCE -->
+    <div class="reveal" style="margin-top:64px">
+      <div style="text-align:center;margin-bottom:32px">
+        <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          AI Governance
+        </div>
+        <h3 style="font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--ink);margin-bottom:8px">Nuestros agentes de IA estan <em style="font-family:var(--serif);color:var(--accent)">constreñidos.</em></h3>
+        <p style="font-size:14px;color:var(--ink-3);max-width:500px;margin:0 auto">30 agentes autonomos operando 24/7 con controles de seguridad en cada capa.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:16px;overflow:hidden">
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="width:36px;height:36px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;background:rgba(16,185,129,0.1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">Agent Audit Trail</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">Cada agente registra START, READ, WRITE y END en un log inmutable. Sabes exactamente que hizo cada agente, cuando, y en que tablas.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="width:36px;height:36px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;background:rgba(139,92,246,0.1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">AI Action Controls</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">El bot de queries solo puede leer 23 tablas whitelisted. Patrones SQL peligrosos (DROP, DELETE) son bloqueados automaticamente.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="width:36px;height:36px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,0.1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">Safe Execution</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">Input sanitizado (2,000 chars max), roles de base de datos con permisos minimos, y ejecucion aislada por agente en GitHub Actions.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:0 0 16px 16px;overflow:hidden;margin-top:1px">
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">Least Privilege Roles</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">Roles PostgreSQL con permisos minimos: fullsite_readonly (solo SELECT) y fullsite_agent (SELECT + log). Listos en DB.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">Table Whitelist</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">23 tablas permitidas para el bot. Si un agente intenta leer una tabla fuera de la lista, la operacion se bloquea y se registra.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+        <div style="background:var(--bg-1);padding:28px 24px">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px">Injection Protection</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.6">Queries via REST API parametrizado (no SQL directo). Input filtrado contra patrones de inyeccion. Sin acceso a DDL.</div>
+          <div style="display:inline-flex;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,255,136,0.1);color:var(--accent);border:1px solid rgba(0,255,136,0.12)">Activo</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
