@@ -1765,6 +1765,35 @@ nav.top.scrolled{
   </div>
 </section>
 
+<!-- Mobile: compact feature links instead of heavy sections -->
+<section class="mobile-links" style="padding:40px 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <a href="#bot" onclick="document.querySelectorAll('.desktop-section').forEach(s=>s.style.display='block');this.closest('.mobile-links').style.display='none'" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-decoration:none;text-align:center">
+        <div style="font-size:24px;margin-bottom:6px">💬</div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink)">WhatsApp Bot</div>
+        <div style="font-size:11px;color:var(--ink-3)">Pregunta lo que sea</div>
+      </a>
+      <a href="#auto86" onclick="document.querySelectorAll('.desktop-section').forEach(s=>s.style.display='block');this.closest('.mobile-links').style.display='none'" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-decoration:none;text-align:center">
+        <div style="font-size:24px;margin-bottom:6px">📦</div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink)">Auto-86</div>
+        <div style="font-size:11px;color:var(--ink-3)">Inventario automático</div>
+      </a>
+      <a href="#agentes" onclick="document.querySelectorAll('.desktop-section').forEach(s=>s.style.display='block');this.closest('.mobile-links').style.display='none'" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-decoration:none;text-align:center">
+        <div style="font-size:24px;margin-bottom:6px">🤖</div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink)">30 Agentes IA</div>
+        <div style="font-size:11px;color:var(--ink-3)">Trabajan 24/7</div>
+      </a>
+      <a href="https://app.fullsite.mx/seguridad" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-decoration:none;text-align:center">
+        <div style="font-size:24px;margin-bottom:6px">🔒</div>
+        <div style="font-size:13px;font-weight:700;color:var(--ink)">Seguridad</div>
+        <div style="font-size:11px;color:var(--ink-3)">Grado bancario</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="desktop-section">
 <!-- =================== WA TABS SECTION =================== -->
 <section class="wa-section" id="bot">
   <div class="section-divider"><div class="section-divider-glow"></div></div>
@@ -2197,6 +2226,8 @@ nav.top.scrolled{
   </div>
 </section>
 
+</div><!-- end desktop-section (WA tabs + callout + auto-86 + bento) -->
+
 <!-- =================== HOW IT WORKS =================== -->
 <section id="como">
   <div class="wrap">
@@ -2250,6 +2281,7 @@ nav.top.scrolled{
   </div>
 </section>
 
+<div class="desktop-section">
 <!-- =================== CAPABILITIES (light section) =================== -->
 <section class="caps-section">
   <div class="wrap">
@@ -2523,6 +2555,9 @@ nav.top.scrolled{
       @media(min-width:640px){#explainer{aspect-ratio:16/9}}
       .exp-agents-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;max-width:520px;width:100%}
       @media(min-width:480px){.exp-agents-grid{grid-template-columns:repeat(4,1fr);gap:8px}}
+      /* Hide heavy sections on mobile — show "Ver más" links instead */
+      .desktop-section{display:none}
+      @media(min-width:768px){.desktop-section{display:block}.mobile-links{display:none!important}}
     </style>
     <div class="reveal" id="explainer" style="max-width:840px;margin:48px auto;border-radius:20px;overflow:hidden;border:1px solid var(--line-2);position:relative;cursor:pointer;user-select:none;background:var(--bg)">
       <!-- Animated background per slide -->
@@ -2761,19 +2796,19 @@ nav.top.scrolled{
     })();
     </script>
 
-    <!-- 3 value props -->
-    <div class="reveal-stagger" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:48px auto 0">
-      <div style="text-align:center;padding:24px 16px">
-        <div style="font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:8px">5 días</div>
-        <div style="font-size:14px;color:var(--ink-2);line-height:1.5">De firmar a estar operando. Nosotros configuramos todo.</div>
+    <!-- 3 value props — responsive -->
+    <div class="reveal-stagger" style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:900px;margin:40px auto 0">
+      <div style="text-align:center;padding:16px 20px;flex:1;min-width:160px;max-width:260px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px">
+        <div style="font-size:28px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:4px">5 días</div>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.4">De firmar a operar</div>
       </div>
-      <div style="text-align:center;padding:24px 16px">
-        <div style="font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:8px">A tu medida</div>
-        <div style="font-size:14px;color:var(--ink-2);line-height:1.5">Solo IA sobre tu POS actual, o migración completa. Tú decides.</div>
+      <div style="text-align:center;padding:16px 20px;flex:1;min-width:160px;max-width:260px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px">
+        <div style="font-size:28px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:4px">A tu medida</div>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.4">Solo IA o POS completo</div>
       </div>
-      <div style="text-align:center;padding:24px 16px">
-        <div style="font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:8px">60 días</div>
-        <div style="font-size:14px;color:var(--ink-2);line-height:1.5">Garantía. Si no ves valor claro, te devolvemos tu dinero.</div>
+      <div style="text-align:center;padding:16px 20px;flex:1;min-width:160px;max-width:260px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px">
+        <div style="font-size:28px;font-weight:800;color:var(--accent);letter-spacing:-0.03em;margin-bottom:4px">60 días</div>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.4">Garantía de devolución</div>
       </div>
     </div>
 
@@ -2910,6 +2945,8 @@ nav.top.scrolled{
     </div>
   </div>
 </section>
+
+</div><!-- end desktop-section (capabilities + agents + security) -->
 
 <!-- =================== FAQ =================== -->
 <section class="faq-section">
