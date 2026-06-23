@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#f59e0b;border-radius:2px}
+
+.content{display:flex;flex-direction:column;gap:28px;justify-content:center;padding:20px 0}
+
+.headline{font-size:46px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08;max-width:700px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;max-width:550px}
+.desc strong{color:#1a1a1a}
+
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.step{background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:14px}
+.step-num{font-size:48px;font-weight:800;color:#eee;line-height:1}
+.step-title{font-size:18px;font-weight:700;color:#1a1a1a}
+.step-desc{font-size:14px;color:#888;line-height:1.5;flex:1}
+.step-time{font-size:13px;font-weight:600;color:#10b981;background:rgba(16,185,129,0.08);padding:6px 12px;border-radius:8px;width:fit-content}
+
+.cta-bar{background:#1a1a1a;border-radius:14px;padding:24px 32px;display:flex;justify-content:space-between;align-items:center}
+.cta-text{font-size:18px;font-weight:600;color:#fff}
+.cta-btn{background:#10b981;color:#fff;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 03 // Resultados probados <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="headline">Empieza en 3 pasos. Resultados en <span class="highlight">7 dias.</span></div>
+    <div class="desc">Setup completo en una semana. Sin contratos anuales. <strong>Soporte directo por WhatsApp</strong> desde el dia uno.</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Demo en vivo</div>
+        <div class="step-desc">30 minutos. Te mostramos tu operacion con datos reales de prueba.</div>
+        <div class="step-time">30 min</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Setup</div>
+        <div class="step-desc">Conectamos tu POS actual. Cargamos menu, ingredientes, costos, recetas.</div>
+        <div class="step-time">3-5 dias</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Live</div>
+        <div class="step-desc">30 agentes activos. Dashboard en vivo. Bot Telegram listo. Reportes automaticos.</div>
+        <div class="step-time">Dia 7</div>
+      </div>
+    </div>
+
+    <div class="cta-bar">
+      <div class="cta-text">Hecho en Monterrey para restaurantes reales.</div>
+      <div class="cta-btn">fullsite.mx &rarr;</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">5 / 5</div>
+  </div>
+</div>
+</body>
+</html>

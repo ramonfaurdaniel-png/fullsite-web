@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#6366f1;border-radius:2px}
+.badge{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.headline{font-size:48px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;margin-top:20px;max-width:400px}
+.desc strong{color:#1a1a1a}
+
+.right{display:flex;flex-direction:column;gap:14px}
+.agent-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;gap:16px;align-items:flex-start}
+.agent-dot{width:10px;height:10px;border-radius:3px;margin-top:4px;flex-shrink:0}
+.agent-dot.detect{background:#ef4444}
+.agent-dot.predict{background:#f59e0b}
+.agent-dot.act{background:#10b981}
+.agent-info{}
+.agent-name{font-size:14px;font-weight:700;color:#1a1a1a}
+.agent-desc{font-size:13px;color:#888;line-height:1.5;margin-top:2px}
+.agent-card.dark{background:#1a1a1a}
+.agent-card.dark .agent-name{color:#fff}
+.agent-card.dark .agent-desc{color:#888}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 02 // Potencia con IA <span class="dot"></span></div>
+    <div class="badge">Agentic OS</div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">No es un chatbot. Son 30 agentes <span class="highlight">autonomos.</span></div>
+      <div class="desc">Cada agente tiene un trabajo. Lo hace solo. Te avisa cuando importa. Operan <strong>24/7 sin intervencion humana</strong>.</div>
+    </div>
+
+    <div class="right">
+      <div class="agent-card">
+        <div class="agent-dot detect"></div>
+        <div class="agent-info">
+          <div class="agent-name">Anti-fraude</div>
+          <div class="agent-desc">Escanea cancelaciones y descuentos. Detecta patrones sospechosos por mesero.</div>
+        </div>
+      </div>
+      <div class="agent-card dark">
+        <div class="agent-dot predict"></div>
+        <div class="agent-info">
+          <div class="agent-name">Prediccion de cierre</div>
+          <div class="agent-desc">A las 2pm, 4pm, 6pm predice ventas del dia con 92% de precision.</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-dot act"></div>
+        <div class="agent-info">
+          <div class="agent-name">Auto-86</div>
+          <div class="agent-desc">Ingrediente en cero? Retira platillos afectados automaticamente.</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-dot detect"></div>
+        <div class="agent-info">
+          <div class="agent-name">Detector de anomalias</div>
+          <div class="agent-desc">Compara ventas vs patron historico. Alerta si algo esta fuera de rango.</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-dot predict"></div>
+        <div class="agent-info">
+          <div class="agent-name">Compras predictivas</div>
+          <div class="agent-desc">Calcula que comprar manana con yield factor y consumo real.</div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-dot act"></div>
+        <div class="agent-info">
+          <div class="agent-name">+ 24 agentes mas</div>
+          <div class="agent-desc">Staffing, menu engineering, propinas, CRM, upselling, merma...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">1 / 5</div>
+  </div>
+</div>
+</body>
+</html>

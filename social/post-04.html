@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:40%;left:50%;transform:translateX(-50%);width:50%;height:40%;background:radial-gradient(ellipse,rgba(245,158,11,0.07) 0%,transparent 55%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.eyebrow{font-size:13px;font-weight:500;color:#f59e0b;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:6px;height:6px;background:#f59e0b;border-radius:50%;box-shadow:0 0 10px rgba(245,158,11,0.5)}
+
+.time{font-size:140px;font-weight:300;color:#f59e0b;font-family:Georgia,serif;font-style:italic;line-height:0.85;letter-spacing:-0.04em;text-shadow:0 0 60px rgba(245,158,11,0.2)}
+.headline{font-size:44px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1.1;margin-top:32px}
+
+.prediction{margin-top:48px;width:600px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px}
+.pred-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.pred-row:last-child{border:none}
+.pred-label{font-size:18px;color:rgba(255,255,255,0.5)}
+.pred-val{font-size:22px;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.pred-val.green{color:#00ff88}
+.pred-val.amber{color:#f59e0b}
+.pred-val.coral{color:#ff6b4a}
+.pred-action{margin-top:16px;padding:14px 20px;background:rgba(245,158,11,0.08);border-radius:10px;font-size:16px;color:#f59e0b;font-weight:500}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="eyebrow">Agente: Prediccion de cierre</div>
+  <div class="time">2:00pm</div>
+  <div class="headline">Ya sabe como cierra tu dia.</div>
+
+  <div class="prediction">
+    <div class="pred-row"><div class="pred-label">Ventas acumuladas</div><div class="pred-val">$38,400</div></div>
+    <div class="pred-row"><div class="pred-label">Proyeccion 10pm</div><div class="pred-val amber">$62,100</div></div>
+    <div class="pred-row"><div class="pred-label">Meta del dia</div><div class="pred-val">$75,000</div></div>
+    <div class="pred-row"><div class="pred-label">Gap</div><div class="pred-val coral">-$12,900</div></div>
+    <div class="pred-action">Sugiere: activar promo happy hour 6-8pm para cerrar gap</div>
+  </div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

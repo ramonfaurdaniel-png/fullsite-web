@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:50%;height:40%;background:radial-gradient(ellipse,rgba(59,130,246,0.07) 0%,transparent 55%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.eyebrow{font-size:13px;font-weight:500;color:#3b82f6;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:6px;height:6px;background:#3b82f6;border-radius:50%;box-shadow:0 0 10px rgba(59,130,246,0.5)}
+.headline{font-size:52px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1.08;max-width:800px}
+.headline em{font-style:italic;color:#3b82f6;font-weight:400;font-family:Georgia,serif}
+.subtitle{font-size:20px;color:rgba(255,255,255,0.4);text-align:center;margin-top:20px;max-width:600px;line-height:1.5}
+
+.menu-grid{margin-top:48px;width:650px}
+.menu-row{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;margin-bottom:10px}
+.menu-icon{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.menu-icon.star{background:#00ff88;box-shadow:0 0 10px rgba(0,255,136,0.4)}
+.menu-icon.cow{background:#3b82f6;box-shadow:0 0 10px rgba(59,130,246,0.4)}
+.menu-icon.dog{background:#ff6b4a;box-shadow:0 0 10px rgba(255,107,74,0.4)}
+.menu-name{flex:1;font-size:18px;color:#fff;font-weight:500}
+.menu-type{font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;width:80px;text-align:center;padding:4px 8px;border-radius:6px}
+.menu-type.star{color:#00ff88;background:rgba(0,255,136,0.1)}
+.menu-type.cow{color:#3b82f6;background:rgba(59,130,246,0.1)}
+.menu-type.dog{color:#ff6b4a;background:rgba(255,107,74,0.1)}
+.menu-margin{font-size:18px;font-weight:600;color:rgba(255,255,255,0.6);width:80px;text-align:right}
+.menu-action{font-size:14px;color:rgba(255,255,255,0.35);width:140px;text-align:right}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="eyebrow">Agente: Menu engineering</div>
+  <div class="headline">Que platillos te <em>ganan dinero.</em></div>
+  <div class="subtitle">Clasifica tu carta automaticamente. Te dice que mover, que promover, y que quitar.</div>
+
+  <div class="menu-grid">
+    <div class="menu-row">
+      <div class="menu-icon star"></div>
+      <div class="menu-name">Margaritas</div>
+      <div class="menu-type star">Estrella</div>
+      <div class="menu-margin">78%</div>
+      <div class="menu-action">Mover a pagina 1</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-icon star"></div>
+      <div class="menu-name">Chilaquiles</div>
+      <div class="menu-type star">Estrella</div>
+      <div class="menu-margin">52%</div>
+      <div class="menu-action">Mantener arriba</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-icon cow"></div>
+      <div class="menu-name">Cafe Americano</div>
+      <div class="menu-type cow">Vaca</div>
+      <div class="menu-margin">65%</div>
+      <div class="menu-action">Subir precio 10%</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-icon cow"></div>
+      <div class="menu-name">Jugo de naranja</div>
+      <div class="menu-type cow">Vaca</div>
+      <div class="menu-margin">40%</div>
+      <div class="menu-action">Combo con platillo</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-icon dog"></div>
+      <div class="menu-name">Sandwich club</div>
+      <div class="menu-type dog">Perro</div>
+      <div class="menu-margin">18%</div>
+      <div class="menu-action">Evaluar retiro</div>
+    </div>
+  </div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#ef4444;border-radius:2px}
+.badge{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.headline{font-size:48px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#ef4444;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;margin-top:20px;max-width:400px}
+.desc strong{color:#1a1a1a}
+
+.total-card{background:#1a1a1a;border-radius:16px;padding:28px;margin-top:24px}
+.total-label{font-size:13px;color:#888}
+.total-val{font-size:48px;font-weight:800;color:#ef4444;letter-spacing:-0.04em}
+.total-sub{font-size:14px;color:#555;margin-top:4px}
+
+.right{display:flex;flex-direction:column;gap:10px}
+.cost-row{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+.cost-label{font-size:14px;color:#888}
+.cost-val{font-size:20px;font-weight:700;color:#ef4444;letter-spacing:-0.02em}
+
+.cost-row.green{background:#10b981;box-shadow:none}
+.cost-row.green .cost-label{color:rgba(255,255,255,0.8)}
+.cost-row.green .cost-val{color:#fff;font-size:24px}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 04 // Decision inteligente <span class="dot"></span></div>
+    <div class="badge">Costo real</div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Cuanto te cuesta <span class="highlight">no saber?</span></div>
+      <div class="desc">El costo real de operar sin datos. Cada linea es una <strong>fuga medible</strong> que ocurre todos los meses.</div>
+
+      <div class="total-card">
+        <div class="total-label">Pierdes cada mes</div>
+        <div class="total-val">$88,000</div>
+        <div class="total-sub">en fugas operativas no detectadas</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="cost-row"><span class="cost-label">Merma no detectada (3.2%)</span><span class="cost-val">$47,000</span></div>
+      <div class="cost-row"><span class="cost-label">Food cost inflado (+9 pts)</span><span class="cost-val">$22,000</span></div>
+      <div class="cost-row"><span class="cost-label">Upselling perdido</span><span class="cost-val">$8,500</span></div>
+      <div class="cost-row"><span class="cost-label">Horas en reportes manuales</span><span class="cost-val">$6,400</span></div>
+      <div class="cost-row"><span class="cost-label">Fraudes invisibles</span><span class="cost-val">$4,100</span></div>
+      <div class="cost-row green"><span class="cost-label">Fullsite cuesta</span><span class="cost-val">$4,999/mes</span></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">1 / 5</div>
+  </div>
+</div>
+</body>
+</html>

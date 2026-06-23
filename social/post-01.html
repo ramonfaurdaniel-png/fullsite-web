@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:80%;height:60%;background:radial-gradient(ellipse,rgba(0,255,136,0.07) 0%,transparent 55%),radial-gradient(ellipse at 30% 70%,rgba(139,92,246,0.05) 0%,transparent 50%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.headline{font-size:68px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.035em;line-height:1.05;max-width:900px;position:relative;z-index:1}
+.headline em{font-style:italic;color:#00ff88;font-weight:400;font-family:Georgia,'Times New Roman',serif}
+.subtitle{font-size:24px;color:rgba(255,255,255,0.4);text-align:center;margin-top:32px;max-width:700px;line-height:1.5}
+
+.agents-row{display:flex;gap:14px;margin-top:56px;flex-wrap:wrap;justify-content:center}
+.agent-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:10px 18px;border-radius:99px;font-size:14px;color:rgba(255,255,255,0.6)}
+.agent-dot{width:6px;height:6px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px rgba(0,255,136,0.5);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.agent-pill:nth-child(2) .agent-dot{animation-delay:0.3s}
+.agent-pill:nth-child(3) .agent-dot{animation-delay:0.6s}
+.agent-pill:nth-child(4) .agent-dot{animation-delay:0.9s}
+.agent-pill:nth-child(5) .agent-dot{animation-delay:1.2s}
+.agent-pill:nth-child(6) .agent-dot{animation-delay:1.5s}
+.agent-pill:nth-child(7) .agent-dot{animation-delay:1.8s}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="headline">14 agentes de IA<br>operando tu restaurante <em>ahora mismo.</em></div>
+  <div class="subtitle">No es un dashboard. No es un reporte. Son agentes autonomos que detectan, predicen, y actuan — sin que les pidas nada.</div>
+
+  <div class="agents-row">
+    <div class="agent-pill"><span class="agent-dot"></span>Anti-fraude</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Prediccion de cierre</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Detector de anomalias</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Coach de meseros</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Menu engineering</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Optimizador de staff</div>
+    <div class="agent-pill"><span class="agent-dot"></span>Control de merma</div>
+  </div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

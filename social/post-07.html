@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:60%;height:50%;background:radial-gradient(ellipse,rgba(16,185,129,0.06) 0%,transparent 55%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.eyebrow{font-size:13px;font-weight:500;color:#10b981;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:6px;height:6px;background:#10b981;border-radius:50%;box-shadow:0 0 10px rgba(16,185,129,0.5)}
+.headline{font-size:52px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1.08;max-width:800px}
+.headline em{font-style:italic;color:#10b981;font-weight:400;font-family:Georgia,serif}
+
+.schedule{margin-top:48px;width:700px}
+.sched-row{display:flex;align-items:center;gap:3px;margin-bottom:6px}
+.sched-day{width:48px;font-size:14px;color:rgba(255,255,255,0.4);font-weight:500}
+.sched-block{height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:rgba(255,255,255,0.7)}
+.sched-block.full{background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3)}
+.sched-block.over{background:rgba(255,107,74,0.15);border:1px solid rgba(255,107,74,0.3);color:#ff6b4a}
+.sched-block.under{background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:#f59e0b}
+.sched-block.empty{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04)}
+
+.legend{display:flex;gap:24px;margin-top:32px;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,0.4)}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+.legend-dot.green{background:rgba(16,185,129,0.4)}
+.legend-dot.amber{background:rgba(245,158,11,0.4)}
+.legend-dot.coral{background:rgba(255,107,74,0.4)}
+
+.saving{margin-top:40px;padding:16px 32px;background:rgba(16,185,129,0.08);border-radius:12px;font-size:20px;color:#10b981;font-weight:500;text-align:center}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="eyebrow">Agente: Optimizador de staff</div>
+  <div class="headline">Te sobran 2 meseros <em>los lunes.</em><br>Te faltan 2 <em>los sabados.</em></div>
+
+  <div class="schedule">
+    <div class="sched-row">
+      <div class="sched-day">Lun</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block full" style="flex:3">10am</div>
+      <div class="sched-block over" style="flex:4">12pm — sobran 2</div>
+      <div class="sched-block over" style="flex:3">3pm — sobran 2</div>
+      <div class="sched-block empty" style="flex:2">6pm</div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-day">Mar</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block full" style="flex:3">10am</div>
+      <div class="sched-block full" style="flex:4">12pm</div>
+      <div class="sched-block full" style="flex:3">3pm</div>
+      <div class="sched-block empty" style="flex:2">6pm</div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-day">Mie</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block full" style="flex:3">10am</div>
+      <div class="sched-block full" style="flex:4">12pm</div>
+      <div class="sched-block full" style="flex:3">3pm</div>
+      <div class="sched-block empty" style="flex:2">6pm</div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-day">Jue</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block full" style="flex:3">10am</div>
+      <div class="sched-block full" style="flex:4">12pm</div>
+      <div class="sched-block under" style="flex:3">3pm — falta 1</div>
+      <div class="sched-block full" style="flex:2">6pm</div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-day">Vie</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block full" style="flex:3">10am</div>
+      <div class="sched-block full" style="flex:4">12pm</div>
+      <div class="sched-block full" style="flex:3">3pm</div>
+      <div class="sched-block full" style="flex:2">6pm</div>
+    </div>
+    <div class="sched-row">
+      <div class="sched-day">Sab</div>
+      <div class="sched-block full" style="flex:2">8am</div>
+      <div class="sched-block under" style="flex:3">10am — falta 1</div>
+      <div class="sched-block under" style="flex:4">12pm — faltan 2</div>
+      <div class="sched-block under" style="flex:3">3pm — falta 1</div>
+      <div class="sched-block full" style="flex:2">6pm</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot green"></div>Bien</div>
+    <div class="legend-item"><div class="legend-dot amber"></div>Falta gente</div>
+    <div class="legend-item"><div class="legend-dot coral"></div>Sobra gente</div>
+  </div>
+
+  <div class="saving">Ahorro estimado: $12,800 MXN / mes</div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

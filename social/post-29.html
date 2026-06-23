@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#ef4444;border-radius:2px}
+
+.content{display:flex;flex-direction:column;gap:24px;padding:20px 0}
+
+.headline{font-size:44px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08;max-width:700px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+
+.include{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1}
+.inc{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:8px}
+.inc-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff}
+.inc-icon.g{background:#10b981}
+.inc-icon.b{background:#6366f1}
+.inc-icon.y{background:#f59e0b}
+.inc-icon.r{background:#ef4444}
+.inc-icon.p{background:#ec4899}
+.inc-icon.d{background:#1a1a1a}
+.inc-name{font-size:15px;font-weight:700;color:#1a1a1a}
+.inc-desc{font-size:13px;color:#888;line-height:1.45;flex:1}
+
+.price-bar{background:#1a1a1a;border-radius:16px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center}
+.price-left{}
+.price-amount{font-size:48px;font-weight:800;color:#fff;letter-spacing:-0.04em}
+.price-unit{font-size:14px;color:#666}
+.price-right{text-align:right}
+.price-setup{font-size:14px;color:#888}
+.price-cta{font-size:16px;font-weight:700;color:#10b981;margin-top:4px}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 04 // Decision inteligente <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="headline">Todo incluido. Un precio. <span class="highlight">Sin sorpresas.</span></div>
+
+    <div class="include">
+      <div class="inc">
+        <div class="inc-icon g">&#x2713;</div>
+        <div class="inc-name">POS completo</div>
+        <div class="inc-desc">Punto de venta, mesas, KDS, impresora, cortesias, notas.</div>
+      </div>
+      <div class="inc">
+        <div class="inc-icon b">&#x2713;</div>
+        <div class="inc-name">30 agentes IA</div>
+        <div class="inc-desc">Anti-fraude, predicciones, auto-86, upselling, staffing...</div>
+      </div>
+      <div class="inc">
+        <div class="inc-icon y">&#x2713;</div>
+        <div class="inc-name">Dashboard</div>
+        <div class="inc-desc">12 vistas con datos reales. Ventas, meseros, food cost, tendencias.</div>
+      </div>
+      <div class="inc">
+        <div class="inc-icon r">&#x2713;</div>
+        <div class="inc-name">Bot 24/7</div>
+        <div class="inc-desc">Pregunta lo que sea por Telegram. Responde con datos reales.</div>
+      </div>
+      <div class="inc">
+        <div class="inc-icon p">&#x2713;</div>
+        <div class="inc-name">CFDI 4.0</div>
+        <div class="inc-desc">Facturacion electronica nativa. QR en ticket. Self-service.</div>
+      </div>
+      <div class="inc">
+        <div class="inc-icon d">&#x2713;</div>
+        <div class="inc-name">Soporte</div>
+        <div class="inc-desc">WhatsApp directo. Sin tickets. Sin esperas. Desde dia uno.</div>
+      </div>
+    </div>
+
+    <div class="price-bar">
+      <div class="price-left">
+        <div class="price-amount">$4,999</div>
+        <div class="price-unit">MXN / mes por sucursal</div>
+      </div>
+      <div class="price-right">
+        <div class="price-setup">Setup: $4,999 una vez</div>
+        <div class="price-cta">fullsite.mx &rarr;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">4 / 5</div>
+  </div>
+</div>
+</body>
+</html>

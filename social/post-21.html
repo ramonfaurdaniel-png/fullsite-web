@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#f59e0b;border-radius:2px}
+.badge{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.headline{font-size:46px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;margin-top:20px;max-width:400px}
+.desc strong{color:#1a1a1a}
+
+.chart-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);margin-top:28px}
+.chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.chart-title{font-size:13px;font-weight:600;color:#1a1a1a}
+.chart-legend{display:flex;gap:12px}
+.leg{display:flex;align-items:center;gap:4px;font-size:11px;color:#999}
+.leg-dot{width:6px;height:6px;border-radius:2px}
+.leg-dot.a{background:#10b981}
+.leg-dot.b{background:#d1d5db}
+.chart-svg{width:100%;height:120px}
+
+.right{display:flex;flex-direction:column;gap:14px}
+.metric{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.metric-row{display:flex;justify-content:space-between;align-items:center}
+.metric-label{font-size:14px;color:#888}
+.metric-val{font-size:32px;font-weight:800;letter-spacing:-0.03em}
+.metric-sub{font-size:12px;color:#bbb;margin-top:4px}
+.metric:nth-child(1) .metric-val{color:#10b981}
+.metric:nth-child(2) .metric-val{color:#f59e0b}
+.metric:nth-child(3) .metric-val{color:#6366f1}
+.metric:nth-child(4) .metric-val{color:#ef4444}
+.metric.dark{background:#1a1a1a}
+.metric.dark .metric-label{color:#888}
+.metric.dark .metric-val{color:#10b981}
+.metric.dark .metric-sub{color:#555}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 03 // Resultados probados <span class="dot"></span></div>
+    <div class="badge">Metrics</div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Resultados reales. <span class="highlight">Primer mes.</span></div>
+      <div class="desc">Metricas medibles desde el <strong>dia uno</strong>. Sin promesas vagas — numeros concretos de operacion real.</div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title">Merma mensual (MXN)</div>
+          <div class="chart-legend">
+            <div class="leg"><span class="leg-dot a"></span>Con agentes</div>
+            <div class="leg"><span class="leg-dot b"></span>Sin agentes</div>
+          </div>
+        </div>
+        <svg class="chart-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+          <line x1="0" y1="30" x2="400" y2="30" stroke="#f0f0ec" stroke-width="1"/>
+          <line x1="0" y1="60" x2="400" y2="60" stroke="#f0f0ec" stroke-width="1"/>
+          <line x1="0" y1="90" x2="400" y2="90" stroke="#f0f0ec" stroke-width="1"/>
+          <text x="0" y="28" fill="#ccc" font-size="10">$50K</text>
+          <text x="0" y="58" fill="#ccc" font-size="10">$30K</text>
+          <text x="0" y="88" fill="#ccc" font-size="10">$10K</text>
+          <polyline points="30,25 110,28 190,22 270,30 350,26" fill="none" stroke="#d1d5db" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="30,25 110,50 190,70 270,82 350,88" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="30" y="115" fill="#bbb" font-size="10">Mes 1</text>
+          <text x="110" y="115" fill="#bbb" font-size="10">Mes 2</text>
+          <text x="190" y="115" fill="#bbb" font-size="10">Mes 3</text>
+          <text x="270" y="115" fill="#bbb" font-size="10">Mes 4</text>
+          <text x="350" y="115" fill="#bbb" font-size="10">Mes 5</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="metric">
+        <div class="metric-row"><span class="metric-label">Reduccion de merma</span></div>
+        <div class="metric-val">-75%</div>
+        <div class="metric-sub">De $52K a $13K mensuales</div>
+      </div>
+      <div class="metric">
+        <div class="metric-row"><span class="metric-label">Food cost optimizado</span></div>
+        <div class="metric-val">-9pts</div>
+        <div class="metric-sub">De 38% a 29% promedio</div>
+      </div>
+      <div class="metric">
+        <div class="metric-row"><span class="metric-label">Horas eliminadas</span></div>
+        <div class="metric-val">12h/sem</div>
+        <div class="metric-sub">Reportes 100% automaticos</div>
+      </div>
+      <div class="metric dark">
+        <div class="metric-row"><span class="metric-label">Fraudes detectados</span></div>
+        <div class="metric-val">4/mes</div>
+        <div class="metric-sub">Antes: cero visibilidad</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">1 / 5</div>
+  </div>
+</div>
+</body>
+</html>

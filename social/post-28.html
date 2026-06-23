@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#ef4444;border-radius:2px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.quote-mark{font-size:80px;color:#e5e5e0;font-family:Georgia,serif;line-height:0.5;margin-bottom:16px}
+.quote{font-size:26px;font-weight:400;color:#1a1a1a;letter-spacing:-0.02em;line-height:1.35;font-family:Georgia,'Times New Roman',serif;font-style:italic}
+.quote strong{font-weight:700;font-style:normal;font-family:'Inter',sans-serif;background:#1a1a1a;color:#fff;padding:2px 8px;border-radius:4px}
+.attr{margin-top:28px;display:flex;align-items:center;gap:12px}
+.attr-avatar{width:44px;height:44px;background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:12px}
+.attr-name{font-size:15px;font-weight:600;color:#1a1a1a}
+.attr-role{font-size:13px;color:#999}
+
+.right{display:flex;flex-direction:column;gap:14px}
+.before-after{display:flex;gap:16px}
+.ba-card{flex:1;border-radius:14px;padding:24px}
+.ba-card.before{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.ba-card.after{background:#1a1a1a}
+.ba-label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+.ba-card.before .ba-label{color:#ef4444}
+.ba-card.after .ba-label{color:#10b981}
+.ba-val{font-size:36px;font-weight:800;letter-spacing:-0.04em}
+.ba-card.before .ba-val{color:#1a1a1a}
+.ba-card.after .ba-val{color:#fff}
+.ba-desc{font-size:13px;margin-top:6px}
+.ba-card.before .ba-desc{color:#888}
+.ba-card.after .ba-desc{color:#666}
+
+.context{display:flex;flex-direction:column;gap:10px}
+.ctx{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+.ctx-label{font-size:14px;color:#888}
+.ctx-val{font-size:18px;font-weight:700;color:#1a1a1a}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 04 // Decision inteligente <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="quote-mark">&ldquo;</div>
+      <div class="quote">Antes le dedicaba <strong>toda la manana del lunes</strong> a revisar numeros. Ahora me llega un mensaje a las 7am con todo listo. Mi unico trabajo es decidir.</div>
+      <div class="attr">
+        <div class="attr-avatar"></div>
+        <div>
+          <div class="attr-name">Operador de restaurante</div>
+          <div class="attr-role">Monterrey, NL &middot; 120 cubiertos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="before-after">
+        <div class="ba-card before">
+          <div class="ba-label">Antes</div>
+          <div class="ba-val">12h</div>
+          <div class="ba-desc">Horas semanales en reportes</div>
+        </div>
+        <div class="ba-card after">
+          <div class="ba-label">Despues</div>
+          <div class="ba-val">0h</div>
+          <div class="ba-desc">Reportes automaticos 7am</div>
+        </div>
+      </div>
+
+      <div class="context">
+        <div class="ctx"><span class="ctx-label">Briefing diario</span><span class="ctx-val">7:00 AM</span></div>
+        <div class="ctx"><span class="ctx-label">Agentes activos</span><span class="ctx-val">30 / 24/7</span></div>
+        <div class="ctx"><span class="ctx-label">Bot Telegram</span><span class="ctx-val">Siempre</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">3 / 5</div>
+  </div>
+</div>
+</body>
+</html>

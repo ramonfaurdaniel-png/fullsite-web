@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#f59e0b;border-radius:2px}
+
+.content{display:flex;flex-direction:column;gap:28px;padding:20px 0}
+
+.headline{font-size:46px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08;max-width:700px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;max-width:550px}
+.desc strong{color:#1a1a1a}
+
+.checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex:1}
+.check{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:10px}
+.check-icon{width:32px;height:32px;background:#10b981;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
+.check-name{font-size:16px;font-weight:700;color:#1a1a1a}
+.check-desc{font-size:13px;color:#888;line-height:1.5;flex:1}
+.check-status{font-size:11px;font-weight:600;color:#10b981;background:rgba(16,185,129,0.08);padding:4px 10px;border-radius:6px;width:fit-content}
+
+.check:nth-child(4){background:#1a1a1a}
+.check:nth-child(4) .check-name{color:#fff}
+.check:nth-child(4) .check-desc{color:#888}
+.check:nth-child(4) .check-icon{background:#6366f1}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 03 // Resultados probados <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="headline">Tus datos mas seguros que en un <span class="highlight">banco.</span></div>
+    <div class="desc">Seguridad de nivel enterprise para tu restaurante. <strong>21 controles activos</strong>, 6 proveedores certificados SOC 2.</div>
+
+    <div class="checks">
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">AES-256</div>
+        <div class="check-desc">Encriptacion de grado militar para todos los datos en reposo y transito.</div>
+        <div class="check-status">Activo</div>
+      </div>
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">PCI-DSS</div>
+        <div class="check-desc">Cumplimiento para procesamiento de pagos con tarjeta de credito.</div>
+        <div class="check-status">Activo</div>
+      </div>
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">CFDI 4.0</div>
+        <div class="check-desc">Facturacion electronica integrada al punto de venta. QR en ticket.</div>
+        <div class="check-status">Activo</div>
+      </div>
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">LFPDPPP</div>
+        <div class="check-desc">Proteccion de datos personales conforme a ley mexicana.</div>
+        <div class="check-status">Activo</div>
+      </div>
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">SOC 2</div>
+        <div class="check-desc">6 proveedores certificados. Supabase, Vercel, Cloudflare.</div>
+        <div class="check-status">Activo</div>
+      </div>
+      <div class="check">
+        <div class="check-icon">&#x2713;</div>
+        <div class="check-name">MFA</div>
+        <div class="check-desc">Autenticacion multifactor en todas las plataformas y accesos.</div>
+        <div class="check-status">Activo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">2 / 5</div>
+  </div>
+</div>
+</body>
+</html>

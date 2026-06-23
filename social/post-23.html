@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#f59e0b;border-radius:2px}
+
+.content{display:flex;flex-direction:column;gap:24px;padding:12px 0}
+
+.headline{font-size:42px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08;max-width:650px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+
+.mockup{background:#1a1a1a;border-radius:20px;padding:24px;flex:1;display:flex;flex-direction:column;gap:16px}
+.mock-bar{display:flex;gap:6px;margin-bottom:4px}
+.mock-dot{width:10px;height:10px;border-radius:50%;background:#333}
+.mock-dot:first-child{background:#ef4444}
+.mock-dot:nth-child(2){background:#f59e0b}
+.mock-dot:nth-child(3){background:#10b981}
+
+.mock-top{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.mock-kpi{background:#222;border-radius:12px;padding:16px}
+.mock-kpi-label{font-size:11px;color:#666;margin-bottom:6px}
+.mock-kpi-val{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.mock-kpi:nth-child(1) .mock-kpi-val{color:#10b981}
+.mock-kpi:nth-child(2) .mock-kpi-val{color:#fff}
+.mock-kpi:nth-child(3) .mock-kpi-val{color:#6366f1}
+.mock-kpi:nth-child(4) .mock-kpi-val{color:#f59e0b}
+
+.mock-body{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1}
+.mock-panel{background:#222;border-radius:12px;padding:16px;display:flex;flex-direction:column}
+.mock-panel-title{font-size:12px;font-weight:600;color:#666;margin-bottom:12px}
+.mock-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a2a2a;font-size:12px}
+.mock-row:last-child{border:none}
+.mock-row-name{color:#888}
+.mock-row-val{color:#fff;font-weight:600}
+.mock-chart{flex:1;display:flex;align-items:flex-end;gap:6px;padding-top:12px}
+.mock-bar-v{flex:1;background:#333;border-radius:4px 4px 0 0;min-height:20px}
+.mock-bar-v:nth-child(1){height:40%}
+.mock-bar-v:nth-child(2){height:55%}
+.mock-bar-v:nth-child(3){height:70%;background:#10b981}
+.mock-bar-v:nth-child(4){height:85%;background:#10b981}
+.mock-bar-v:nth-child(5){height:60%}
+.mock-bar-v:nth-child(6){height:100%;background:#10b981}
+.mock-bar-v:nth-child(7){height:75%}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 03 // Resultados probados <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="headline">Dashboard que <span class="highlight">si usas.</span> Porque muestra lo que importa.</div>
+
+    <div class="mockup">
+      <div class="mock-bar"><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div></div>
+
+      <div class="mock-top">
+        <div class="mock-kpi">
+          <div class="mock-kpi-label">Ventas hoy</div>
+          <div class="mock-kpi-val">$42.8K</div>
+        </div>
+        <div class="mock-kpi">
+          <div class="mock-kpi-label">Ticket promedio</div>
+          <div class="mock-kpi-val">$287</div>
+        </div>
+        <div class="mock-kpi">
+          <div class="mock-kpi-label">Agentes activos</div>
+          <div class="mock-kpi-val">30</div>
+        </div>
+        <div class="mock-kpi">
+          <div class="mock-kpi-label">Food cost</div>
+          <div class="mock-kpi-val">29%</div>
+        </div>
+      </div>
+
+      <div class="mock-body">
+        <div class="mock-panel">
+          <div class="mock-panel-title">Top meseros hoy</div>
+          <div class="mock-row"><span class="mock-row-name">Omar Aguilera</span><span class="mock-row-val">$8,400</span></div>
+          <div class="mock-row"><span class="mock-row-name">Daniela Rico</span><span class="mock-row-val">$6,200</span></div>
+          <div class="mock-row"><span class="mock-row-name">Brayan Berlanga</span><span class="mock-row-val">$5,800</span></div>
+          <div class="mock-row"><span class="mock-row-name">Hector Rodriguez</span><span class="mock-row-val">$4,900</span></div>
+          <div class="mock-row"><span class="mock-row-name">Julio Hernandez</span><span class="mock-row-val">$4,100</span></div>
+        </div>
+        <div class="mock-panel">
+          <div class="mock-panel-title">Ventas por dia (semana)</div>
+          <div class="mock-chart">
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+            <div class="mock-bar-v"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">3 / 5</div>
+  </div>
+</div>
+</body>
+</html>

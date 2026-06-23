@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:60%;height:50%;background:radial-gradient(ellipse,rgba(255,107,74,0.06) 0%,transparent 55%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.eyebrow{font-size:13px;font-weight:500;color:#ff6b4a;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:6px;height:6px;background:#ff6b4a;border-radius:50%;box-shadow:0 0 10px rgba(255,107,74,0.5)}
+.headline{font-size:52px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1.08;max-width:800px}
+.headline em{font-style:italic;color:#ff6b4a;font-weight:400;font-family:Georgia,serif}
+.subtitle{font-size:22px;color:rgba(255,255,255,0.4);text-align:center;margin-top:20px;max-width:600px;line-height:1.5}
+
+.compare{display:flex;gap:24px;margin-top:56px;width:800px}
+.compare-col{flex:1;border-radius:16px;padding:32px}
+.compare-other{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.compare-fs{background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.15)}
+.compare-title{font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px}
+.compare-other .compare-title{color:rgba(255,255,255,0.3)}
+.compare-fs .compare-title{color:#00ff88}
+.compare-item{font-size:17px;color:rgba(255,255,255,0.5);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:10px}
+.compare-fs .compare-item{color:rgba(255,255,255,0.8)}
+.x{color:#ff6b4a;font-size:14px;font-weight:600}
+.check{color:#00ff88;font-size:14px;font-weight:600}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="eyebrow">La diferencia real</div>
+  <div class="headline">Tu POS te muestra datos.<br>Fullsite <em>los piensa por ti.</em></div>
+
+  <div class="compare">
+    <div class="compare-col compare-other">
+      <div class="compare-title">POS normal</div>
+      <div class="compare-item"><span class="check">+</span> Ventas del dia</div>
+      <div class="compare-item"><span class="check">+</span> Ticket promedio</div>
+      <div class="compare-item"><span class="check">+</span> Tickets cerrados</div>
+      <div class="compare-item"><span class="x">x</span> Detectar anomalias</div>
+      <div class="compare-item"><span class="x">x</span> Predecir el cierre</div>
+      <div class="compare-item"><span class="x">x</span> Coaching de meseros</div>
+      <div class="compare-item"><span class="x">x</span> Detectar fraude</div>
+      <div class="compare-item"><span class="x">x</span> Optimizar el menu</div>
+    </div>
+    <div class="compare-col compare-fs">
+      <div class="compare-title">Fullsite</div>
+      <div class="compare-item"><span class="check">+</span> Ventas del dia</div>
+      <div class="compare-item"><span class="check">+</span> Ticket promedio</div>
+      <div class="compare-item"><span class="check">+</span> Tickets cerrados</div>
+      <div class="compare-item"><span class="check">+</span> Detectar anomalias</div>
+      <div class="compare-item"><span class="check">+</span> Predecir el cierre</div>
+      <div class="compare-item"><span class="check">+</span> Coaching de meseros</div>
+      <div class="compare-item"><span class="check">+</span> Detectar fraude</div>
+      <div class="compare-item"><span class="check">+</span> Optimizar el menu</div>
+    </div>
+  </div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

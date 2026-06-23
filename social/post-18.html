@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#6366f1;border-radius:2px}
+.badge{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px}
+
+.content{display:flex;flex-direction:column;gap:28px;padding:20px 0}
+
+.headline{font-size:46px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08;max-width:700px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;max-width:600px}
+.desc strong{color:#1a1a1a}
+
+.features{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.feat{background:#fff;border-radius:16px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.feat::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px}
+.feat:nth-child(1)::before{background:#ef4444}
+.feat:nth-child(2)::before{background:#f59e0b}
+.feat:nth-child(3)::before{background:#10b981}
+.feat:nth-child(4)::before{background:#6366f1}
+.feat-num{font-size:12px;font-weight:600;color:#ccc;letter-spacing:0.08em}
+.feat-title{font-size:20px;font-weight:800;color:#1a1a1a;letter-spacing:-0.02em}
+.feat-desc{font-size:14px;color:#888;line-height:1.5}
+.feat-metric{margin-top:auto;display:flex;align-items:baseline;gap:6px}
+.feat-metric-val{font-size:28px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.feat-metric-label{font-size:12px;color:#bbb}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 02 // Potencia con IA <span class="dot"></span></div>
+    <div class="badge">POS + IA</div>
+  </div>
+
+  <div class="content">
+    <div class="headline">El POS que <span class="highlight">piensa.</span> No solo registra.</div>
+    <div class="desc">Cuatro capacidades que <strong>ningun POS tradicional tiene</strong>. Integradas. Automaticas. Sin configuracion extra.</div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="feat-num">// 01</div>
+        <div class="feat-title">Auto-86</div>
+        <div class="feat-desc">Detecta ingredientes agotados y retira platillos afectados del menu. Automatico.</div>
+        <div class="feat-metric">
+          <div class="feat-metric-val">2h</div>
+          <div class="feat-metric-label">Frecuencia de escaneo</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-num">// 02</div>
+        <div class="feat-title">Compras predictivas</div>
+        <div class="feat-desc">Calcula que comprar manana basado en ventas historicas y yield factor real.</div>
+        <div class="feat-metric">
+          <div class="feat-metric-val">5pm</div>
+          <div class="feat-metric-label">Orden lista diario</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-num">// 03</div>
+        <div class="feat-title">Costeo automatico</div>
+        <div class="feat-desc">Food cost por platillo con subrecetas, rendimiento y merma real.</div>
+        <div class="feat-metric">
+          <div class="feat-metric-val">63</div>
+          <div class="feat-metric-label">Platillos costeados</div>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-num">// 04</div>
+        <div class="feat-title">Inventario fisico</div>
+        <div class="feat-desc">Conteo fisico vs sistema. Diferencias valoradas en pesos. Un click.</div>
+        <div class="feat-metric">
+          <div class="feat-metric-val">412</div>
+          <div class="feat-metric-label">Ingredientes rastreados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">3 / 5</div>
+  </div>
+</div>
+</body>
+</html>

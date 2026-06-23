@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.card{width:1080px;height:1080px;background:#0a0a0b;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px}
+.card::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;height:50%;background:radial-gradient(ellipse,rgba(0,255,136,0.1) 0%,transparent 60%);pointer-events:none}
+.logo{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.03em;position:absolute;top:60px;left:80px}
+.logo span{display:inline-block;width:8px;height:8px;background:#00ff88;margin-left:2px;margin-bottom:2px}
+
+.price{font-size:120px;font-weight:600;color:#fff;letter-spacing:-0.04em;text-align:center;line-height:0.9}
+.price-unit{font-size:28px;color:rgba(255,255,255,0.4);font-weight:400;text-align:center;margin-top:8px}
+.headline{font-size:36px;font-weight:500;color:rgba(255,255,255,0.6);text-align:center;margin-top:32px;letter-spacing:-0.02em}
+.headline em{color:#00ff88;font-style:italic;font-family:Georgia,serif;font-weight:400}
+
+.agents-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:48px;width:700px}
+.agent-item{display:flex;align-items:center;gap:10px;font-size:17px;color:rgba(255,255,255,0.6);padding:6px 0}
+.agent-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.agent-dot.v{background:#8b5cf6;box-shadow:0 0 8px rgba(139,92,246,0.4)}
+.agent-dot.r{background:#ff6b4a;box-shadow:0 0 8px rgba(255,107,74,0.4)}
+.agent-dot.a{background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,0.4)}
+.agent-dot.g{background:#10b981;box-shadow:0 0 8px rgba(16,185,129,0.4)}
+.agent-dot.b{background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.4)}
+.agent-dot.p{background:#ec4899;box-shadow:0 0 8px rgba(236,72,153,0.4)}
+
+.cta{margin-top:48px;background:#00ff88;color:#0a0a0b;padding:18px 48px;border-radius:99px;font-size:18px;font-weight:600;text-align:center;box-shadow:0 0 32px rgba(0,255,136,0.3)}
+.setup{margin-top:16px;font-size:15px;color:rgba(255,255,255,0.3)}
+
+.tag{position:absolute;bottom:60px;left:80px;font-size:16px;color:rgba(255,255,255,0.3);letter-spacing:0.08em}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">fullsite<span></span></div>
+
+  <div class="price">$4,999</div>
+  <div class="price-unit">MXN / mes por sucursal</div>
+  <div class="headline">POS + 14 agentes de IA. <em>Todo incluido.</em></div>
+
+  <div class="agents-grid">
+    <div class="agent-item"><span class="agent-dot v"></span>Coach operativo</div>
+    <div class="agent-item"><span class="agent-dot r"></span>Detector de anomalias</div>
+    <div class="agent-item"><span class="agent-dot a"></span>Prediccion de cierre</div>
+    <div class="agent-item"><span class="agent-dot g"></span>Optimizador de staff</div>
+    <div class="agent-item"><span class="agent-dot b"></span>Menu engineering</div>
+    <div class="agent-item"><span class="agent-dot p"></span>Anti-fraude</div>
+    <div class="agent-item"><span class="agent-dot v"></span>Control de merma</div>
+    <div class="agent-item"><span class="agent-dot r"></span>Upselling por mesero</div>
+    <div class="agent-item"><span class="agent-dot a"></span>Concursos automaticos</div>
+    <div class="agent-item"><span class="agent-dot g"></span>Analisis de propinas</div>
+    <div class="agent-item"><span class="agent-dot b"></span>Monitor de proveedores</div>
+    <div class="agent-item"><span class="agent-dot p"></span>Gestion de resenas</div>
+  </div>
+
+  <div class="cta">Agendar demo — fullsite.mx</div>
+  <div class="setup">Setup: $4,999 una sola vez</div>
+
+  <div class="tag">fullsite.mx</div>
+</div>
+</body>
+</html>

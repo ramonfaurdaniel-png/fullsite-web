@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#10b981;border-radius:2px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{display:flex;flex-direction:column;gap:24px}
+.headline{font-size:44px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7}
+.desc strong{color:#1a1a1a}
+.cta-box{background:#1a1a1a;border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:16px}
+.cta-text{font-size:16px;color:#fff;font-weight:600}
+.cta-arrow{width:36px;height:36px;background:#10b981;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;margin-left:auto;flex-shrink:0}
+
+.right{display:flex;flex-direction:column;gap:16px}
+.result-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+.rc-label{font-size:14px;color:#888}
+.rc-val{font-size:24px;font-weight:700;color:#10b981;letter-spacing:-0.02em}
+.rc-val.neg{color:#ef4444}
+.rc-val.big{font-size:32px;color:#1a1a1a}
+
+.roi-total{background:#10b981;border-radius:14px;padding:28px;display:flex;justify-content:space-between;align-items:center}
+.roi-label{font-size:16px;color:rgba(255,255,255,0.8);font-weight:500}
+.roi-val{font-size:36px;font-weight:800;color:#fff;letter-spacing:-0.03em}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 01 // Fugas operativas <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">El retorno se <span class="highlight">paga solo</span> en 30 dias.</div>
+      <div class="desc">Cada linea es un agente autonomo <strong>generando valor medible</strong>. El costo de Fullsite es una fraccion del ahorro.</div>
+      <div class="cta-box">
+        <div class="cta-text">fullsite.mx/demo</div>
+        <div class="cta-arrow">&rarr;</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="result-card"><span class="rc-label">Reduccion de merma</span><span class="rc-val">+$39,000</span></div>
+      <div class="result-card"><span class="rc-label">Food cost optimizado</span><span class="rc-val">+$22,000</span></div>
+      <div class="result-card"><span class="rc-label">Fraudes evitados</span><span class="rc-val">+$4,100</span></div>
+      <div class="result-card"><span class="rc-label">Upselling incremental</span><span class="rc-val">+$8,500</span></div>
+      <div class="result-card"><span class="rc-label">Costo Fullsite</span><span class="rc-val neg">-$4,999</span></div>
+      <div class="roi-total"><span class="roi-label">ROI neto mensual</span><span class="roi-val">+$68,601</span></div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">5 / 5</div>
+  </div>
+</div>
+</body>
+</html>

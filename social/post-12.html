@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#10b981;border-radius:2px}
+.tag-r{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px}
+
+.content{padding:24px 0;display:flex;flex-direction:column;gap:32px}
+
+.headline{font-size:46px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.1;max-width:700px}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;max-width:500px;line-height:1.7;margin-top:-8px}
+.desc strong{color:#1a1a1a}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.col{display:flex;flex-direction:column;gap:12px}
+.col-label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border-radius:8px;display:inline-block;width:fit-content}
+.col-label.before{color:#ef4444;background:rgba(239,68,68,0.08)}
+.col-label.after{color:#10b981;background:rgba(16,185,129,0.08)}
+
+.row-item{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04);display:flex;justify-content:space-between;align-items:center}
+.row-label{font-size:14px;color:#888}
+.row-val{font-size:20px;font-weight:700;letter-spacing:-0.02em}
+.row-val.bad{color:#ef4444}
+.row-val.good{color:#10b981}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 01 // Fugas operativas <span class="dot"></span></div>
+    <div class="tag-r">Before & After</div>
+  </div>
+
+  <div class="content">
+    <div class="headline">Datos reales. <span class="highlight">Primer mes.</span></div>
+    <div class="desc">Comparativa directa de metricas operativas <strong>antes y despues</strong> de implementar los 30 agentes autonomos de Fullsite.</div>
+
+    <div class="grid">
+      <div class="col">
+        <div class="col-label before">Sin Fullsite</div>
+        <div class="row-item"><span class="row-label">Food cost</span><span class="row-val bad">38%</span></div>
+        <div class="row-item"><span class="row-label">Merma mensual</span><span class="row-val bad">$52,000</span></div>
+        <div class="row-item"><span class="row-label">Fraudes detectados</span><span class="row-val bad">0</span></div>
+        <div class="row-item"><span class="row-label">Horas en reportes</span><span class="row-val bad">12h/sem</span></div>
+        <div class="row-item"><span class="row-label">Costos por platillo</span><span class="row-val bad">Excel</span></div>
+      </div>
+      <div class="col">
+        <div class="col-label after">Con Fullsite</div>
+        <div class="row-item"><span class="row-label">Food cost</span><span class="row-val good">29%</span></div>
+        <div class="row-item"><span class="row-label">Merma mensual</span><span class="row-val good">$13,000</span></div>
+        <div class="row-item"><span class="row-label">Fraudes detectados</span><span class="row-val good">4/mes</span></div>
+        <div class="row-item"><span class="row-label">Horas en reportes</span><span class="row-val good">0</span></div>
+        <div class="row-item"><span class="row-label">Costos por platillo</span><span class="row-val good">Auto</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">2 / 5</div>
+  </div>
+</div>
+</body>
+</html>

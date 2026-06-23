@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#f59e0b;border-radius:2px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.quote-mark{font-size:80px;color:#e5e5e0;font-family:Georgia,serif;line-height:0.5;margin-bottom:16px}
+.quote{font-size:28px;font-weight:400;color:#1a1a1a;letter-spacing:-0.02em;line-height:1.35;font-family:Georgia,'Times New Roman',serif;font-style:italic}
+.quote strong{font-weight:700;font-style:normal;font-family:'Inter',sans-serif;background:#1a1a1a;color:#fff;padding:2px 8px;border-radius:4px}
+.attr{margin-top:28px;display:flex;align-items:center;gap:12px}
+.attr-avatar{width:44px;height:44px;background:linear-gradient(135deg,#10b981,#059669);border-radius:12px}
+.attr-name{font-size:15px;font-weight:600;color:#1a1a1a}
+.attr-role{font-size:13px;color:#999}
+
+.right{display:flex;flex-direction:column;gap:14px}
+.insight{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.insight-label{font-size:12px;font-weight:600;color:#999;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}
+.insight-val{font-size:32px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.insight-desc{font-size:13px;color:#888;margin-top:4px}
+.insight:nth-child(1) .insight-val{color:#10b981}
+.insight:nth-child(3) .insight-val{color:#f59e0b}
+
+.insight.dark{background:#1a1a1a}
+.insight.dark .insight-label{color:#666}
+.insight.dark .insight-val{color:#fff}
+.insight.dark .insight-desc{color:#555}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 03 // Resultados probados <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="quote-mark">&ldquo;</div>
+      <div class="quote">Yo pensaba que sabia mi food cost. Cuando lo vi <strong>por platillo con merma real</strong>, descubri que 8 platillos me estaban costando dinero.</div>
+      <div class="attr">
+        <div class="attr-avatar"></div>
+        <div>
+          <div class="attr-name">Eduardo M.</div>
+          <div class="attr-role">Operador de restaurante, Monterrey</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="insight">
+        <div class="insight-label">Antes</div>
+        <div class="insight-val">12h/semana</div>
+        <div class="insight-desc">Dedicadas a calcular costos en Excel</div>
+      </div>
+      <div class="insight dark">
+        <div class="insight-label">Despues</div>
+        <div class="insight-val">0 horas</div>
+        <div class="insight-desc">Costeo automatico por platillo</div>
+      </div>
+      <div class="insight">
+        <div class="insight-label">Descubiertos</div>
+        <div class="insight-val">8 platillos</div>
+        <div class="insight-desc">Con margen negativo oculto</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">4 / 5</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#6366f1;border-radius:2px}
+
+.content{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center;padding:20px 0}
+
+.left{}
+.headline{font-size:44px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;margin-top:20px;max-width:400px}
+.desc strong{color:#1a1a1a}
+
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.mini{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.mini-val{font-size:28px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.mini-label{font-size:12px;color:#888;margin-top:4px}
+
+.right{}
+.phone{background:#1a1a1a;border-radius:28px;padding:20px;width:100%;overflow:hidden}
+.phone-bar{display:flex;justify-content:center;margin-bottom:12px}
+.phone-notch{width:80px;height:4px;background:#333;border-radius:2px}
+.phone-header{display:flex;align-items:center;gap:10px;padding:8px 4px 14px;border-bottom:1px solid #333}
+.phone-avatar{width:32px;height:32px;background:linear-gradient(135deg,#10b981,#059669);border-radius:10px}
+.phone-name{font-size:13px;font-weight:600;color:#fff}
+.phone-status{font-size:11px;color:#10b981}
+.msgs{padding:14px 0;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:88%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.45}
+.msg.user{background:#333;color:#ccc;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.bot{background:#222;color:#aaa;align-self:flex-start;border-bottom-left-radius:4px}
+.msg strong{color:#10b981;font-weight:600}
+.msg .red{color:#ef4444}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 02 // Potencia con IA <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Preguntale lo que sea. <span class="highlight">Sabe todo.</span></div>
+      <div class="desc">Ventas, meseros, inventario, costos, reservas — <strong>en tiempo real</strong> por Telegram. Como hablar con el gerente perfecto que nunca duerme.</div>
+
+      <div class="metric-row">
+        <div class="mini">
+          <div class="mini-val">35+</div>
+          <div class="mini-label">Tipos de datos en tiempo real</div>
+        </div>
+        <div class="mini">
+          <div class="mini-val">24/7</div>
+          <div class="mini-label">Disponible siempre</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="phone">
+        <div class="phone-bar"><div class="phone-notch"></div></div>
+        <div class="phone-header">
+          <div class="phone-avatar"></div>
+          <div>
+            <div class="phone-name">Fullsite Bot</div>
+            <div class="phone-status">en linea</div>
+          </div>
+        </div>
+        <div class="msgs">
+          <div class="msg user">Como vamos hoy?</div>
+          <div class="msg bot"><strong>$34,200</strong> en ventas. Ticket promedio <strong>$287</strong>. Omar lleva <strong>$8,400</strong> (top).<br><br>Hay <span class="red">2 cancelaciones</span> de Brayan en la ultima hora.</div>
+          <div class="msg user">Reservas de manana?</div>
+          <div class="msg bot">3 confirmadas:<br>- Jardin 25 personas 12pm<br>- Terraza 6 personas 2pm<br>- Privado 8 personas 7pm<br><br>Estimado: <strong>$18,500</strong></div>
+          <div class="msg user">Cuanto cuesta el huevo benedict?</div>
+          <div class="msg bot">Precio: <strong>$195</strong><br>Costo: <strong>$42.30</strong><br>Margen: <strong>78.3%</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">2 / 5</div>
+  </div>
+</div>
+</body>
+</html>

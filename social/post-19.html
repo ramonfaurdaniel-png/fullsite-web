@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#6366f1;border-radius:2px}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:20px 0}
+
+.left{display:flex;flex-direction:column;gap:20px}
+.headline{font-size:44px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.pain-list{display:flex;flex-direction:column;gap:0}
+.pain{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+.pain:last-child{border:none}
+.pain-old{font-size:15px;color:#bbb;text-decoration:line-through;flex:1}
+.pain-arrow{font-size:14px;color:#ccc}
+.pain-new{font-size:15px;color:#1a1a1a;font-weight:600;flex:1}
+
+.right{}
+.mockup-ui{background:#fff;border-radius:20px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.ui-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.ui-title{font-size:16px;font-weight:700;color:#1a1a1a}
+.ui-badge{font-size:11px;font-weight:600;color:#10b981;background:rgba(16,185,129,0.1);padding:4px 10px;border-radius:6px}
+.ui-rows{display:flex;flex-direction:column;gap:8px}
+.ui-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#fafaf8;border-radius:10px}
+.ui-row-name{font-size:14px;color:#555}
+.ui-row-val{font-size:14px;font-weight:700;color:#1a1a1a}
+.ui-row-bar{width:60px;height:6px;background:#eee;border-radius:3px;margin-left:12px;position:relative;overflow:hidden}
+.ui-row-fill{height:100%;border-radius:3px;background:#10b981}
+.ui-row:nth-child(1) .ui-row-fill{width:82%}
+.ui-row:nth-child(2) .ui-row-fill{width:65%}
+.ui-row:nth-child(3) .ui-row-fill{width:45%;background:#f59e0b}
+.ui-row:nth-child(4) .ui-row-fill{width:28%;background:#ef4444}
+.ui-row:nth-child(5) .ui-row-fill{width:71%}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 02 // Potencia con IA <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Lo que <span class="highlight">dejas atras</span> cuando automatizas.</div>
+      <div class="pain-list">
+        <div class="pain"><span class="pain-old">Excel de inventario</span><span class="pain-arrow">&rarr;</span><span class="pain-new">Inventario digital</span></div>
+        <div class="pain"><span class="pain-old">Calcular food cost</span><span class="pain-arrow">&rarr;</span><span class="pain-new">Costeo automatico</span></div>
+        <div class="pain"><span class="pain-old">Reportes manuales</span><span class="pain-arrow">&rarr;</span><span class="pain-new">Briefing 7am</span></div>
+        <div class="pain"><span class="pain-old">Llamar al proveedor</span><span class="pain-arrow">&rarr;</span><span class="pain-new">Orden auto-generada</span></div>
+        <div class="pain"><span class="pain-old">Revisar fin de mes</span><span class="pain-arrow">&rarr;</span><span class="pain-new">Anti-fraude real-time</span></div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="mockup-ui">
+        <div class="ui-header">
+          <div class="ui-title">Food Cost por Platillo</div>
+          <div class="ui-badge">Automatico</div>
+        </div>
+        <div class="ui-rows">
+          <div class="ui-row"><span class="ui-row-name">Chilaquiles verdes</span><span class="ui-row-val">82%</span><div class="ui-row-bar"><div class="ui-row-fill"></div></div></div>
+          <div class="ui-row"><span class="ui-row-name">Huevos Benedict</span><span class="ui-row-val">65%</span><div class="ui-row-bar"><div class="ui-row-fill"></div></div></div>
+          <div class="ui-row"><span class="ui-row-name">Salmon Bowl</span><span class="ui-row-val">45%</span><div class="ui-row-bar"><div class="ui-row-fill"></div></div></div>
+          <div class="ui-row"><span class="ui-row-name">Avocado Toast</span><span class="ui-row-val">28%</span><div class="ui-row-bar"><div class="ui-row-fill"></div></div></div>
+          <div class="ui-row"><span class="ui-row-name">Pancakes Stack</span><span class="ui-row-val">71%</span><div class="ui-row-bar"><div class="ui-row-fill"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">4 / 5</div>
+  </div>
+</div>
+</body>
+</html>

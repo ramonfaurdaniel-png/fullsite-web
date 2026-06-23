@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#10b981;border-radius:2px}
+.badge{background:#1a1a1a;color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;letter-spacing:0.02em}
+
+.content{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:24px 0}
+
+.left{}
+.headline{font-size:52px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:4px 14px;border-radius:6px;display:inline;line-height:1.5}
+.side-text{font-size:14px;color:#666;line-height:1.7;margin-top:24px;max-width:380px}
+.side-text strong{color:#1a1a1a;font-weight:600}
+
+.right{display:flex;flex-direction:column;gap:20px}
+.mockup{background:#fff;border-radius:16px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.mockup-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.mockup-avatar{width:36px;height:36px;background:linear-gradient(135deg,#10b981,#059669);border-radius:10px}
+.mockup-name{font-size:14px;font-weight:600;color:#1a1a1a}
+.mockup-role{font-size:12px;color:#999}
+.mockup-quote{font-size:14px;color:#444;line-height:1.6}
+.mockup-quote strong{color:#1a1a1a}
+
+.metric-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.metric-big{font-size:42px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em}
+.metric-label{font-size:13px;color:#666;font-weight:500;margin-top:4px}
+.chart{display:flex;flex-direction:column;gap:6px}
+.chart-legend{display:flex;gap:12px;font-size:11px;color:#999}
+.chart-legend .leg{display:flex;align-items:center;gap:4px}
+.leg-dot{width:6px;height:6px;border-radius:2px}
+.leg-dot.a{background:#10b981}
+.leg-dot.b{background:#d1d5db}
+.chart-area{flex:1;position:relative;min-height:80px}
+.chart-line{position:absolute;bottom:0;left:0;right:0;height:100%}
+.chart-svg{width:100%;height:100%}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 01 // Fugas operativas <span class="dot"></span></div>
+    <div class="badge">Case Study</div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Tu restaurante pierde dinero en merma <span class="highlight">invisible.</span></div>
+      <div class="side-text">En esta fase, identificamos las <strong>fugas operativas criticas</strong> que transforman ineficiencias diarias en perdidas medibles de <strong>$47,000/mes</strong> promedio.</div>
+    </div>
+
+    <div class="right">
+      <div class="mockup">
+        <div class="mockup-header">
+          <div class="mockup-avatar"></div>
+          <div>
+            <div class="mockup-name">Eduardo M.</div>
+            <div class="mockup-role">Operador, Monterrey</div>
+          </div>
+        </div>
+        <div class="mockup-quote">"<strong>Competitor analysis</strong> mostro que 8 de mis platillos tenian costo negativo. Fullsite lo detecto con datos reales de mi cocina."</div>
+      </div>
+
+      <div class="metric-card">
+        <div>
+          <div class="metric-big">-75%</div>
+          <div class="metric-label">Reduccion de merma</div>
+        </div>
+        <div class="chart">
+          <div class="chart-legend">
+            <div class="leg"><span class="leg-dot a"></span>Con Fullsite</div>
+            <div class="leg"><span class="leg-dot b"></span>Sin control</div>
+          </div>
+          <div class="chart-area">
+            <svg class="chart-svg" viewBox="0 0 200 80" preserveAspectRatio="none">
+              <line x1="0" y1="0" x2="200" y2="0" stroke="#eee" stroke-width="0.5"/>
+              <line x1="0" y1="20" x2="200" y2="20" stroke="#eee" stroke-width="0.5"/>
+              <line x1="0" y1="40" x2="200" y2="40" stroke="#eee" stroke-width="0.5"/>
+              <line x1="0" y1="60" x2="200" y2="60" stroke="#eee" stroke-width="0.5"/>
+              <polyline points="0,30 40,35 80,40 120,38 160,42 200,45" fill="none" stroke="#d1d5db" stroke-width="2"/>
+              <polyline points="0,30 40,40 80,55 120,60 160,65 200,68" fill="none" stroke="#10b981" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">1 / 5</div>
+  </div>
+</div>
+</body>
+</html>

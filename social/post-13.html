@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+body{background:#f5f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+.card{width:1080px;height:1080px;background:#f5f5f0;position:relative;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding:48px 56px}
+
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.phase{font-size:13px;color:#999;font-weight:500;display:flex;align-items:center;gap:8px}
+.phase .dot{width:8px;height:8px;background:#10b981;border-radius:2px}
+
+.content{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:start;padding:20px 0}
+
+.left{}
+.headline{font-size:44px;font-weight:800;color:#1a1a1a;letter-spacing:-0.04em;line-height:1.08}
+.highlight{background:#1a1a1a;color:#fff;padding:3px 12px;border-radius:5px;display:inline;line-height:1.6}
+.desc{font-size:14px;color:#666;line-height:1.7;margin-top:20px}
+.desc strong{color:#1a1a1a}
+
+.right{}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
+.tl-item:last-child{border:none}
+.tl-time{font-size:13px;font-weight:700;color:#10b981;font-variant-numeric:tabular-nums;padding-top:2px}
+.tl-content{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.tl-agent{font-size:11px;font-weight:600;color:#999;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px}
+.tl-text{font-size:14px;color:#444;line-height:1.5}
+.tl-text strong{color:#1a1a1a}
+.tl-item:nth-child(3) .tl-content{background:#1a1a1a}
+.tl-item:nth-child(3) .tl-agent{color:#10b981}
+.tl-item:nth-child(3) .tl-text{color:#eee}
+.tl-item:nth-child(3) .tl-text strong{color:#fff}
+
+.bottom{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:800;color:#1a1a1a;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:6px;height:6px;background:#10b981;margin-left:1px;margin-bottom:1px}
+.slide{font-size:12px;color:#bbb;font-weight:500}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="phase">// 01 // Fugas operativas <span class="dot"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="left">
+      <div class="headline">Un martes normal. 30 agentes <span class="highlight">trabajando.</span></div>
+      <div class="desc">Cada agente tiene un trabajo especifico. Lo hace <strong>sin que le pidas nada</strong>. Te avisa solo cuando importa.</div>
+    </div>
+
+    <div class="right">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">6:58 AM</div>
+          <div class="tl-content">
+            <div class="tl-agent">Briefing diario</div>
+            <div class="tl-text">Enviado al dueno via Telegram. <strong>Reservas del dia, alertas, 3 acciones</strong> prioritarias.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">10:15 AM</div>
+          <div class="tl-content">
+            <div class="tl-agent">Auto-86</div>
+            <div class="tl-text">Detecta <strong>aguacate en cero</strong>. Sugiere retirar 4 platillos del menu.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">2:00 PM</div>
+          <div class="tl-content">
+            <div class="tl-agent">Prediccion de cierre</div>
+            <div class="tl-text"><strong>$38,200</strong> proyectado. 12% abajo del martes anterior.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">4:30 PM</div>
+          <div class="tl-content">
+            <div class="tl-agent">Upselling coach</div>
+            <div class="tl-text">Omar no ha ofrecido postre en <strong>6 mesas</strong>. Alerta al capitan.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">11:00 PM</div>
+          <div class="tl-content">
+            <div class="tl-agent">Cierre automatico</div>
+            <div class="tl-text">Corte de caja, reporte enviado. <strong>Todo cuadra.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="logo">fullsite<span></span></div>
+    <div class="slide">3 / 5</div>
+  </div>
+</div>
+</body>
+</html>
