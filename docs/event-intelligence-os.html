@@ -1,0 +1,876 @@
+<title>Event Intelligence OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+:root{
+  --bg:#ECEFEE;
+  --surface:#F8FAF9;
+  --panel:#101A1B;
+  --panel-ink:#DCE7E6;
+  --panel-rule:#26383A;
+  --ink:#0D1A1B;
+  --muted:#5C6D6E;
+  --rule:#D2D9D7;
+  --rule-soft:#E0E5E3;
+  --signal:#0B7F84;
+  --signal-soft:#D8EAEA;
+  --money:#A8620A;
+  --money-soft:#F2E4CE;
+  --crit:#AE3F36;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --col:min(68ch,100%);
+  --pad:clamp(1.15rem,4vw,2.5rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1112;
+    --surface:#111A1B;
+    --panel:#060C0D;
+    --panel-ink:#D8E5E4;
+    --panel-rule:#1E2C2D;
+    --ink:#E6EDEC;
+    --muted:#8CA0A0;
+    --rule:#22302F;
+    --rule-soft:#1A2526;
+    --signal:#3ECFD3;
+    --signal-soft:#0F2B2D;
+    --money:#EDA83A;
+    --money-soft:#2C2113;
+    --crit:#E0776D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1112;
+  --surface:#111A1B;
+  --panel:#060C0D;
+  --panel-ink:#D8E5E4;
+  --panel-rule:#1E2C2D;
+  --ink:#E6EDEC;
+  --muted:#8CA0A0;
+  --rule:#22302F;
+  --rule-soft:#1A2526;
+  --signal:#3ECFD3;
+  --signal-soft:#0F2B2D;
+  --money:#EDA83A;
+  --money-soft:#2C2113;
+  --crit:#E0776D;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:1.0625rem;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-family:var(--f-mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ---------- shell ---------- */
+.shell{max-width:1200px;margin:0 auto;padding:0 var(--pad) 6rem;display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:1080px){
+  .shell{grid-template-columns:186px minmax(0,1fr);column-gap:clamp(2rem,5vw,4.5rem)}
+}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--rule);padding:clamp(3rem,9vw,6rem) 0 clamp(2rem,5vw,3.25rem)}
+.hero-top{display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:baseline;margin-bottom:clamp(1.75rem,5vw,3rem)}
+.hero h1{
+  font-size:clamp(2.9rem,10.5vw,6.5rem);font-weight:800;letter-spacing:-.045em;
+  line-height:.92;margin-bottom:1.25rem;
+}
+.hero h1 em{font-style:normal;color:var(--signal)}
+.hero-lede{font-size:clamp(1.15rem,2.6vw,1.4rem);max-width:56ch;color:var(--ink)}
+.hero-lede strong{font-weight:600;box-shadow:inset 0 -.42em 0 var(--money-soft)}
+.thesis{
+  margin-top:clamp(2rem,5vw,3rem);display:grid;gap:.15rem;
+  font-family:var(--f-mono);font-size:clamp(.82rem,2vw,.95rem);letter-spacing:-.01em;
+}
+.thesis span{color:var(--muted)}
+.thesis span b{font-weight:600;color:var(--ink)}
+.thesis span:last-child b{color:var(--signal)}
+
+/* ---------- rail ---------- */
+.rail{display:none}
+@media (min-width:1080px){
+  .rail{display:block;padding-top:4.25rem}
+  .rail-inner{position:sticky;top:2rem;display:grid;gap:.1rem}
+  .rail a{
+    display:grid;grid-template-columns:1.9rem 1fr;gap:.35rem;align-items:baseline;
+    font-family:var(--f-mono);font-size:.735rem;letter-spacing:.01em;color:var(--muted);
+    text-decoration:none;padding:.42rem 0;border-top:1px solid var(--rule-soft);
+  }
+  .rail a:first-child{border-top:0}
+  .rail a i{font-style:normal;color:var(--signal);opacity:.65}
+  .rail a:hover{color:var(--ink)}
+  .rail a:hover i{opacity:1}
+}
+
+/* ---------- sections ---------- */
+main{min-width:0;padding-top:clamp(2.5rem,7vw,4.25rem)}
+section{padding-bottom:clamp(3rem,8vw,5rem)}
+.sec-head{display:flex;gap:1rem;align-items:baseline;margin-bottom:1.5rem}
+.sec-num{font-family:var(--f-mono);font-size:.8rem;color:var(--signal);letter-spacing:.04em;padding-top:.2rem}
+.sec-head h2{font-size:clamp(1.6rem,4.2vw,2.35rem);font-weight:700}
+.prose{display:grid;gap:1.05rem;max-width:var(--col)}
+.prose h3{font-size:1.06rem;font-weight:600;letter-spacing:-.005em;margin-top:.85rem}
+.prose ul{margin:0;padding-left:1.15rem;display:grid;gap:.4rem}
+.prose li::marker{color:var(--signal)}
+.small{font-size:.9rem;color:var(--muted)}
+
+.pull{
+  max-width:var(--col);border-left:2px solid var(--signal);padding:.15rem 0 .15rem 1.1rem;
+  font-family:var(--f-display);font-size:clamp(1.15rem,3vw,1.42rem);font-weight:500;
+  letter-spacing:-.02em;line-height:1.3;
+}
+
+/* ---------- generic cards ---------- */
+.cards{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:1.5rem}
+@media (min-width:640px){.cards.two{grid-template-columns:1fr 1fr}}
+@media (min-width:860px){.cards.four{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);padding:1.25rem 1.35rem;display:grid;gap:.5rem;align-content:start}
+.card h3{font-size:1.02rem;font-weight:600}
+.card p{font-size:.94rem;color:var(--muted)}
+.card .tag{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--signal)}
+
+/* ---------- layer stack ---------- */
+.stack{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:1.5rem}
+.layer{background:var(--surface);display:grid;grid-template-columns:1fr;gap:.55rem;padding:1.15rem 1.35rem}
+@media (min-width:760px){.layer{grid-template-columns:190px minmax(0,1fr);gap:1.5rem;align-items:start}}
+.layer-id{display:grid;gap:.2rem}
+.layer-id .n{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;color:var(--muted)}
+.layer-id h3{font-family:var(--f-display);font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
+.layer:last-child .layer-id h3{color:var(--signal)}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.chip{
+  font-family:var(--f-mono);font-size:.7rem;padding:.2rem .45rem;border:1px solid var(--rule);
+  border-radius:2px;color:var(--muted);background:var(--bg);
+}
+.layer:last-child .chip{border-color:var(--signal-soft);background:var(--signal-soft);color:var(--signal)}
+.layer-note{font-size:.94rem;color:var(--muted);margin-top:.15rem}
+
+/* ---------- instrument panel ---------- */
+.panel{
+  background:var(--panel);color:var(--panel-ink);border:1px solid var(--panel-rule);
+  margin-top:1.75rem;overflow:hidden;
+}
+.panel-bar{
+  display:flex;flex-wrap:wrap;gap:.5rem 1rem;justify-content:space-between;align-items:center;
+  padding:.7rem 1.15rem;border-bottom:1px solid var(--panel-rule);
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#7E9698;
+}
+.live{display:inline-flex;align-items:center;gap:.42rem;color:#4FD8DC}
+.dot{width:6px;height:6px;border-radius:50%;background:#4FD8DC;box-shadow:0 0 0 0 rgba(79,216,220,.6);animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,216,220,.5)}70%{box-shadow:0 0 0 7px rgba(79,216,220,0)}100%{box-shadow:0 0 0 0 rgba(79,216,220,0)}}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--panel-rule)}
+@media (min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--panel);padding:1.05rem 1.15rem;display:grid;gap:.3rem}
+.kpi .k{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:#7E9698}
+.kpi .v{font-family:var(--f-display);font-size:clamp(1.2rem,3.4vw,1.7rem);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi.hi .v{color:#F0AA36}
+.meters{padding:1.15rem;display:grid;gap:.85rem;border-top:1px solid var(--panel-rule)}
+.meter{display:grid;grid-template-columns:1fr;gap:.35rem}
+.meter-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-mono);font-size:.78rem}
+.meter-top .name{color:var(--panel-ink)}
+.meter-top .pct{font-variant-numeric:tabular-nums;color:#7E9698}
+.track{height:7px;background:#162223;border-radius:1px;overflow:hidden}
+.fill{height:100%;width:0;background:#4FD8DC;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.fill.warn{background:#F0AA36}
+.fill.hot{background:#E4736A}
+.panel-note{
+  padding:.95rem 1.15rem;border-top:1px solid var(--panel-rule);
+  font-family:var(--f-mono);font-size:.79rem;line-height:1.6;color:#9FB6B7;
+}
+.panel-note b{color:#F0AA36;font-weight:500}
+@media (prefers-reduced-motion:reduce){
+  .fill{transition:none}
+  .dot{animation:none}
+}
+
+/* ---------- action card ---------- */
+.action{border:1px solid var(--rule);background:var(--surface);margin-top:1.75rem}
+.action-head{
+  display:flex;flex-wrap:wrap;gap:.4rem 1rem;justify-content:space-between;align-items:center;
+  padding:.72rem 1.15rem;background:var(--signal-soft);border-bottom:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--signal);
+}
+.action-body{padding:1.15rem;display:grid;gap:.9rem}
+.action ol{margin:0;padding-left:1.2rem;display:grid;gap:.45rem;font-size:.96rem}
+.action ol li::marker{font-family:var(--f-mono);font-size:.82rem;color:var(--signal)}
+.action-foot{
+  border-top:1px dashed var(--rule);padding:.9rem 1.15rem;display:flex;flex-wrap:wrap;
+  gap:.4rem 1rem;justify-content:space-between;align-items:baseline;
+}
+.action-foot .lbl{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.action-foot .amt{font-family:var(--f-display);font-size:1.35rem;font-weight:700;color:var(--money);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* ---------- ledger / tables ---------- */
+.scroll{overflow-x:auto;margin-top:1.6rem;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+caption{
+  text-align:left;padding:.8rem 1.05rem;border-bottom:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+}
+th,td{padding:.62rem 1.05rem;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{
+  font-family:var(--f-mono);font-weight:500;font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+tbody th{font-family:var(--f-display);font-weight:600;font-size:.95rem;white-space:nowrap}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tr.total th,tr.total td{border-top:1px solid var(--rule);font-weight:600;background:var(--money-soft)}
+tr.total td.num{color:var(--money)}
+td .gap{color:var(--crit)}
+
+/* ---------- ladder ---------- */
+.ladder{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:1.6rem}
+.rung{background:var(--surface);padding:.95rem 1.25rem;display:grid;grid-template-columns:2.2rem 1fr;gap:.9rem;align-items:baseline}
+.rung .lvl{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+.rung h3{font-family:var(--f-display);font-size:1rem;font-weight:600;margin-bottom:.18rem}
+.rung p{font-size:.93rem;color:var(--muted)}
+.rung:nth-child(4),.rung:nth-child(5){background:var(--surface)}
+.rung:nth-child(5) h3,.rung:nth-child(4) h3{color:var(--signal)}
+.rung:nth-child(5) .lvl,.rung:nth-child(4) .lvl{color:var(--signal)}
+
+/* ---------- flywheel ---------- */
+.wheel{margin-top:1.6rem;display:grid;gap:.3rem;max-width:var(--col)}
+.wheel-step{
+  display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:center;
+  font-family:var(--f-mono);font-size:.85rem;
+  border:1px solid var(--rule);background:var(--surface);padding:.55rem .8rem;
+}
+.wheel-step .ar{color:var(--signal);font-size:.9rem}
+.wheel-close{
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--signal);padding:.5rem .8rem;border:1px dashed var(--signal);text-align:center;
+}
+
+/* ---------- ops / timeline ---------- */
+.time{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:1.6rem}
+@media (min-width:820px){.time{grid-template-columns:1fr 1fr 1fr}}
+.slot{background:var(--surface);padding:1.2rem 1.3rem;display:grid;gap:.55rem;align-content:start}
+.slot .when{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--money)}
+.slot h3{font-size:1.05rem;font-weight:700}
+.slot p{font-size:.93rem;color:var(--muted)}
+.slot ul{margin:0;padding-left:1.05rem;font-size:.9rem;color:var(--muted);display:grid;gap:.32rem}
+
+.qs{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.qs li{background:var(--surface);padding:.95rem 1.25rem;display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start}
+.qs .box{
+  width:.92rem;height:.92rem;border:1.5px solid var(--signal);border-radius:2px;margin-top:.42rem;flex:none;
+}
+.qs .q{font-family:var(--f-display);font-weight:600;font-size:.98rem;letter-spacing:-.01em}
+.qs .a{font-size:.92rem;color:var(--muted);margin-top:.18rem}
+.qs .a b{color:var(--ink);font-weight:600}
+
+.note{
+  margin-top:1.5rem;max-width:var(--col);border-left:2px solid var(--money);
+  padding:.35rem 0 .35rem 1rem;font-size:.88rem;color:var(--muted);
+}
+
+footer{
+  border-top:1px solid var(--rule);padding-top:1.5rem;margin-top:1rem;
+  display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+</style>
+
+<header class="hero">
+  <div class="shell" style="padding-bottom:0">
+    <div></div>
+    <div style="min-width:0">
+      <div class="hero-top">
+        <span class="eyebrow">Documento de estrategia</span>
+        <span class="eyebrow">Eventos de entretenimiento · México</span>
+        <span class="eyebrow">v0.1 · Agosto 2026</span>
+      </div>
+      <h1>Event<br>Intelligence <em>OS</em></h1>
+      <p class="hero-lede">No vendemos pulseras. Vendemos <strong>más dinero por asistente</strong> y la capacidad de saber exactamente dónde se está perdiendo.</p>
+      <div class="thesis mono">
+        <span><b>Payments</b> are the infrastructure.</span>
+        <span><b>Data</b> is the asset.</span>
+        <span><b>Intelligence</b> is the product.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="rail" aria-label="Contenido">
+    <div class="rail-inner">
+      <a href="#punto"><i>01</i> Punto de partida</a>
+      <a href="#mercado"><i>02</i> Quién ya está ahí</a>
+      <a href="#arquitectura"><i>03</i> Las cuatro capas</a>
+      <a href="#wallet"><i>04</i> Wallet sin recarga</a>
+      <a href="#identidad"><i>05</i> Identidad y loyalty</a>
+      <a href="#marcas"><i>06</i> Sponsored payments</a>
+      <a href="#command"><i>07</i> Command Center</a>
+      <a href="#operacion"><i>08</i> Inventario y vendors</a>
+      <a href="#reporte"><i>09</i> Post-event report</a>
+      <a href="#escalera"><i>10</i> La escalera</a>
+      <a href="#wedge"><i>11</i> Wedge y modelo</a>
+      <a href="#moat"><i>12</i> Moat y flywheel</a>
+      <a href="#pendientes"><i>13</i> De concepto a operación</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="punto">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Punto de partida</h2></div>
+      <div class="prose">
+        <p>La idea arranca como una alternativa a las empresas de cashless para eventos en México. Pulseras NFC, puntos de venta, que el festival opere sin efectivo. Puesto así, suena sencillo.</p>
+        <p>El problema es que competir <em>solo</em> con un mejor cashless es una estrategia débil. Los jugadores actuales ya tienen pagos, recargas, operación offline, control de accesos, dashboards y conciliación. Llegar con “nosotros también tenemos pulseras” es llegar tarde y por abajo.</p>
+        <p>La oportunidad real es más amplia: construir el sistema operativo comercial, financiero y operativo del evento. En lugar de vender cashless, vender rentabilidad por asistente y control total de la operación.</p>
+      </div>
+      <p class="pull">Payments + POS + Operations + Inventory + Identity + CRM + Loyalty + Analytics + AI.</p>
+    </section>
+
+    <section id="mercado">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Quién ya está ahí</h2></div>
+      <div class="prose">
+        <p>En México el jugador a vencer es <strong>Hey Key / Paykey</strong>, que opera F1, EDC México, Corona Capital, Ceremonia y Trópico. Su oferta ya es mucho más que pulseras: cashless RFID/NFC, cuentas de usuario con precarga, recarga por QR y tótems, pagos offline, control de accesos, acreditaciones y crew management, dashboards para el organizador, open loop con tarjeta, Apple Pay y Google Pay, POS e información financiera postevento.</p>
+        <p>Al ampliar la búsqueda fuera de México aparecen compañías todavía más sofisticadas. La conclusión incómoda: no seríamos los primeros del mundo en construir la mayoría de estas piezas.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Panorama competitivo</caption>
+          <thead>
+            <tr><th scope="col">Jugador</th><th scope="col">Fuerte en</th><th scope="col">El hueco</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Hey Key / Paykey<br><span class="small mono">MX</span></th>
+              <td>Cashless, POS, offline, accesos, crew, open loop, dashboards, reporting. Escala real en festivales grandes.</td>
+              <td class="gap">Ejecuta y reporta transacciones. No optimiza la rentabilidad del evento mientras corre.</td>
+            </tr>
+            <tr>
+              <th scope="row">Billfold<br><span class="small mono">US</span></th>
+              <td>Se posiciona literal como <em>operating system for live events</em>: payments, RFID, POS, vendor management, settlement, segmentación, activaciones, cross-event analytics.</td>
+              <td class="gap">El posicionamiento ya está tomado a nivel global. No es un hueco de narrativa, es de mercado: no está en México.</td>
+            </tr>
+            <tr>
+              <th scope="row">Intellitix</th>
+              <td>RFID, accesos, integraciones de ticketing, analytics en tiempo real, settlements. Conecta ticket → identidad → acceso → consumo.</td>
+              <td class="gap">Conocer el consumo individual ya existe. El diferenciador no puede ser el dato crudo.</td>
+            </tr>
+            <tr>
+              <th scope="row">Tappit</th>
+              <td>Payments + data: RFID, wallets, open y closed loop, fan profiles, ofertas personalizadas, rewards, analytics de comportamiento.</td>
+              <td class="gap">Identidad persistente + loyalty ya existe parcialmente.</td>
+            </tr>
+            <tr>
+              <th scope="row">Weezevent</th>
+              <td>Ticketing + accesos + cashless + staff + CRM + marketing, con relación al asistente después del evento.</td>
+              <td class="gap">Suite amplia, inteligencia superficial.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.5rem">
+        <p>Lo que <em>no</em> parece existir es un jugador que empaquete de forma profunda <strong>transacciones + operación + identidad + inteligencia + acción automatizada</strong>, con una capa de IA cuyo único objetivo sea la rentabilidad del evento en tiempo real. Ahí está el espacio.</p>
+      </div>
+      <p class="note">Las cifras y capacidades de esta tabla vienen de investigación de escritorio y hay que verificarlas antes de usarlas en cualquier pitch. Prioridad: confirmar volumen real de Hey Key, su estructura de tasa y qué tanto de su “dashboard” es reporte contra análisis.</p>
+    </section>
+
+    <section id="arquitectura">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Las cuatro capas</h2></div>
+      <div class="prose">
+        <p>La arquitectura conceptual son cuatro capas. Las tres primeras son costo de entrada: sin ellas no hay producto. La cuarta es la compañía.</p>
+      </div>
+      <div class="stack">
+        <div class="layer">
+          <div class="layer-id"><span class="n">CAPA 1</span><h3>Transactions</h3></div>
+          <div>
+            <div class="chips"><span class="chip">NFC / RFID</span><span class="chip">POS</span><span class="chip">Tarjeta</span><span class="chip">Apple Pay</span><span class="chip">Google Pay</span><span class="chip">QR</span><span class="chip">Wallet</span><span class="chip">Offline</span><span class="chip">Efectivo opcional</span><span class="chip">Processing</span></div>
+            <p class="layer-note">Todo alimenta un mismo ledger. Sin ledger único, las capas de arriba no existen.</p>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-id"><span class="n">CAPA 2</span><h3>Operations</h3></div>
+          <div>
+            <div class="chips"><span class="chip">Inventario</span><span class="chip">Barras</span><span class="chip">Food vendors</span><span class="chip">Merch</span><span class="chip">Staff</span><span class="chip">Accesos</span><span class="chip">Acreditaciones</span><span class="chip">Settlement</span><span class="chip">Conciliación</span><span class="chip">Comisiones</span></div>
+            <p class="layer-note">Aquí es donde el promotor vive hoy en Excel y WhatsApp.</p>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-id"><span class="n">CAPA 3</span><h3>Identity</h3></div>
+          <div>
+            <div class="chips"><span class="chip">Fan profile</span><span class="chip">Historial de eventos</span><span class="chip">Historial de consumo</span><span class="chip">Loyalty</span><span class="chip">Wallet</span><span class="chip">Segmentación</span><span class="chip">LTV</span><span class="chip">Memberships</span><span class="chip">Tickets</span></div>
+            <p class="layer-note">El asistente deja de ser una pulsera anónima y pasa a ser una cuenta que sobrevive al evento.</p>
+          </div>
+        </div>
+        <div class="layer">
+          <div class="layer-id"><span class="n">CAPA 4</span><h3>Intelligence</h3></div>
+          <div>
+            <div class="chips"><span class="chip">Ventas</span><span class="chip">Aforo</span><span class="chip">Inventario</span><span class="chip">Staff</span><span class="chip">Filas</span><span class="chip">Ubicación</span><span class="chip">Horarios</span><span class="chip">Productos</span><span class="chip">Patrones históricos</span></div>
+            <p class="layer-note">Convierte los datos en <strong>predicción → recomendación → acción</strong>. Es la única capa que los demás no tienen empaquetada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="wallet">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Wallet sin recarga</h2></div>
+      <div class="prose">
+        <p>La queja número uno de todos los que han usado cashless es la misma: hacer doble fila. Una para recargar, otra para comprar. Y si te sobran $350, o los reclamas o los pierdes.</p>
+      </div>
+      <div class="cards two">
+        <div class="card">
+          <span class="tag">Modelo actual</span>
+          <h3>Tarjeta → recarga → saldo → compra → refund</h3>
+          <p>Cinco pasos, dos filas, dinero atrapado y una devolución que casi nadie tramita.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Nuestro modelo</span>
+          <h3>Tarjeta / wallet → pulsera → compra</h3>
+          <p>El asistente registra su método de pago antes del evento y vincula su pulsera. Compra una cerveza, tap, el cargo va directo al método de pago. Sin saldo, sin estación de recarga, sin refund.</p>
+        </div>
+      </div>
+      <div class="prose" style="margin-top:1.5rem">
+        <h3>Auto Top-Up para quien prefiere saldo</h3>
+        <p>“Cuando mi saldo baje de $200, recarga $500 automáticamente.” Se mantiene el modelo de prepago para quien lo quiera, pero se elimina la fila.</p>
+        <h3>El problema real: la adopción</h3>
+        <p>Nadie va a bajar una app para ver a Bad Bunny. Por eso el enganche no puede ser la app, tiene que ser el ticket: en el momento de comprar el boleto aparece el paso de vincular tarjeta o fondear. Empezar desde la raíz. Para quien llegue en frío, un QR en la entrada que registre la tarjeta en segundos, sin descarga.</p>
+      </div>
+      <p class="pull">Si controlamos la venta del boleto, controlamos el onboarding del wallet. Ese es el orden correcto, no al revés.</p>
+    </section>
+
+    <section id="identidad">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Identidad y loyalty entre eventos</h2></div>
+      <div class="prose">
+        <p>Hoy cada festival crea una economía temporal: pulsera, saldo, se acaba, desaparece. La alternativa es una cuenta permanente — un <strong>Fan Wallet</strong> con métodos de pago, historial de eventos y consumo, puntos, boletos, preferencias, créditos y membresías.</p>
+        <p>Con esa cuenta el asistente entra a un festival, luego a un estadio, luego a un club, siempre con la misma identidad. La pulsera se vuelve nada más una llave física de su wallet.</p>
+        <p>Eso cambia lo que es la empresa: de proveedor B2B de eventos a red de pagos e identidad para entretenimiento.</p>
+      </div>
+      <div class="cards two four">
+        <div class="card"><span class="tag">Loyalty</span><h3>Compra 5 bebidas → fast lane</h3><p>El gasto compra experiencia, no descuentos.</p></div>
+        <div class="card"><span class="tag">Loyalty</span><h3>Gasta $2,500 → upgrade VIP</h3><p>Sube al asistente que ya demostró intención de gastar.</p></div>
+        <div class="card"><span class="tag">Retención</span><h3>3 eventos del mismo promotor → preventa</h3><p>El promotor recupera al fan sin depender de la ticketera.</p></div>
+        <div class="card"><span class="tag">Merch</span><h3>Compra merch → meet &amp; greet</h3><p>Los que compran merch en su primer evento retienen mejor.</p></div>
+      </div>
+    </section>
+
+    <section id="marcas">
+      <div class="sec-head"><span class="sec-num">06</span><h2>Sponsored payments</h2></div>
+      <div class="prose">
+        <p>Aquí aparece la segunda fuente de ingreso, y probablemente la más interesante: que las marcas financien consumo directamente dentro del sistema.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>“Corona te invita tu primera cerveza” · un tap</caption>
+          <thead><tr><th scope="col">Concepto</th><th scope="col" class="num">Monto</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Producto</th><td class="num">$180.00</td></tr>
+            <tr><th scope="row">Cargo al usuario</th><td class="num">$0.00</td></tr>
+            <tr><th scope="row">Sponsor budget</th><td class="num">$180.00</td></tr>
+            <tr class="total"><th scope="row">Activación medible en revenue</th><td class="num">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.5rem">
+        <p>Mismo mecanismo para “paga con Mastercard y recibe 20% de cashback” o “compra dos Coca-Cola y desbloquea fast lane”. Todo automático, todo atribuible.</p>
+        <p>Con esto se monetiza al promotor, a las marcas, a los vendors y al flujo de pago. La marca deja de comprar una lona y empieza a comprar transacciones medidas.</p>
+      </div>
+    </section>
+
+    <section id="command">
+      <div class="sec-head"><span class="sec-num">07</span><h2>Event Command Center</h2></div>
+      <div class="prose">
+        <p>Un dashboard tradicional dice “vendiste $4 millones”. Eso ya es commodity. Lo importante no es mostrar el número, es interpretarlo — y que lo entienda el promotor, no un analista.</p>
+      </div>
+
+      <div class="panel" role="img" aria-label="Panel en vivo: revenue 3,824,430 pesos, 47,200 por minuto, ticket promedio 387 pesos, 8,492 personas dentro. Barra Norte al 93 por ciento, Sur 62 por ciento, VIP 31 por ciento.">
+        <div class="panel-bar">
+          <span>Event Command Center</span>
+          <span class="live"><span class="dot"></span> En vivo · 23:14</span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><span class="k">Revenue</span><span class="v">$3,824,430</span></div>
+          <div class="kpi"><span class="k">Revenue / min</span><span class="v">$47,200</span></div>
+          <div class="kpi"><span class="k">Ticket promedio</span><span class="v">$387</span></div>
+          <div class="kpi"><span class="k">Personas dentro</span><span class="v">8,492</span></div>
+        </div>
+        <div class="meters">
+          <div class="meter">
+            <div class="meter-top"><span class="name">Barra Norte</span><span class="pct">93% · espera ~11 min</span></div>
+            <div class="track"><span class="fill hot" data-w="93"></span></div>
+          </div>
+          <div class="meter">
+            <div class="meter-top"><span class="name">Barra Sur</span><span class="pct">62%</span></div>
+            <div class="track"><span class="fill warn" data-w="62"></span></div>
+          </div>
+          <div class="meter">
+            <div class="meter-top"><span class="name">Barra VIP</span><span class="pct">31%</span></div>
+            <div class="track"><span class="fill" data-w="31"></span></div>
+          </div>
+        </div>
+        <p class="panel-note">Barra Norte supera el umbral de espera donde cae la frecuencia de compra. <b>Recomendación: mover 2 bartenders de VIP a Norte.</b></p>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Y un paso más: el sistema detecta la oportunidad solo</h3>
+        <p>Con suficientes eventos, el sistema aprende en qué punto la fila empieza a costar dinero y lo avisa antes de que pase.</p>
+      </div>
+
+      <div class="action">
+        <div class="action-head">
+          <span>Revenue opportunity detected</span>
+          <span>23:14 · 12,480 asistentes</span>
+        </div>
+        <div class="action-body">
+          <p class="small mono">Barra A 96% · Barra B 43% · Barra C 37% · espera en A ≈ 14 min</p>
+          <ol>
+            <li>Mover 3 bartenders de B → A.</li>
+            <li>Redistribuir inventario hacia A.</li>
+            <li>Enviar promoción a asistentes cercanos a C.</li>
+            <li>Activar 20% de descuento en producto seleccionado, 15 minutos, solo en C.</li>
+          </ol>
+        </div>
+        <div class="action-foot">
+          <span class="lbl">Revenue incremental estimado</span>
+          <span class="amt">$86,400 MXN</span>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Pricing como herramienta operativa</h3>
+        <p>El precio puede moverse por hora, inventario, demanda, saturación, ubicación, patrocinador o tipo de usuario. Cerveza a $120 de 5 a 7, $150 de 7 a 10. Y si Norte está saturada y Sur vacía: “10% de descuento en Barra Sur los próximos 20 minutos.” El pricing deja de ser una lista y se vuelve un control de tráfico.</p>
+      </div>
+    </section>
+
+    <section id="operacion">
+      <div class="sec-head"><span class="sec-num">08</span><h2>Inventario y vendors</h2></div>
+      <div class="prose">
+        <p>Cada venta permite calcular consumo esperado. La diferencia contra el consumo físico es dinero que se está yendo por algún lado.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Detección de merma · Bacardí</caption>
+          <thead><tr><th scope="col">Concepto</th><th scope="col" class="num">Cantidad</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Bebidas vendidas</th><td class="num">1,000</td></tr>
+            <tr><th scope="row">Porción por bebida</th><td class="num">50 ml</td></tr>
+            <tr><th scope="row">Consumo esperado</th><td class="num">50.0 L</td></tr>
+            <tr><th scope="row">Consumo físico</th><td class="num">67.0 L</td></tr>
+            <tr class="total"><th scope="row">Varianza sin explicar</th><td class="num">17.0 L</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.5rem">
+        <p>Un sistema tradicional te muestra esa diferencia. El nuestro te dice de quién es:</p>
+        <ul>
+          <li>Bartender #14 sirve 23% más tequila por bebida que el promedio.</li>
+          <li>Barra 7 presenta una desviación estadísticamente anormal entre ventas e inventario.</li>
+        </ul>
+        <p>Eso convierte el inventario en un sistema de detección de merma, no en un reporte.</p>
+
+        <h3>Settlement automático de vendors</h3>
+        <p>Después del evento hay una carga administrativa enorme para conciliar con cada food truck, barra y vendor. Ese trabajo se puede eliminar.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Settlement · Food Truck A</caption>
+          <thead><tr><th scope="col">Concepto</th><th scope="col" class="num">Monto MXN</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Ventas brutas</th><td class="num">482,300.00</td></tr>
+            <tr><th scope="row">Comisión del evento · 20%</th><td class="num">−96,460.00</td></tr>
+            <tr><th scope="row">Processing · 2.9%</th><td class="num">−13,986.70</td></tr>
+            <tr><th scope="row">Refunds</th><td class="num">−4,200.00</td></tr>
+            <tr class="total"><th scope="row">Neto a depositar</th><td class="num">367,653.30</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.5rem">
+        <p>El sistema genera conciliación, estado de cuenta, comisión, impuestos y ajustes. Eventualmente ejecuta la transferencia. Ahí es donde después se abren productos financieros: liquidación instantánea, adelanto de flujo, capital de trabajo para vendors.</p>
+        <h3>Heatmaps</h3>
+        <p>Cruzando accesos, NFC, POS y ticketing se puede reconstruir el movimiento del asistente: dónde está la gente, dónde compra, cuánto tiempo se queda, qué zonas convierten mejor, qué patrocinador recibe tráfico real. Sirve durante el evento para mover recursos y sirve después para decidir dónde van las barras, los baños y el merch en el siguiente.</p>
+      </div>
+    </section>
+
+    <section id="reporte">
+      <div class="sec-head"><span class="sec-num">09</span><h2>Post-event report</h2></div>
+      <div class="prose">
+        <p>Al cerrar el evento, la plataforma no entrega un reporte de ventas. Entrega una cuenta de lo que se dejó de ganar y qué hacer distinto la próxima.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Event performance report</caption>
+          <thead><tr><th scope="col">Métrica</th><th scope="col" class="num">Valor</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Revenue total</th><td class="num">$12,400,000</td></tr>
+            <tr><th scope="row">Revenue por asistente</th><td class="num">$993</td></tr>
+            <tr><th scope="row">Filas</th><td class="num">−$420,000</td></tr>
+            <tr><th scope="row">Stockouts</th><td class="num">−$270,000</td></tr>
+            <tr><th scope="row">Staffing ineficiente</th><td class="num">−$184,000</td></tr>
+            <tr><th scope="row">Varianza de inventario</th><td class="num">−$126,000</td></tr>
+            <tr><th scope="row">POS caído</th><td class="num">−$97,000</td></tr>
+            <tr><th scope="row">Mala ubicación de barras</th><td class="num">−$83,000</td></tr>
+            <tr class="total"><th scope="row">Revenue potencial perdido</th><td class="num">−$1,180,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="action">
+        <div class="action-head"><span>Recomendaciones para el siguiente evento</span></div>
+        <div class="action-body">
+          <ol>
+            <li>+2 POS en Main Stage, −3 POS en Food Court.</li>
+            <li>Mover Barra 4 aproximadamente 70 metros.</li>
+            <li>Incrementar inventario de tequila 18%, reducir vodka 11%.</li>
+            <li>Abrir VIP Bar 35 minutos antes.</li>
+          </ol>
+        </div>
+        <div class="action-foot">
+          <span class="lbl">Impacto estimado</span>
+          <span class="amt">+$1,460,000 MXN</span>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Customer 360</h3>
+        <p>Cada asistente se vuelve un perfil de comportamiento: eventos visitados, gasto de por vida, gasto promedio por evento, mezcla entre bebida, comida y merch, categoría favorita, hora típica de llegada. De ahí salen modelos del tipo “los clientes con gasto superior a $3,000 tienen X veces más probabilidad de comprar VIP”. Todo esto exige consentimiento explícito y una arquitectura de privacidad seria desde el día uno, no como parche.</p>
+      </div>
+    </section>
+
+    <section id="escalera">
+      <div class="sec-head"><span class="sec-num">10</span><h2>La escalera</h2></div>
+      <div class="prose">
+        <p>Todos los competidores están en algún escalón de esta secuencia. La tesis del producto es subirla completa.</p>
+      </div>
+      <div class="ladder">
+        <div class="rung"><span class="lvl">01</span><div><h3>Transaction</h3><p>Vendiste $10M.</p></div></div>
+        <div class="rung"><span class="lvl">02</span><div><h3>Analytics</h3><p>Barra 3 vende 32% más que Barra 4.</p></div></div>
+        <div class="rung"><span class="lvl">03</span><div><h3>Prediction</h3><p>Barra 3 probablemente se satura en 17 minutos.</p></div></div>
+        <div class="rung"><span class="lvl">04</span><div><h3>Recommendation</h3><p>Mueve dos bartenders y 400 cervezas a Barra 3.</p></div></div>
+        <div class="rung"><span class="lvl">05</span><div><h3>Action</h3><p>El sistema lo ejecuta: promoción dinámica, alerta a staff, reorden de inventario, oferta de sponsor, cambio de precio, aviso a vendor.</p></div></div>
+      </div>
+      <div class="prose" style="margin-top:1.6rem">
+        <p>El diferenciador no se formula como “tenemos más funciones que Cashless”, ni “tenemos mejores pulseras”, ni siquiera “tenemos IA”. Se formula así:</p>
+      </div>
+      <p class="pull">Te ayudamos a ganar más dinero por asistente y a saber exactamente dónde lo estás perdiendo.</p>
+      <div class="scroll">
+        <table>
+          <caption>North Star Metric · Revenue per Attendee</caption>
+          <thead><tr><th scope="col">Periodo</th><th scope="col" class="num">Revenue / asistente</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Evento 2025 · sin plataforma</th><td class="num">$847</td></tr>
+            <tr><th scope="row">Evento 2026 · con plataforma</th><td class="num">$1,083</td></tr>
+            <tr class="total"><th scope="row">Incremento</th><td class="num">+27.8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="wedge">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Wedge y modelo</h2></div>
+      <div class="prose">
+        <p>No conviene arrancar peleando festivales de cientos de miles de personas. El wedge son eventos de <strong>1,000 a 15,000 asistentes</strong>: festivales independientes, conciertos, ferias, eventos universitarios, arenas chicas, venues, nightlife, activaciones de marca, eventos gastronómicos. Ahí se aprende rápido, se juntan datos operativos y se entrena el motor de inteligencia.</p>
+        <p>La ventaja geográfica es real: construir desde el inicio sobre infraestructura mexicana — MXN, SAT, facturación, SPEI, CoDi, Mercado Pago, Conekta, OpenPay, WhatsApp, español primero, settlement y regulación local — y después Colombia, Brasil, Chile, Argentina, Perú y Centroamérica. Billfold no está aquí; ese es el hueco.</p>
+      </div>
+
+      <div class="cards two">
+        <div class="card"><span class="tag">01</span><h3>SaaS</h3><p>Cobro mensual o anual por el software.</p></div>
+        <div class="card"><span class="tag">02</span><h3>Hardware / device fee</h3><p>POS, lectores, tags NFC, pulseras.</p></div>
+        <div class="card"><span class="tag">03</span><h3>Payment processing</h3><p>Take rate sobre GMV, del orden de 1.5% a 3% según estructura.</p></div>
+        <div class="card"><span class="tag">04</span><h3>AI optimization</h3><p>Cobro adicional por la capa de revenue optimization.</p></div>
+        <div class="card"><span class="tag">05</span><h3>Sponsor activations</h3><p>Fee por campaña medible de marca.</p></div>
+        <div class="card"><span class="tag">06</span><h3>Fintech</h3><p>Settlement instantáneo, capital de trabajo, financiamiento a vendors, embedded payments.</p></div>
+      </div>
+
+      <p class="pull">Vertical SaaS + Fintech + Payments + AI Infrastructure. No una empresa de pulseras.</p>
+    </section>
+
+    <section id="moat">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Moat y flywheel</h2></div>
+      <div class="prose">
+        <p>Las funciones individuales son copiables. El moat se construye con otra cosa:</p>
+        <ul>
+          <li><strong>Datos.</strong> Cada evento genera consumo, horarios, filas, staffing, inventario, pricing, layout y comportamiento.</li>
+          <li><strong>Modelos.</strong> Con suficientes eventos el sistema empieza a saber cosas como “en festivales de electrónica de 8,000 a 12,000 personas con temperatura mayor a 30°C, esta configuración de barras maximiza throughput”.</li>
+          <li><strong>Workflow lock-in.</strong> Cuando el promotor corre pagos, vendors, inventario, settlement, CRM, staff y reporting en la plataforma, cambiar de proveedor duele.</li>
+          <li><strong>Payments.</strong> Procesar GMV genera economics y datos al mismo tiempo.</li>
+          <li><strong>Red.</strong> Una identidad persistente entre eventos genera efectos de red del lado del asistente.</li>
+        </ul>
+      </div>
+      <div class="wheel" role="list">
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Más eventos</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Más transacciones</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Más datos operativos</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Mejores modelos</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Mejores recomendaciones</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Mayor revenue por asistente</span></div>
+        <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Mayor ROI para el promotor</span></div>
+        <div class="wheel-close">↺ vuelve a: más eventos</div>
+      </div>
+    </section>
+
+    <section id="pendientes">
+      <div class="sec-head"><span class="sec-num">13</span><h2>De concepto a operación</h2></div>
+      <div class="prose">
+        <p>Todo lo anterior es la visión. Lo que falta es aterrizarla, y para eso hay una ventana clara entre septiembre y noviembre: ir a ver cómo opera el incumbente y después usar nuestro propio evento como piloto.</p>
+      </div>
+
+      <div class="time">
+        <div class="slot">
+          <span class="when">Septiembre</span>
+          <h3>Ver la operación desde adentro</h3>
+          <p>Asistir al evento y observar el sistema, no el festival.</p>
+          <ul>
+            <li>Fila de recarga: cuánta gente, cuánto tiempo.</li>
+            <li>Terminal → pulsera: qué hace exactamente el operador.</li>
+            <li>Cómo cobran los meseros en mesa y con qué terminal.</li>
+            <li>Cuánta gente de la empresa hay en piso.</li>
+            <li>Qué pasa cuando se acaba el saldo a media noche.</li>
+          </ul>
+        </div>
+        <div class="slot">
+          <span class="when">Octubre</span>
+          <h3>Documentar y cotizar</h3>
+          <p>Convertir lo observado en arquitectura y en números.</p>
+          <ul>
+            <li>Flujo completo del sistema, punta a punta.</li>
+            <li>Cotización de terminales tap-to-pay y tags NFC.</li>
+            <li>Proveedor único para terminal y pulsera, para evitar incompatibilidades.</li>
+            <li>Estructura de tasa y con qué procesador.</li>
+            <li>Manual de capacitación de staff de piso.</li>
+          </ul>
+        </div>
+        <div class="slot">
+          <span class="when">Noviembre</span>
+          <h3>Nuestro evento como piloto</h3>
+          <p>Correr la versión mínima en un evento propio, donde el costo de equivocarse es nuestro.</p>
+          <ul>
+            <li>POS + cobro con tarjeta y efectivo.</li>
+            <li>Pulsera vinculada a método de pago.</li>
+            <li>Dashboard en vivo, aunque sea básico.</li>
+            <li>Conciliación de barras al cierre.</li>
+            <li>Medir revenue por asistente como línea base.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2rem">
+        <h3>Los cabos que faltan</h3>
+        <p>Preguntas concretas que hay que cerrar antes de comprometerse con una arquitectura.</p>
+      </div>
+
+      <ul class="qs">
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Quién carga los menús, las listas y el mapa de barras al sistema?</div>
+          <div class="a">Es la pregunta que define el producto de onboarding completo. Si hoy el promotor se los manda por correo a un operador, ahí hay un producto entero: que el organizador lo suba él mismo, en minutos. Vale la pena una junta con quien opera el sistema del lado del incumbente. Si no se puede averiguar, definimos la lógica nosotros.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Compatibilidad terminal ↔ pulsera?</div>
+          <div class="a">Cualquier terminal con tap-to-pay lee el tag. Aun así, <b>un solo proveedor para ambos</b> elimina el riesgo de incompatibilidad en piso el día del evento.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Costo real de la pulsera?</div>
+          <div class="a">El tag NFC ronda los centavos y el plástico impreso con nuestro branding es barato. Se vende al asistente alrededor de $20. Hay que cotizar el volumen real y confirmar el margen.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Dónde vive el dinero durante el evento?</div>
+          <div class="a">Hipótesis de trabajo: la pulsera solo guarda un identificador y un saldo en puntos; el dinero real está en la cuenta del sistema y se liquida al organizador. Hay que confirmar el flujo exacto y quién lo custodia, porque de ahí depende toda la estructura de liquidación.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Qué figura legal necesitamos?</div>
+          <div class="a">Postura actual: <b>SAPI/SAS operando como software</b>, igual que un punto de venta, no sofipo ni sofom, porque el dinero se mueve a través del procesador y no lo custodiamos nosotros. Es exactamente la pregunta que hay que validar con el contador y con el abogado antes de firmar el primer evento — si en algún momento retenemos fondos, cambia.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Cuánta gente ponemos en piso?</div>
+          <div class="a">El incumbente manda muy poca gente por evento. Ahí hay una ventaja de servicio inmediata: más personal nuestro en el evento es una diferencia que el promotor siente el mismo día, antes de que la IA exista.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Cómo se ve el producto para alguien que no es técnico?</div>
+          <div class="a">El promotor tiene que poder sentarse solo frente al dashboard y entenderlo. Si necesita un analista, perdimos. Ese es el criterio de diseño de toda la capa visual.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true"></span><div>
+          <div class="q">¿Qué dicen los que ya lo usan?</div>
+          <div class="a">Hablar con asistentes y con operadores. La queja recurrente ya está identificada: doble fila y saldo que sobra. Falta el lado del organizador — qué le duele a él, no al público.</div>
+        </div></li>
+      </ul>
+
+      <div class="prose" style="margin-top:2rem">
+        <h3>Orden de magnitud de un evento</h3>
+        <p>Números gruesos de la conversación, sin validar, solo para dimensionar si el negocio aguanta.</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Estimación preliminar · evento de 3,000 a 9,000 personas</caption>
+          <thead><tr><th scope="col">Supuesto</th><th scope="col" class="num">Valor</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Transacciones mínimas</th><td class="num">≈ 2,500</td></tr>
+            <tr><th scope="row">Precio de pulsera al asistente</th><td class="num">$20</td></tr>
+            <tr><th scope="row">Costo estimado del tag</th><td class="num">&lt; $1</td></tr>
+            <tr><th scope="row">Mesa promedio en evento grande</th><td class="num">$100,000</td></tr>
+            <tr class="total"><th scope="row">Potencial por evento · comisión + pulseras + sistema</th><td class="num">≈ $2,000,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Estos números salieron de una plática, no de un modelo. El propósito del piloto de noviembre es precisamente reemplazarlos con datos reales: transacciones por asistente, ticket promedio, costo de hardware cotizado y take rate negociado.</p>
+    </section>
+
+    <section id="cierre" style="padding-bottom:2rem">
+      <div class="sec-head"><span class="sec-num">↓</span><h2>La visión final</h2></div>
+      <div class="prose">
+        <p>La compañía no se describe como una empresa de pulseras cashless, ni como un POS para festivales. Se describe como la infraestructura comercial y financiera de los eventos físicos.</p>
+        <p>El POS, las pulseras, los pagos y los accesos son solamente sensores. Cada uno genera información. La compañía real vive encima de esa información y su trabajo es entender qué está pasando, por qué, qué va a pasar después y qué debería hacer el operador al respecto.</p>
+        <p>La pregunta central del sistema es una sola: <strong>¿cómo hacemos que este evento gane más dinero, pierda menos y opere mejor?</strong> Y eventualmente el producto no solo la responde. La ejecuta.</p>
+      </div>
+      <p class="pull">Build the intelligence layer for live events. No procesar cada transacción: entenderla, y usarla para que el siguiente minuto, la siguiente hora y el siguiente evento sean más rentables.</p>
+    </section>
+
+    <footer>
+      <span>Event Intelligence OS · v0.1</span>
+      <span>Documento interno · para discusión</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var fills = document.querySelectorAll('.fill');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function paint(el){ el.style.width = el.getAttribute('data-w') + '%'; }
+  if (reduce || !('IntersectionObserver' in window)) {
+    fills.forEach(paint);
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { paint(e.target); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.4});
+  fills.forEach(function(el){ io.observe(el); });
+})();
+</script>
