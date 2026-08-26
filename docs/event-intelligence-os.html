@@ -287,6 +287,56 @@ td .gap{color:var(--crit)}
   padding:.35rem 0 .35rem 1rem;font-size:.88rem;color:var(--muted);
 }
 
+/* ---------- part divider ---------- */
+.part{display:flex;align-items:baseline;gap:1rem;margin:0 0 clamp(1.75rem,5vw,2.75rem)}
+.part::after{content:"";flex:1;height:1px;background:var(--rule);transform:translateY(-.35rem)}
+.part .pn{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.part .pt{font-family:var(--f-display);font-weight:700;font-size:.95rem;letter-spacing:-.01em}
+.rail-part{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);padding:1rem 0 .35rem;border-top:1px solid var(--rule-soft)}
+.rail-part.first{border-top:0;padding-top:0}
+.rail-part + a{border-top:0}
+
+/* ---------- difficulty ---------- */
+.diff{margin-top:1.6rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.drow{background:var(--surface);padding:.85rem 1.2rem;display:grid;gap:.55rem}
+@media (min-width:760px){.drow{grid-template-columns:minmax(0,1fr) 210px;column-gap:1.6rem;align-items:center}}
+.dname{font-family:var(--f-display);font-weight:600;font-size:.98rem;letter-spacing:-.01em}
+.dname .dnote{display:block;font-family:var(--f-body);font-weight:400;font-size:.89rem;line-height:1.5;color:var(--muted);margin-top:.2rem;letter-spacing:0}
+.dmeter{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.7rem;align-items:center}
+.dtrack{height:6px;background:var(--rule-soft);border-radius:1px;overflow:hidden}
+.dfill{display:block;height:100%;width:0;background:var(--signal);transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.dfill.mid{background:var(--money)}
+.dfill.high{background:var(--crit)}
+.dnum{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums;min-width:2.9rem;text-align:right}
+@media (prefers-reduced-motion:reduce){.dfill{transition:none}}
+
+/* ---------- steps ---------- */
+.steps{margin-top:1.6rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.step{background:var(--surface);padding:1.2rem 1.3rem;display:grid;gap:.6rem}
+@media (min-width:780px){.step{grid-template-columns:7rem minmax(0,1fr);column-gap:1.5rem;align-items:start}}
+.step-n{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);padding-top:.28rem}
+.step-n em{display:block;font-style:normal;color:var(--muted);margin-top:.2rem}
+.step h3{font-size:1.08rem;font-weight:700;margin-bottom:.35rem}
+.step p{font-size:.95rem;color:var(--muted)}
+.step p + p{margin-top:.5rem}
+.step p strong{color:var(--ink);font-weight:600}
+.step .out{margin-top:.7rem;padding-top:.55rem;border-top:1px dashed var(--rule);font-family:var(--f-mono);font-size:.75rem;line-height:1.55;color:var(--signal)}
+
+/* ---------- avoid ---------- */
+.avoid{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.avoid li{background:var(--surface);padding:.9rem 1.25rem;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.85rem;align-items:start}
+.avoid .x{color:var(--crit);font-family:var(--f-mono);font-size:.9rem;font-weight:600;line-height:1.7}
+.avoid b{font-family:var(--f-display);font-weight:600;font-size:.98rem;letter-spacing:-.01em}
+.avoid .why{display:block;color:var(--muted);font-size:.91rem;margin-top:.18rem}
+
+/* ---------- gates ---------- */
+.gates{margin-top:1.6rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media (min-width:840px){.gates{grid-template-columns:repeat(3,1fr)}}
+.gate{background:var(--surface);padding:1.2rem 1.3rem;display:grid;gap:.5rem;align-content:start}
+.gate .g{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--money)}
+.gate h3{font-size:1rem;font-weight:700}
+.gate p{font-size:.92rem;color:var(--muted)}
+
 footer{
   border-top:1px solid var(--rule);padding-top:1.5rem;margin-top:1rem;
   display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;
@@ -301,7 +351,7 @@ footer{
       <div class="hero-top">
         <span class="eyebrow">Documento de estrategia</span>
         <span class="eyebrow">Eventos de entretenimiento · México</span>
-        <span class="eyebrow">v0.1 · Agosto 2026</span>
+        <span class="eyebrow">v0.2 · Agosto 2026</span>
       </div>
       <h1>Event<br>Intelligence <em>OS</em></h1>
       <p class="hero-lede">No vendemos pulseras. Vendemos <strong>más dinero por asistente</strong> y la capacidad de saber exactamente dónde se está perdiendo.</p>
@@ -317,6 +367,7 @@ footer{
 <div class="shell">
   <nav class="rail" aria-label="Contenido">
     <div class="rail-inner">
+      <div class="rail-part first">I · La tesis</div>
       <a href="#punto"><i>01</i> Punto de partida</a>
       <a href="#mercado"><i>02</i> Quién ya está ahí</a>
       <a href="#arquitectura"><i>03</i> Las cuatro capas</a>
@@ -329,11 +380,17 @@ footer{
       <a href="#escalera"><i>10</i> La escalera</a>
       <a href="#wedge"><i>11</i> Wedge y modelo</a>
       <a href="#moat"><i>12</i> Moat y flywheel</a>
-      <a href="#pendientes"><i>13</i> De concepto a operación</a>
+      <div class="rail-part">II · La ejecución</div>
+      <a href="#dificultad"><i>13</i> Qué tan difícil es</a>
+      <a href="#potencial"><i>14</i> Potencial vs Fullsite</a>
+      <a href="#empezar"><i>15</i> Por dónde empezar</a>
+      <a href="#pendientes"><i>16</i> Los próximos 90 días</a>
     </div>
   </nav>
 
   <main>
+
+    <div class="part"><span class="pn">Parte I</span><span class="pt">La tesis</span></div>
 
     <section id="punto">
       <div class="sec-head"><span class="sec-num">01</span><h2>Punto de partida</h2></div>
@@ -733,8 +790,233 @@ footer{
       </div>
     </section>
 
+    <div class="part"><span class="pn">Parte II</span><span class="pt">La ejecución</span></div>
+
+    <section id="dificultad">
+      <div class="sec-head"><span class="sec-num">13</span><h2>Qué tan difícil es</h2></div>
+      <div class="prose">
+        <p>La respuesta cambia por completo al tomar en cuenta que Fullsite ya existe. POS, inventario con recetas, arquitectura offline-first, multi-sucursal, analytics, SAT y Mercado Pago ya están construidos: eso <em>es</em> la Capa 1 y la Capa 2 con otro nombre. Multi-sucursal es multi-barra. Y el inventario con recetas es, literalmente, el motor de detección de merma — “1,000 bebidas × 50 ml = 50 L esperados” es exactamente lo que hace un sistema de recetas.</p>
+        <p>Componente por componente, de lo más fácil a lo más difícil:</p>
+      </div>
+
+      <div class="diff">
+        <div class="drow">
+          <div class="dname">POS de evento<span class="dnote">Un stand de festival es más simple que un restaurante: menos SKUs, sin comandas a cocina, sin mesas. Es el producto actual con menos funciones.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="20"></span></div><span class="dnum">2/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Pulsera NFC<span class="dnote">Leer y escribir un identificador en un tag NTAG213 es de lo más simple del stack. El plástico nunca fue el reto.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="30"></span></div><span class="dnum">3/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Accesos y acreditaciones<span class="dnote">Alta de perfiles, escaneo y validación. Es trabajo, no investigación.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="40"></span></div><span class="dnum">4/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Settlement de vendors<span class="dnote">Contabilidad con reglas de comisión. Tedioso y muy valioso, pero no complejo.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="40"></span></div><span class="dnum">4/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Dashboard en vivo<span class="dnote">Ya existe en Fullsite. Cambia la unidad de análisis de sucursal a barra.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="40"></span></div><span class="dnum">4/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Inteligencia v1 · reglas<span class="dnote">Umbral de utilización, venta por minuto, throughput por bartender. No es aprendizaje automático y genera la mayor parte del valor visible.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill" data-w="40"></span></div><span class="dnum">4/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Ledger offline<span class="dnote">El corazón. Doble gasto, idempotencia, reconciliación al reconectar. Un bug aquí no es un bug, es un faltante en caja.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill mid" data-w="60"></span></div><span class="dnum">6/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Logística de hardware<span class="dnote">Comprar, configurar, cargar, transportar, repartir, recuperar y dar soporte a cientos de aparatos. Es operaciones y capital de trabajo, no software. La parte más subestimada.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill mid" data-w="70"></span></div><span class="dnum">7/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Confiabilidad en piso<span class="dnote">La barrera real. No es una función que se programe: se acumula evento tras evento.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="80"></span></div><span class="dnum">8/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">IA predictiva real<span class="dnote">“Barra 3 se satura en 17 minutos” necesita decenas de eventos comparables en la base. Es consecuencia de operar, no de programar.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="80"></span></div><span class="dnum">8/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Cargo directo sin recarga<span class="dnote">El diferenciador de la sección 04. Requiere conectividad donde no la hay, o asumir riesgo de crédito. Es la razón real de que nadie lo haya hecho.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="90"></span></div><span class="dnum">9/10</span></div>
+        </div>
+        <div class="drow">
+          <div class="dname">Fan Wallet universal<span class="dnote">No es difícil de programar, es difícil de existir: necesita muchos venues y resolver el arranque en frío. Es consecuencia, no punto de partida.</span></div>
+          <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="90"></span></div><span class="dnum">9/10</span></div>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2rem">
+        <h3>El costo escondido del diferenciador principal</h3>
+        <p>“Sin recarga, cargo directo a la tarjeta” suena obvio, pero el saldo prepagado no existe por flojera: existe porque <strong>elimina el riesgo de crédito</strong>. Si cobras contra la tarjeta en tiempo real necesitas conectividad en un lugar donde no la hay; si autorizas offline, tú comes los declines y los contracargos de 12,000 personas tomando. La salida realista es híbrida — preautorización tipo hotel o gasolinera al entrar, saldo firmado dentro del tag, liquidación al salir — y es la decisión de arquitectura más cara del proyecto.</p>
+        <h3>La segunda oportunidad que no existe</h3>
+        <p>Un restaurante que se cae veinte minutos pierde veinte minutos. Un festival que se cae veinte minutos con 12,000 personas formadas es una crisis con video en redes, y ese promotor no vuelve. El incumbente no gana por mejor software: gana porque ya lo reventó doscientas veces y sabe qué falla.</p>
+      </div>
+
+      <p class="pull">Lo difícil de este negocio no es el software. Es que el día del evento no hay segunda oportunidad, y que salirse del modelo prepagado te mete en riesgo de crédito.</p>
+
+      <div class="prose" style="margin-top:1.6rem">
+        <p class="small">Alcance realista para un primer evento operable: POS, cashless con saldo prepagado, recarga, pulsera NFC, dashboard en vivo, conciliación de barras y reporte post-evento. Del orden de <strong>6 a 10 semanas</strong> de trabajo enfocado sobre lo ya construido, contando pruebas en serio. Fuera de ese alcance: cargo directo, wallet universal, sponsored payments, dynamic pricing y predicción real.</p>
+      </div>
+    </section>
+
+    <section id="potencial">
+      <div class="sec-head"><span class="sec-num">14</span><h2>Potencial: eventos contra Fullsite</h2></div>
+      <div class="prose">
+        <p>No son la misma apuesta. El evento tiene techo más alto y llegada mucho más rápida al dinero; Fullsite tiene mayor probabilidad de éxito y mejor calidad de ingreso.</p>
+        <p>Un restaurante mediano en Monterrey mueve $4 a $8M MXN al año, y entre software y take rate deja del orden de $30 a $60k MXN anuales. Para llegar a $20M MXN de ingreso recurrente necesitas alrededor de <strong>500 sucursales</strong>. Un evento de 8,000 personas mueve ~$8M MXN de GMV <strong>en dos noches</strong>: con 2.5% de take más el margen de pulseras son $300 a $400k MXN por evento. Cincuenta eventos al año pueden ser ocho o diez clientes, no quinientos.</p>
+      </div>
+
+      <p class="pull">Un promotor bueno vale lo que veinte restaurantes, y lo cobras en un fin de semana.</p>
+
+      <div class="scroll">
+        <table>
+          <caption>Comparación estructural</caption>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Fullsite · restaurantes</th><th scope="col">Event Intelligence OS</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Clientes para ~$20M MXN</th><td>≈ 500 sucursales</td><td>8 a 10 promotores</td></tr>
+            <tr><th scope="row">GMV por cliente</th><td>$4–8M MXN al año</td><td>$8M MXN en un fin de semana</td></tr>
+            <tr><th scope="row">Motor de venta</th><td>Máquina de volumen, puerta por puerta</td><td>Relación, pocos tratos, cada uno grande</td></tr>
+            <tr><th scope="row">Ritmo del ingreso</th><td>Recurrente, 365 días</td><td>Por temporada; enero y febrero no facturas</td></tr>
+            <tr><th scope="row">Concentración</th><td>Perder un cliente es 0.2%</td><td class="gap">Perder un festival grande puede ser 30%</td></tr>
+            <tr><th scope="row">Capital de trabajo</th><td>Bajo</td><td class="gap">Alto: hardware por adelantado y gente en piso</td></tr>
+            <tr><th scope="row">Lock-in</th><td>Fuerte: se usa todos los días para operar</td><td>Medio: se renegocia una vez al año</td></tr>
+            <tr><th scope="row">Riesgo de ruina</th><td>Bajo</td><td class="gap">Alto: una noche mala cierra el mercado</td></tr>
+            <tr><th scope="row">Prueba del ROI</th><td>Meses de datos</td><td>El lunes siguiente, con el reporte</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>La pregunta incómoda del techo</h3>
+        <p>Toast vale decenas de miles de millones de dólares vendiendo POS de restaurante. No existe una empresa de cashless de eventos de ese tamaño: Billfold, Intellitix y Tappit son buenos negocios, no unicornios. El mercado de eventos es más chico que el de restaurantes, y eso hay que decirlo.</p>
+      </div>
+
+      <div class="cards two">
+        <div class="card">
+          <span class="tag">Escenario base</span>
+          <h3>Si se queda en cashless para eventos en México</h3>
+          <p>Un negocio muy bueno y muy rentable, con techo acotado. Vive de la relación con un puñado de promotores y compite contra un incumbente con capital.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Escenario techo</span>
+          <h3>Si el Fan Wallet funciona</h3>
+          <p>Deja de venderle al promotor y se vuelve la red: una cuenta de pago e identidad que el mismo usuario ocupa en el festival, el estadio, el antro y el bar. Ahí el mercado es más grande que el de restaurantes. Es la parte más valiosa y la menos probable — y por eso no puede ser el punto de partida.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>No es un pivote</h3>
+        <p>Fullsite ya se posiciona como sistema operativo inteligente que detecta, explica y recomienda. El evento es <em>ese mismo motor</em> aplicado a un mercado con cien veces la densidad de dinero por cliente, donde el retorno se demuestra en un fin de semana en lugar de un año. Los bares y el nightlife son el puente natural entre los dos: mismo software, muchas veces el mismo dueño.</p>
+        <p>El riesgo real que hay que vigilar es distinto al financiero: <strong>los eventos se comen a la compañía</strong>. Si un fin de semana de festival consume por completo a un equipo chico, Fullsite deja de avanzar dos meses. Esa es la factura escondida.</p>
+      </div>
+    </section>
+
+    <section id="empezar">
+      <div class="sec-head"><span class="sec-num">15</span><h2>Por dónde empezar</h2></div>
+      <div class="prose">
+        <p>El principio de arranque es empezar por donde ya se gana, no por donde se quiere llegar. Y la conclusión menos obvia de todo este documento es esta: <strong>el primer producto no es cashless.</strong></p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">Fase 01<em>Septiembre</em></div>
+          <div>
+            <h3>Medir, no construir</h3>
+            <p>Ir al evento con un cronómetro, no con un pitch. Segundos por transacción, gente formada en recarga, terminales por barra, operadores en piso, hora pico de consumo, cuánto saldo se queda sin reclamar.</p>
+            <p>Salir con números, no con impresiones. Costo total: un boleto.</p>
+            <p class="out">→ Entregable: el modelo operativo del incumbente en una hoja.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 02<em>Noviembre</em></div>
+          <div>
+            <h3>Entrar por la barra, no por la pulsera</h3>
+            <p>El primer producto es <strong>control de barras</strong>: POS por barra, inventario con recetas, cierre y conciliación, y reporte de merma. Sin ledger, sin NFC, sin custodiar un peso.</p>
+            <p>La razón es que el promotor de un evento mediano no sabe cuánto vendió cada barra ni cuánto se fugó, y eso se le entrega desde el primer evento. Cero riesgo regulatorio, cero riesgo de tumbar el cobro — si el sistema falla, cobran como siempre — y <strong>ya está construido</strong>. Es empezar por la Capa 2, no por la Capa 1.</p>
+            <p class="out">→ Entregable: el primer reporte post-evento con dinero real.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 03<em>Evento propio</em></div>
+          <div>
+            <h3>Cashless prepagado, donde fallar es barato</h3>
+            <p>Ahora sí NFC y ledger, con <strong>saldo prepagado</strong> — el modelo probado, no el cargo directo. En un evento propio, donde una falla no cuesta un cliente.</p>
+            <p>Regla no negociable: terminal tradicional de respaldo en cada barra desde el día uno.</p>
+            <p class="out">→ Entregable: throughput real por terminal y costo operativo real por evento.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 04</div>
+          <div>
+            <h3>El reporte es la máquina de ventas</h3>
+            <p>Lo que vende el siguiente evento no es una presentación, es el reporte del anterior: “aquí están los $1.18M que dejaste en la mesa”. Ese documento entra a juntas donde un pitch no entra, y lo entiende el dueño sin necesidad de un analista.</p>
+            <p class="out">→ Entregable: el reporte estandarizado, repetible y legible para no técnicos.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 05</div>
+          <div>
+            <h3>Cinco clientes ancla, no cincuenta</h3>
+            <p>Cinco grupos que hagan de cuatro a diez eventos al año dan entre 30 y 50 eventos: ingreso e historial al mismo tiempo. Y conviene el que hace muchos eventos chicos sobre el que hace uno gigante — más iteraciones, menos riesgo de ruina, mejor base de datos.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 06</div>
+          <div>
+            <h3>Nightlife como puente</h3>
+            <p>Bares y antros son cliente de Fullsite y, muchas veces, el mismo dueño que organiza eventos. Ahí el ingreso de temporada se vuelve recurrente y se tapa el hueco de enero y febrero.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">Fase 07</div>
+          <div>
+            <h3>Recién ahí, la inteligencia</h3>
+            <p>Con treinta o más eventos en la base, los heurísticos se vuelven modelos y la Capa 4 deja de ser una promesa. Antes de eso son reglas honestas, y está bien: las reglas ya generan la mayor parte del valor visible.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2rem">
+        <h3>Lo que no haría al principio</h3>
+      </div>
+      <ul class="avoid">
+        <li><span class="x" aria-hidden="true">✕</span><div><b>Comprar terminales por adelantado.</b><span class="why">Rentar, o usar las del cliente y del proveedor, hasta que la demanda lo justifique. El hardware es donde se muere el flujo de efectivo.</span></div></li>
+        <li><span class="x" aria-hidden="true">✕</span><div><b>Prometer cargo directo sin recarga.</b><span class="why">No antes de tener resuelta la preautorización y el acuerdo con el procesador. Es el diferenciador más vendible y el más caro de sostener.</span></div></li>
+        <li><span class="x" aria-hidden="true">✕</span><div><b>Ir por la F1 o EDC.</b><span class="why">Perder ahí es perder el mercado. Esos eventos no dan segundas oportunidades y el incumbente lleva años puliendo su operación en ellos.</span></div></li>
+        <li><span class="x" aria-hidden="true">✕</span><div><b>Construir el Fan Wallet.</b><span class="why">No hay red que lo sostenga todavía. Es la consecuencia de operar muchos eventos, no la forma de conseguir el primero.</span></div></li>
+        <li><span class="x" aria-hidden="true">✕</span><div><b>Competir por precio.</b><span class="why">Bajar la tasa contra alguien con más capital es una carrera perdida. La pelea se gana con más gente en piso y con el reporte que el otro no entrega.</span></div></li>
+      </ul>
+
+      <div class="prose" style="margin-top:2rem">
+        <h3>Los tres números que deciden si esto sigue</h3>
+        <p>Después del primer evento propio, tres respuestas dicen si el negocio existe o no. Vale la pena fijarlas antes, para no interpretarlas a modo después.</p>
+      </div>
+      <div class="gates">
+        <div class="gate">
+          <span class="g">Criterio 01</span>
+          <h3>¿Deja margen operar?</h3>
+          <p>Si la operación — gente, horas, hardware, traslados — se come más del 40% del ingreso del evento, esto es un negocio de servicios disfrazado de software, y hay que saberlo antes de escalar.</p>
+        </div>
+        <div class="gate">
+          <span class="g">Criterio 02</span>
+          <h3>¿Le importó el reporte?</h3>
+          <p>Si el promotor toleró el sistema pero ignoró el reporte, la tesis de inteligencia está muerta y esto es cashless comoditizado. Es la prueba más importante de las tres.</p>
+        </div>
+        <div class="gate">
+          <span class="g">Criterio 03</span>
+          <h3>¿Cuánto le costó a Fullsite?</h3>
+          <p>Si el evento consumió semanas del producto principal, el costo real no fue dinero: fue el producto que dejó de avanzar mientras tanto.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="pendientes">
-      <div class="sec-head"><span class="sec-num">13</span><h2>De concepto a operación</h2></div>
+      <div class="sec-head"><span class="sec-num">16</span><h2>Los próximos 90 días</h2></div>
       <div class="prose">
         <p>Todo lo anterior es la visión. Lo que falta es aterrizarla, y para eso hay una ventana clara entre septiembre y noviembre: ir a ver cómo opera el incumbente y después usar nuestro propio evento como piloto.</p>
       </div>
@@ -850,7 +1132,7 @@ footer{
     </section>
 
     <footer>
-      <span>Event Intelligence OS · v0.1</span>
+      <span>Event Intelligence OS · v0.2</span>
       <span>Documento interno · para discusión</span>
     </footer>
 
@@ -859,7 +1141,7 @@ footer{
 
 <script>
 (function(){
-  var fills = document.querySelectorAll('.fill');
+  var fills = document.querySelectorAll('.fill, .dfill');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function paint(el){ el.style.width = el.getAttribute('data-w') + '%'; }
   if (reduce || !('IntersectionObserver' in window)) {
