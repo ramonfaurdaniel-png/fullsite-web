@@ -314,6 +314,39 @@ footer{
 .closing{margin-top:2.25rem;border-top:1px solid var(--rule);padding-top:1.75rem;display:grid;gap:.3rem;max-width:var(--col)}
 .closing span{font-family:var(--f-display);font-size:clamp(1.2rem,3.4vw,1.65rem);font-weight:700;letter-spacing:-.03em;line-height:1.2;color:var(--muted)}
 .closing span:last-child{color:var(--signal)}
+
+/* ---------- citations ---------- */
+.cite{font-family:var(--f-mono);font-size:.6em;vertical-align:super;line-height:0;color:var(--signal);text-decoration:none;padding:0 .1em;font-variant-numeric:tabular-nums;font-weight:500}
+.cite:hover{text-decoration:underline}
+.sources{margin-top:1.5rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.src{background:var(--surface);padding:.65rem 1.1rem;display:grid;grid-template-columns:2.1rem minmax(0,1fr);gap:.7rem;font-size:.87rem;align-items:baseline}
+.src .n{font-family:var(--f-mono);font-size:.7rem;color:var(--signal)}
+.src .t{font-weight:600;display:block}
+.src a{color:var(--muted);word-break:break-word;font-size:.82rem;text-decoration:none}
+.src a:hover{color:var(--ink);text-decoration:underline}
+
+/* ---------- stats ---------- */
+.stats{margin-top:1.6rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media (min-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:920px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--surface);padding:1.15rem 1.25rem;display:grid;gap:.32rem;align-content:start}
+.stat .v{font-family:var(--f-display);font-size:clamp(1.35rem,3.6vw,1.85rem);font-weight:800;letter-spacing:-.035em;font-variant-numeric:tabular-nums;line-height:1}
+.stat .k{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.stat .d{font-size:.85rem;color:var(--muted);line-height:1.45}
+
+/* ---------- risks ---------- */
+.risks{margin-top:1.6rem;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media (min-width:820px){.risks{grid-template-columns:repeat(2,1fr)}}
+.risk{background:var(--surface);padding:1.2rem 1.3rem;display:grid;gap:.5rem;align-content:start}
+.risk .g{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crit)}
+.risk h3{font-size:1.02rem;font-weight:700}
+.risk p{font-size:.92rem;color:var(--muted)}
+
+/* ---------- verdict callout ---------- */
+.verdict{margin-top:1.6rem;border:1px solid var(--signal);background:var(--signal-soft);padding:1.2rem 1.35rem;display:grid;gap:.5rem;max-width:var(--col)}
+.verdict .g{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.verdict p{font-size:.97rem}
+.verdict strong{font-weight:600}
 </style>
 
 <header class="hero">
@@ -324,6 +357,7 @@ footer{
         <span class="eyebrow">Tesis de producto</span>
         <span class="eyebrow">Eventos de entretenimiento</span>
         <span class="eyebrow">México · Latinoamérica</span>
+        <span class="eyebrow">v1.0 · Investigación verificada</span>
       </div>
       <h1>Event<br>Intelligence <em>OS</em></h1>
       <p class="hero-lede">La infraestructura comercial y financiera de los eventos físicos. No vendemos pulseras: vendemos <strong>más dinero por asistente</strong> y saber exactamente dónde se está perdiendo.</p>
@@ -341,29 +375,33 @@ footer{
     <div class="rail-inner">
       <div class="rail-part first">I · El mercado</div>
       <a href="#punto"><i>01</i> Punto de partida</a>
-      <a href="#mercado"><i>02</i> Quién ya está ahí</a>
-      <a href="#capas"><i>03</i> Las cuatro capas</a>
+      <a href="#numeros"><i>02</i> El mercado en números</a>
+      <a href="#mercado"><i>03</i> Quién ya está ahí</a>
+      <a href="#regulacion"><i>04</i> El terreno regulatorio</a>
+      <a href="#capas"><i>05</i> Las cuatro capas</a>
       <div class="rail-part">II · El asistente</div>
-      <a href="#wallet"><i>04</i> Wallet sin recarga</a>
-      <a href="#fanwallet"><i>05</i> Fan Wallet universal</a>
-      <a href="#loyalty"><i>06</i> Loyalty cross-event</a>
-      <a href="#marcas"><i>07</i> Sponsored payments</a>
+      <a href="#wallet"><i>06</i> La fricción del saldo</a>
+      <a href="#fanwallet"><i>07</i> Fan Wallet universal</a>
+      <a href="#loyalty"><i>08</i> Loyalty cross-event</a>
+      <a href="#marcas"><i>09</i> Sponsored payments</a>
       <div class="rail-part">III · La operación</div>
-      <a href="#command"><i>08</i> Command Center</a>
-      <a href="#ai"><i>09</i> Revenue optimization</a>
-      <a href="#inventario"><i>10</i> Inventario inteligente</a>
-      <a href="#settlement"><i>11</i> Vendor settlement</a>
-      <a href="#datos"><i>12</i> Heatmaps y Customer 360</a>
-      <a href="#reporte"><i>13</i> Post-event intelligence</a>
+      <a href="#command"><i>10</i> Command Center</a>
+      <a href="#ai"><i>11</i> Revenue optimization</a>
+      <a href="#inventario"><i>12</i> Inventario inteligente</a>
+      <a href="#settlement"><i>13</i> Vendor settlement</a>
+      <a href="#datos"><i>14</i> Heatmaps y Customer 360</a>
+      <a href="#reporte"><i>15</i> Post-event intelligence</a>
       <div class="rail-part">IV · El negocio</div>
-      <a href="#escalera"><i>14</i> La escalera</a>
-      <a href="#diferenciador"><i>15</i> El diferenciador</a>
-      <a href="#latam"><i>16</i> México y Latinoamérica</a>
-      <a href="#segmento"><i>17</i> Segmento inicial</a>
-      <a href="#modelo"><i>18</i> Modelo de negocio</a>
-      <a href="#moat"><i>19</i> Moat y flywheel</a>
+      <a href="#escalera"><i>16</i> La escalera</a>
+      <a href="#diferenciador"><i>17</i> El diferenciador</a>
+      <a href="#segmento"><i>18</i> Segmento inicial</a>
+      <a href="#modelo"><i>19</i> Modelo de negocio</a>
+      <a href="#latam"><i>20</i> México y Latinoamérica</a>
+      <a href="#moat"><i>21</i> Moat y flywheel</a>
+      <a href="#riesgos"><i>22</i> Riesgos</a>
       <div class="rail-part">Cierre</div>
       <a href="#vision"><i>△</i> La visión final</a>
+      <a href="#fuentes"><i>§</i> Fuentes</a>
     </div>
   </nav>
 
@@ -375,77 +413,155 @@ footer{
       <div class="sec-head"><span class="sec-num">01</span><h2>Punto de partida</h2></div>
       <div class="prose">
         <p>El proyecto nace de explorar una alternativa a las empresas de tecnología cashless para eventos de entretenimiento en México. Puesto de la forma más simple: una solución para que festivales, conciertos, estadios y venues operen sin efectivo, con pulseras NFC o RFID y puntos de venta.</p>
-        <p>Pero competir únicamente con un mejor cashless es una estrategia débil. Los principales jugadores del mercado ya ofrecen soluciones maduras de pagos, recargas, operación offline, control de accesos, dashboards y conciliación. Llegar con “nosotros también tenemos pulseras” es llegar tarde y por abajo.</p>
+        <p>Pero competir únicamente con un mejor cashless es una estrategia débil. Los jugadores del mercado ya ofrecen pagos, recargas, operación offline, control de accesos, dashboards y conciliación. Llegar con “nosotros también tenemos pulseras” es llegar tarde y por abajo.</p>
         <p>La oportunidad interesante es construir algo mucho más amplio: <strong>un sistema operativo comercial, financiero y operativo para eventos</strong>. En lugar de vender cashless, vender mayor rentabilidad por asistente y control total sobre la operación.</p>
       </div>
       <p class="pull">Payments + POS + Operations + Inventory + Identity + CRM + Loyalty + Analytics + AI.</p>
+      <p class="note">Cada cifra de este documento está referenciada en la sección de <a href="#fuentes">Fuentes</a>. Lo que sigue siendo estimación propia está marcado como tal.</p>
+    </section>
+
+    <section id="numeros">
+      <div class="sec-head"><span class="sec-num">02</span><h2>El mercado en números</h2></div>
+      <div class="prose">
+        <p>México no es un mercado secundario para esto. Es el <strong>tercer mercado de música en vivo del mundo</strong> por facturación, y creció al doble de velocidad que el PIB nacional.<a class="cite" href="#f4">4</a></p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="k">Derrama 2025</span><span class="v">$68,990M</span><span class="d">MXN de impacto económico del entretenimiento en vivo.<a class="cite" href="#f5">5</a></span></div>
+        <div class="stat"><span class="k">Venta de boletos</span><span class="v">+35%</span><span class="d">Crecimiento en 2025, con 200+ eventos masivos programados para 2026.<a class="cite" href="#f5">5</a></span></div>
+        <div class="stat"><span class="k">EDC México 2025</span><span class="v">325,000</span><span class="d">Asistentes acumulados en tres días.<a class="cite" href="#f6">6</a></span></div>
+        <div class="stat"><span class="k">Corona Capital 2025</span><span class="v">230,000</span><span class="d">Asistentes acumulados en tres días.<a class="cite" href="#f6">6</a></span></div>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Cuánto gasta realmente un asistente</h3>
+        <p>Este es el número que define todo el modelo, y hay datos públicos. En Corona Capital el gasto ronda los <strong>$500 MXN por persona por día</strong> en alimentos y bebidas.<a class="cite" href="#f8">8</a> En el Gran Premio de México, con un platillo, una bebida sin alcohol, una cerveza y un snack, el estimado es de <strong>$710 MXN diarios</strong>.<a class="cite" href="#f7">7</a> Una encuesta de Condusef ubica al 32% de los asistentes entre $500 y $800 de gasto total.<a class="cite" href="#f7">7</a></p>
+        <p>Es decir: un evento de 10,000 personas mueve del orden de <strong>$5 millones de pesos por día</strong> solo en consumo. Ese es el GMV sobre el que opera todo lo que sigue.</p>
+
+        <h3>Y cuánto sube el gasto con cashless</h3>
+        <p>El beneficio está documentado por la industria, aunque las cifras vienen de los propios proveedores y conviene leerlas como rango, no como promesa: entre <strong>15% y 30%</strong> más gasto por asistente es el rango que se reporta de forma consistente.<a class="cite" href="#f28">28</a> Tappit reporta 22% en promedio entre sus clientes,<a class="cite" href="#f16">16</a> Billfold habla de 20% a 60%,<a class="cite" href="#f12">12</a> y el Mercedes-Benz Stadium reportó +16% en alimentos y bebidas al volverse 100% sin efectivo.<a class="cite" href="#f28">28</a> Las transacciones se procesan entre 30% y 50% más rápido.<a class="cite" href="#f28">28</a></p>
+        <p>Esto importa porque significa que <strong>el cashless básico ya no es el argumento de venta: es la línea base</strong>. Quien no la tenga, la va a tener. La pregunta es qué se construye encima.</p>
+      </div>
+      <p class="note">El tamaño global del mercado de cashless para festivales se estima en USD 2.12 mil millones en 2024 con proyección a 9.89 mil millones en 2033.<a class="cite" href="#f31">31</a> Viene de reportes de mercado comerciales: úsese como orden de magnitud, no como dato duro.</p>
     </section>
 
     <section id="mercado">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Quién ya está ahí</h2></div>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Quién ya está ahí</h2></div>
       <div class="prose">
-        <p>Las plataformas modernas de cashless evolucionaron mucho más allá de entregar pulseras. Lo que ya existe hoy en el mercado:</p>
-      </div>
-      <div class="chips" style="margin-top:1.25rem">
-        <span class="chip">Pulseras RFID / NFC</span><span class="chip">POS</span><span class="chip">Pagos offline</span><span class="chip">Recargas</span><span class="chip">Precarga de saldo</span><span class="chip">Recarga por QR</span><span class="chip">Open loop</span><span class="chip">Tarjetas bancarias</span><span class="chip">Apple Pay</span><span class="chip">Google Pay</span><span class="chip">Control de accesos</span><span class="chip">Acreditaciones</span><span class="chip">Crew management</span><span class="chip">Dashboards en vivo</span><span class="chip">Inventarios</span><span class="chip">Reportes</span><span class="chip">Conciliaciones</span><span class="chip">Integraciones de ticketing</span><span class="chip">Datos de asistentes</span>
-      </div>
-      <div class="prose" style="margin-top:1.5rem">
-        <p>Por eso el diferenciador no puede ser “nosotros también tenemos pulseras NFC”. Ni siquiera “tenemos cashless más POS más accesos”. Eso ya existe.</p>
-        <p>En México el jugador a vencer es <strong>Hey Key / Paykey</strong>, que opera F1, EDC México, Corona Capital, Ceremonia y Trópico. Al ampliar la búsqueda fuera del país aparecen compañías todavía más sofisticadas.</p>
+        <p>Hay dos cosas que entender del mercado mexicano, y ninguna es obvia desde afuera.</p>
+        <h3>Primero: la cima del mercado está cerrada</h3>
+        <p><strong>Live Nation posee el 75% de OCESA</strong> tras comprar un 24% adicional por 638 millones de dólares; CIE conserva el 25% restante y la venta del resto está diferida hasta 2032.<a class="cite" href="#f11">11</a> OCESA promueve más de 3,100 eventos y cerca de 6 millones de asistentes al año, y opera 13 recintos con 250,000 butacas.<a class="cite" href="#f11">11</a></p>
+        <p>Del lado de los festivales de Ciudad de México, una investigación periodística documentó a <strong>Grupo Eco: ocho socios y diecisiete empresas</strong> que se contratan entre sí para producir los festivales de la capital.<a class="cite" href="#f9">9</a> El proveedor cashless dominante, <strong>Paykey</strong>, opera desde 2016 y pertenece junto con Plus a la razón social <em>Plus Hospitalidad SAPI de CV</em>, dentro de esa misma red.<a class="cite" href="#f10">10</a> Maneja las pulseras de Corona Capital, Vive Latino, EDC, Trópico, Ceremonia y Fórmula 1.<a class="cite" href="#f10">10</a></p>
+        <p>La conclusión operativa es directa: <strong>no se compite por los eventos de OCESA.</strong> Están integrados verticalmente, del boleto al recinto al cashless. Y ahora también los bancos entraron — <em>Digicash by Banamex</em> debutó en Vive Latino 2025.<a class="cite" href="#f27">27</a></p>
+        <h3>Segundo: debajo de esa cima el mercado está fragmentado</h3>
+        <p>Existen proveedores locales medianos y chicos — Card Depot, Safety Global con su producto YCashless — y proveedores internacionales operando eventos en México. <strong>Zamna, en Tulum, opera con WeezPay de Weezevent</strong>, no con Paykey.<a class="cite" href="#f32">32</a> Ahí no hay un dominador, y ahí es donde hay entrada.</p>
       </div>
 
       <div class="scroll">
         <table>
-          <caption>Panorama competitivo</caption>
-          <thead><tr><th scope="col">Jugador</th><th scope="col">Fuerte en</th><th scope="col">El hueco</th></tr></thead>
+          <caption>Panorama competitivo verificado</caption>
+          <thead><tr><th scope="col">Jugador</th><th scope="col">Qué es</th><th scope="col">El hueco</th></tr></thead>
           <tbody>
             <tr>
-              <th scope="row">Hey Key / Paykey<br><span class="small mono">MX</span></th>
-              <td>Cashless, POS, offline, accesos, crew, open loop, dashboards, reporting. Escala real en festivales grandes.</td>
-              <td class="gap">Ejecuta y reporta transacciones. No optimiza la rentabilidad del evento mientras corre.</td>
+              <th scope="row">Paykey<br><span class="small mono">MX · 2016</span></th>
+              <td>Cashless y control de accesos. Opera los festivales grandes de CDMX y F1. Parte de la red Grupo Eco, razón social <em>Plus Hospitalidad SAPI de CV</em>.<a class="cite" href="#f10">10</a></td>
+              <td class="gap">Ejecuta y reporta transacciones. No optimiza rentabilidad en tiempo real. Su economía acaba de ser recortada por Profeco.</td>
             </tr>
             <tr>
-              <th scope="row">Billfold<br><span class="small mono">US</span></th>
-              <td>Se posiciona literal como <em>operating system for live events</em>: payments, RFID, POS, vendor management, settlement, segmentación, activaciones de sponsor, cross-event analytics. Ya habla de incrementar el revenue per guest.</td>
-              <td class="gap">El posicionamiento global ya está tomado. El hueco no es de narrativa, es de mercado: no está en Latinoamérica.</td>
+              <th scope="row">Billfold<br><span class="small mono">US · 2016</span></th>
+              <td>Se posiciona como <em>operating system for live events</em>. Permite ligar la tarjeta bancaria directo a la pulsera, sin recargas. Reporta 20–60% más gasto.<a class="cite" href="#f12">12</a></td>
+              <td class="gap">Levantó solo ~6.6 MDD en total.<a class="cite" href="#f13">13</a> El líder conceptual global es una empresa chica — y no está en Latinoamérica.</td>
             </tr>
             <tr>
-              <th scope="row">Intellitix</th>
-              <td>RFID, cashless, accesos, integraciones de ticketing, analytics en tiempo real, vendor reporting, settlements. Conecta ticket → identidad → acceso → consumo.</td>
-              <td class="gap">Conocer el consumo individual de un asistente ya no es novedad.</td>
+              <th scope="row">Intellitix<br><span class="small mono">CA</span></th>
+              <td>RFID, accesos, POS y ticketing. Más de mil millones de dólares procesados desde 2010; Tomorrowland y BlizzCon.<a class="cite" href="#f14">14</a> Compró CrowdBlink (2020) y LOC Pay (2017).<a class="cite" href="#f15">15</a></td>
+              <td class="gap">Conectar ticket, identidad, acceso y consumo ya no es novedad. El dato crudo no es el diferenciador.</td>
             </tr>
             <tr>
-              <th scope="row">Tappit</th>
-              <td>Payments + data: RFID, mobile wallets, open y closed loop, fan profiles, ofertas personalizadas, rewards, vouchers, analytics de comportamiento.</td>
+              <th scope="row">Tappit<br><span class="small mono">UK</span></th>
+              <td>Payments + data: RFID, wallets, open y closed loop, perfiles de fan, ofertas personalizadas. Reporta 22% de incremento promedio en ingreso.<a class="cite" href="#f16">16</a></td>
               <td class="gap">Identidad persistente y loyalty ya existen parcialmente.</td>
             </tr>
             <tr>
-              <th scope="row">Weezevent</th>
-              <td>Ticketing, accesos, cashless, staff, CRM y marketing en una suite, con segmentación y relación posterior al evento.</td>
-              <td class="gap">Suite amplia, inteligencia superficial.</td>
+              <th scope="row">Weezevent<br><span class="small mono">FR</span></th>
+              <td>Ticketing, accesos, cashless (WeezPay), staff, CRM. Más de 500 festivales al año en 20+ países.<a class="cite" href="#f17">17</a> Opera Zamna en Tulum.<a class="cite" href="#f32">32</a></td>
+              <td class="gap">Suite amplia, inteligencia superficial. Y expuesto en México al criterio de Profeco.</td>
+            </tr>
+            <tr>
+              <th scope="row">Glownet<br><span class="small mono">UK</span></th>
+              <td>Wallets, POS, accesos y marketplace. Más de 650 eventos, entre ellos Sónar, Lollapalooza y Ultra.<a class="cite" href="#f18">18</a></td>
+              <td class="gap">Modelo SaaS más transaccional, sin capa de decisión operativa.</td>
+            </tr>
+            <tr>
+              <th scope="row">Zelebrix<br><span class="small mono">ES</span></th>
+              <td>Cashless B2B con pulseras NFC y <strong>autorecarga desde el móvil sin app</strong>. Se vende literalmente como “cashless sin puntos de recarga”.<a class="cite" href="#f19">19</a></td>
+              <td class="gap">Prueba de que el “sin recarga” ya está productizado por más de un jugador.</td>
+            </tr>
+            <tr>
+              <th scope="row">PouchNATION<br><span class="small mono">SG</span></th>
+              <td>Gestión integral de invitados para eventos y venues; el proveedor preferido de los festivales grandes del sudeste asiático.</td>
+              <td class="gap">Fuera de la región, pero prueba que el modelo integral funciona en mercados emergentes.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="prose" style="margin-top:1.5rem">
-        <p>La conclusión importante: no seríamos la primera empresa del mundo en construir muchas de estas funcionalidades. Pero <strong>no parece existir un jugador que empaquete de forma profunda transacciones, operación, identidad, inteligencia y acción automatizada</strong>, con una capa de IA cuyo objetivo sea optimizar la rentabilidad del evento en tiempo real. Ahí está la oportunidad.</p>
+      <div class="verdict">
+        <span class="g">La conclusión que hay que tragarse</span>
+        <p>No seríamos los primeros del mundo en construir casi nada de esto. Lo que <strong>no</strong> existe es un jugador que empaquete de forma profunda transacciones, operación, identidad, inteligencia y acción automatizada, con una capa de IA cuyo objetivo explícito sea la rentabilidad del evento en tiempo real — y que lo haga desde y para Latinoamérica.</p>
       </div>
-      <p class="note">Las cifras y capacidades de esta tabla vienen de investigación de escritorio y conviene verificarlas antes de usarlas frente a un cliente o un inversionista.</p>
+    </section>
+
+    <section id="regulacion">
+      <div class="sec-head"><span class="sec-num">04</span><h2>El terreno regulatorio</h2></div>
+      <div class="prose">
+        <p>En febrero de 2025 pasó algo que cambió la economía del negocio y que casi nadie fuera de la industria registró. Tras una ola de quejas de consumidores, <strong>Profeco llegó a un acuerdo con OCESA</strong> por el cual, en sus eventos:<a class="cite" href="#f1">1</a><a class="cite" href="#f2">2</a></p>
+        <ul>
+          <li>Ya <strong>no se vende</strong> el dispositivo cashless.</li>
+          <li>Ya <strong>no se cobra comisión</strong> por precarga ni por recarga.</li>
+          <li>Ya <strong>no se cobra comisión</strong> por devolver el saldo restante.</li>
+        </ul>
+        <p>Aplica al Gran Premio de México, NASCAR Cup, Vive Latino, Tecate Emblema, Arre, Corona Capital, Flow Fest y EDC México.<a class="cite" href="#f1">1</a> Profeco además señaló que obligar al cashless como <em>único</em> medio de pago choca con el derecho del consumidor a elegir cómo pagar.<a class="cite" href="#f33">33</a></p>
+        <p>Y en febrero de 2026 Profeco publicó en el Diario Oficial lineamientos obligatorios para la venta de boletos en eventos de <strong>más de 20,000 asistentes</strong>: precios totales transparentes, prohibición de subir el precio durante la compra y reembolso del 100% incluyendo cargos por servicio, con multas superiores a 4 millones de pesos.<a class="cite" href="#f3">3</a></p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Lo que la regulación le quitó al modelo tradicional</caption>
+          <thead><tr><th scope="col">Línea de ingreso</th><th scope="col">Antes</th><th scope="col">Después de Profeco</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Venta de la pulsera</th><td>Se cobraba al asistente</td><td class="gap">Eliminada</td></tr>
+            <tr><th scope="row">Comisión por recarga</th><td>Se cobraba por cada carga</td><td class="gap">Eliminada</td></tr>
+            <tr><th scope="row">Comisión por devolución</th><td>Se cobraba por reembolsar</td><td class="gap">Eliminada</td></tr>
+            <tr><th scope="row">Breakage · saldo no reclamado</th><td>Hasta 5% del ingreso total del evento<a class="cite" href="#f17">17</a></td><td class="gap">Insostenible bajo el nuevo criterio</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Por qué esto nos conviene</h3>
+        <p>Porque ese ingreso <em>no era nuestro</em>. Era del modelo tradicional, y la regla se lo quitó a quien ya vivía de él. Un entrante que nunca dependió de vender pulseras ni de quedarse con el saldo olvidado no pierde nada — y gana un argumento comercial que el incumbente no puede usar sin admitir que antes cobraba.</p>
+        <p>La postura del producto es adoptar el estándar Profeco <strong>voluntariamente y en todo el país</strong>, no solo donde la autoridad ya llegó. Es relevante porque el criterio hoy solo obliga a OCESA por acuerdo: en otros eventos siguen operando las reglas viejas — Zamna, por ejemplo, establece que el saldo no usado <strong>no es reembolsable</strong> y que los créditos no se transfieren a otra fiesta.<a class="cite" href="#f32">32</a> Ese es exactamente el tipo de cláusula que Profeco atacó, y quien la sostenga está del lado equivocado de hacia dónde va la regulación.</p>
+      </div>
+
+      <div class="verdict">
+        <span class="g">Posicionamiento</span>
+        <p><strong>Cero comisiones al asistente. Siempre, en todos los eventos, sin que nadie nos obligue.</strong> El asistente no paga por la pulsera, no paga por recargar, no paga por que le devuelvan su dinero y nunca está obligado a usar cashless si quiere pagar de otra forma. Quien paga es el promotor, por una plataforma que le hace ganar más — y las marcas, por activaciones medibles.</p>
+      </div>
     </section>
 
     <section id="capas">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Las cuatro capas</h2></div>
+      <div class="sec-head"><span class="sec-num">05</span><h2>Las cuatro capas</h2></div>
       <div class="prose">
-        <p>En lugar de construir un Cashless 2.0, la visión es un <strong>Event Intelligence OS</strong>: una plataforma que no solo procese lo que sucede durante el evento, sino que entienda lo que está pasando, prediga lo que va a pasar y recomiende o ejecute acciones para mejorar el resultado.</p>
+        <p>En lugar de construir un cashless 2.0, la visión es un <strong>Event Intelligence OS</strong>: una plataforma que no solo procese lo que sucede durante el evento, sino que entienda lo que está pasando, prediga lo que va a pasar y recomiende o ejecute acciones para mejorar el resultado.</p>
         <p>Las tres primeras capas son costo de entrada. La cuarta es la compañía.</p>
       </div>
       <div class="stack">
         <div class="layer">
           <div class="layer-id"><span class="n">CAPA 1</span><h3>Transactions</h3></div>
           <div>
-            <div class="chips"><span class="chip">NFC / RFID</span><span class="chip">POS</span><span class="chip">Tarjeta</span><span class="chip">Apple Pay</span><span class="chip">Google Pay</span><span class="chip">QR</span><span class="chip">Wallet</span><span class="chip">Offline</span><span class="chip">Efectivo opcional</span><span class="chip">Processing</span></div>
-            <p class="layer-note">Todo alimenta un mismo ledger. Sin ledger único, las capas de arriba no existen.</p>
+            <div class="chips"><span class="chip">NFC / RFID</span><span class="chip">POS</span><span class="chip">Tarjeta</span><span class="chip">Apple Pay</span><span class="chip">Google Pay</span><span class="chip">QR</span><span class="chip">SPEI / CoDi</span><span class="chip">Wallet</span><span class="chip">Offline</span><span class="chip">Efectivo</span></div>
+            <p class="layer-note">Todo alimenta un mismo ledger. Sin ledger único, las capas de arriba no existen. El efectivo se queda como opción: la ley protege el derecho a elegir medio de pago.<a class="cite" href="#f33">33</a></p>
           </div>
         </div>
         <div class="layer">
@@ -465,8 +581,8 @@ footer{
         <div class="layer">
           <div class="layer-id"><span class="n">CAPA 4</span><h3>Intelligence</h3></div>
           <div>
-            <div class="chips"><span class="chip">Ventas</span><span class="chip">Aforo</span><span class="chip">Inventario</span><span class="chip">Staff</span><span class="chip">Filas</span><span class="chip">POS</span><span class="chip">Ubicación</span><span class="chip">Horarios</span><span class="chip">Productos</span><span class="chip">Patrones históricos</span><span class="chip">Comportamiento</span></div>
-            <p class="layer-note">Convierte los datos en <strong>predicción → recomendación → acción</strong>. Es la capa que nadie tiene empaquetada.</p>
+            <div class="chips"><span class="chip">Ventas</span><span class="chip">Aforo</span><span class="chip">Inventario</span><span class="chip">Staff</span><span class="chip">Filas</span><span class="chip">POS</span><span class="chip">Ubicación</span><span class="chip">Horarios</span><span class="chip">Productos</span><span class="chip">Patrones históricos</span></div>
+            <p class="layer-note">Convierte los datos en <strong>predicción → recomendación → acción</strong>. Es la capa que ningún competidor tiene empaquetada.</p>
           </div>
         </div>
       </div>
@@ -475,43 +591,52 @@ footer{
     <div class="part"><span class="pn">Parte II</span><span class="pt">El asistente</span></div>
 
     <section id="wallet">
-      <div class="sec-head"><span class="sec-num">04</span><h2>Wallet sin recarga</h2></div>
+      <div class="sec-head"><span class="sec-num">06</span><h2>La fricción del saldo</h2></div>
       <div class="prose">
         <p>La queja número uno de quien ya usó cashless es siempre la misma: hacer doble fila. Una para recargar y otra para comprar. Y si sobran $350, o se tramita la devolución o se pierden.</p>
+        <p>La respuesta intuitiva es eliminar la recarga: ligar la tarjeta a la pulsera y que cada tap cobre directo. <strong>Hay que decir con claridad que eso ya existe</strong> — Billfold lo ofrece con la tarjeta ligada a la pulsera sin límites ni recargas,<a class="cite" href="#f12">12</a> y Zelebrix se vende como “cashless sin puntos de recarga” con autorecarga desde el móvil.<a class="cite" href="#f19">19</a> No es un diferenciador; es paridad competitiva, y hay que tenerlo.</p>
+        <p>Lo que sí es una decisión de arquitectura seria es <em>cómo</em> se hace, porque tiene dos costos escondidos.</p>
       </div>
+
       <div class="cards two">
         <div class="card">
-          <span class="tag">Modelo tradicional</span>
-          <h3>Tarjeta → recarga → saldo → compra → refund</h3>
-          <p>Cinco pasos, dos filas, dinero atrapado y una devolución que casi nadie reclama.</p>
+          <span class="tag">Costo escondido 1 · conectividad</span>
+          <h3>El cargo directo necesita red donde no la hay</h3>
+          <p>El teléfono como terminal ya llegó a México — Tap to Pay en iPhone desde marzo de 2026 con Adyen, Clip, Mercado Pago y Visa,<a class="cite" href="#f20">20</a> y en Android con Clip y Point Tap. Pero <strong>la autorización ocurre en línea</strong> y hay topes por transacción.<a class="cite" href="#f21">21</a> No resuelve el offline de un festival.</p>
         </div>
         <div class="card">
-          <span class="tag">Modelo alternativo</span>
-          <h3>Tarjeta / wallet → pulsera → compra</h3>
-          <p>El asistente registra su método de pago antes del evento y vincula su pulsera. Compra una cerveza, tap, el cargo va directo al método de pago. Sin saldo, sin estación de recarga, sin refund.</p>
+          <span class="tag">Costo escondido 2 · economía</span>
+          <h3>Cada tap abierto paga interchange</h3>
+          <p>En México el costo de adquirencia va de 3.39% a 3.6% más IVA.<a class="cite" href="#f22">22</a> Con cargo directo, <em>cada</em> compra del asistente paga esa tasa. Con saldo prepagado se paga una vez al fondear — y si se fondea por QR o SPEI, cuesta cerca de cero.<a class="cite" href="#f22">22</a></p>
         </div>
       </div>
-      <div class="prose" style="margin-top:1.5rem">
-        <h3>Auto Top-Up para quien prefiere saldo</h3>
-        <p>“Cuando mi saldo baje de $200, recarga $500 automáticamente.” Se conserva el prepago para quien lo quiera, pero desaparece la fila. Eso reduce filas, recargas, fricción, refunds y dinero atrapado.</p>
-        <h3>El reto real es la adopción</h3>
-        <p>Nadie va a descargar una aplicación para ver a un artista. Por eso el enganche no puede ser la app: tiene que ser el ticket. En el momento de comprar el boleto aparece el paso de vincular tarjeta o fondear saldo. Empieza desde la raíz. Para quien llegue en frío, un QR en la entrada que registre la tarjeta en segundos, sin descarga.</p>
+
+      <div class="verdict">
+        <span class="g">La postura correcta</span>
+        <p>Un modelo <strong>híbrido y anclado en rieles mexicanos</strong>: fondeo por SPEI, CoDi o QR — casi gratis — con <strong>auto top-up</strong> que elimina la fila sin eliminar el saldo, más tarjeta contactless disponible para quien la prefiera, resuelta con <em>floor limits</em> y autenticación offline de EMV, donde habilitar contactless traslada la responsabilidad del fraude al emisor.<a class="cite" href="#f30">30</a></p>
+        <p>Se queda la ventaja de experiencia — nadie hace fila — sin comprarse el riesgo de crédito ni pagar interchange en cada cerveza. Y el reembolso automático del saldo sobrante, sin comisión, se vuelve una función del producto y no un trámite.</p>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>El reto real sigue siendo la adopción</h3>
+        <p>Nadie descarga una aplicación para ver a un artista. El enganche no puede ser la app: tiene que ser el ticket. En el momento de comprar el boleto aparece el paso de vincular método de pago o fondear. Para quien llegue en frío, un QR en la entrada que registre todo en segundos, sin descarga.</p>
       </div>
       <p class="pull">Quien controla la venta del boleto controla el onboarding del wallet. Ese es el orden correcto, no al revés.</p>
     </section>
 
     <section id="fanwallet">
-      <div class="sec-head"><span class="sec-num">05</span><h2>Fan Wallet universal</h2></div>
+      <div class="sec-head"><span class="sec-num">07</span><h2>Fan Wallet universal</h2></div>
       <div class="prose">
-        <p>Hoy cada festival crea una economía temporal: pulsera, saldo, se acaba, desaparece. La alternativa es una identidad permanente.</p>
-        <p>Un usuario tendría un <strong>Fan Wallet</strong> con métodos de pago, eventos visitados, historial de consumo, loyalty points, boletos, preferencias, créditos y membresías. Con esa cuenta entra a distintos festivales, venues, estadios y clubes dentro del ecosistema.</p>
+        <p>Hoy cada festival crea una economía temporal: pulsera, saldo, se acaba, desaparece. Zamna lo dice explícitamente en sus términos — los créditos valen solo para ese evento y no se transfieren.<a class="cite" href="#f32">32</a> Esa es la norma de la industria, y es una decisión de diseño, no una limitación técnica.</p>
+        <p>La alternativa es una identidad permanente: un <strong>Fan Wallet</strong> con métodos de pago, eventos visitados, historial de consumo, puntos, boletos, preferencias, créditos y membresías. Con esa cuenta el asistente entra a distintos festivales, venues, estadios y clubes del ecosistema.</p>
         <p>La pulsera pasa a ser simplemente <em>una llave física para acceder a su identidad</em>.</p>
       </div>
       <p class="pull">Eso transforma la empresa de proveedor B2B de eventos a red de pagos e identidad para entretenimiento.</p>
+      <p class="note">Es la pieza más valiosa de toda la tesis y también la más difícil: no es difícil de programar, es difícil de existir. Requiere muchos venues y resolver el arranque en frío. Es consecuencia de operar, no punto de partida.</p>
     </section>
 
     <section id="loyalty">
-      <div class="sec-head"><span class="sec-num">06</span><h2>Loyalty cross-event</h2></div>
+      <div class="sec-head"><span class="sec-num">08</span><h2>Loyalty cross-event</h2></div>
       <div class="prose">
         <p>Con identidad persistente, el gasto y el comportamiento se convierten en recompensas. El objetivo es transformar cashless en CRM más loyalty.</p>
       </div>
@@ -524,9 +649,9 @@ footer{
     </section>
 
     <section id="marcas">
-      <div class="sec-head"><span class="sec-num">07</span><h2>Sponsored payments</h2></div>
+      <div class="sec-head"><span class="sec-num">09</span><h2>Sponsored payments</h2></div>
       <div class="prose">
-        <p>Las marcas pueden financiar consumo directamente dentro del sistema. Es probablemente la línea de negocio más interesante después de los pagos.</p>
+        <p>Las marcas pueden financiar consumo directamente dentro del sistema. Con las comisiones al asistente eliminadas por regulación, esta se vuelve una de las pocas líneas de ingreso nuevas y limpias del modelo.</p>
       </div>
 
       <div class="scroll">
@@ -544,16 +669,16 @@ footer{
 
       <div class="prose" style="margin-top:1.5rem">
         <p>El mismo mecanismo funciona para “paga con Mastercard y recibe 20% de cashback” o “compra dos productos Coca-Cola y desbloquea fast lane”. Todo automático, todo atribuible.</p>
-        <p>Esto abre una segunda fuente de monetización — promotores, marcas, vendors y procesamiento — y convierte las activaciones de marca en algo medible directamente en revenue y comportamiento, no en impresiones.</p>
+        <p>La marca deja de comprar una lona y empieza a comprar transacciones medidas. Es la diferencia entre patrocinio e infraestructura de activación.</p>
       </div>
     </section>
 
     <div class="part"><span class="pn">Parte III</span><span class="pt">La operación</span></div>
 
     <section id="command">
-      <div class="sec-head"><span class="sec-num">08</span><h2>Event Command Center</h2></div>
+      <div class="sec-head"><span class="sec-num">10</span><h2>Event Command Center</h2></div>
       <div class="prose">
-        <p>Un dashboard tradicional dice “vendiste $4 millones”. Eso debería ser commodity. Lo importante no es mostrar el número, es interpretarlo — y que lo entienda el promotor, no un analista.</p>
+        <p>Un dashboard tradicional dice “vendiste $4 millones”. Eso ya es commodity. Lo importante no es mostrar el número, es interpretarlo — y que lo entienda el promotor, no un analista.</p>
       </div>
 
       <div class="panel" role="img" aria-label="Panel en vivo: revenue 3,824,430 pesos, 47,200 por minuto, ticket promedio 387 pesos, 8,492 personas dentro. Barra Norte al 93 por ciento, Sur 62 por ciento, VIP 31 por ciento.">
@@ -583,12 +708,13 @@ footer{
         </div>
         <p class="panel-note">Barra Norte supera el umbral de espera donde cae la frecuencia de compra. <b>Recomendación: mover 2 bartenders de VIP a Norte.</b></p>
       </div>
+      <p class="note">Escenario ilustrativo, construido sobre gasto real: 8,492 personas dentro con un consumo del orden de $450 por persona en la noche. Consistente con los $500 diarios documentados en Corona Capital.<a class="cite" href="#f8">8</a></p>
     </section>
 
     <section id="ai">
-      <div class="sec-head"><span class="sec-num">09</span><h2>AI Revenue Optimization</h2></div>
+      <div class="sec-head"><span class="sec-num">11</span><h2>AI Revenue Optimization</h2></div>
       <div class="prose">
-        <p>Este es el diferenciador principal. El sistema aprende en qué punto la fila empieza a costar dinero y lo detecta antes de que pase.</p>
+        <p>Este es el diferenciador real. El sistema aprende en qué punto la fila empieza a costar dinero y lo detecta antes de que pase.</p>
       </div>
 
       <div class="action">
@@ -613,21 +739,22 @@ footer{
 
       <div class="prose" style="margin-top:1.75rem">
         <p>La diferencia fundamental es que el software no solamente muestra información: <strong>te dice qué hacer</strong>.</p>
+        <p>Hay que ser honestos sobre la curva: en los primeros eventos esto son reglas — umbral de utilización, venta por minuto, throughput por bartender — y no modelos entrenados. Está bien, porque las reglas ya generan la mayor parte del valor visible. Los modelos llegan cuando hay decenas de eventos comparables en la base.</p>
         <h3>Dynamic pricing</h3>
-        <p>Los precios pueden cambiar según hora, inventario, demanda, saturación, ubicación, patrocinador o tipo de usuario. Cerveza a $120 de 5 a 7 de la tarde y $150 de 7 a 10 de la noche.</p>
-        <p>Y el pricing también sirve para distribuir demanda: si Barra Norte está saturada y Barra Sur vacía, “10% de descuento en Barra Sur durante los próximos 20 minutos”. Así el precio deja de ser una lista y se convierte en una herramienta operativa.</p>
+        <p>Los precios pueden cambiar según hora, inventario, demanda, saturación, ubicación, patrocinador o tipo de usuario. Y el pricing también sirve para distribuir demanda: si Barra Norte está saturada y Barra Sur vacía, “10% de descuento en Barra Sur durante los próximos 20 minutos”. El precio deja de ser una lista y se convierte en control de tráfico.</p>
+        <p class="small">Nota de diseño: cualquier movimiento de precio tiene que ser hacia abajo o comunicado con antelación. La dirección regulatoria en México va hacia transparencia de precio y prohibición de incrementos durante la compra.<a class="cite" href="#f3">3</a> El pricing dinámico se usa para llenar barras vacías, no para castigar la fila.</p>
       </div>
     </section>
 
     <section id="inventario">
-      <div class="sec-head"><span class="sec-num">10</span><h2>Inventario inteligente</h2></div>
+      <div class="sec-head"><span class="sec-num">12</span><h2>Inventario inteligente</h2></div>
       <div class="prose">
         <p>Cada venta permite calcular el consumo esperado. La diferencia contra el consumo físico es dinero yéndose por algún lado.</p>
       </div>
 
       <div class="scroll">
         <table>
-          <caption>Detección de merma · Bacardí</caption>
+          <caption>Detección de merma · una barra, una noche</caption>
           <thead><tr><th scope="col">Concepto</th><th scope="col" class="num">Cantidad</th></tr></thead>
           <tbody>
             <tr><th scope="row">Bebidas vendidas</th><td class="num">1,000</td></tr>
@@ -640,19 +767,19 @@ footer{
       </div>
 
       <div class="prose" style="margin-top:1.5rem">
-        <p>Las causas posibles son robo, sobreporción, bebidas regaladas, errores de captura o mermas. Un sistema tradicional te muestra la diferencia; el nuestro detecta el patrón:</p>
+        <p>Las causas posibles son robo, sobreporción, bebidas regaladas, errores de captura o mermas. Un sistema tradicional muestra la diferencia; este detecta el patrón:</p>
         <ul>
-          <li>Bartender #14 presenta 23% más consumo de tequila por bebida que el promedio.</li>
-          <li>Barra 7 muestra una desviación estadísticamente anormal entre ventas e inventario.</li>
+          <li>El bartender #14 sirve 23% más destilado por bebida que el promedio de su barra.</li>
+          <li>La barra 7 muestra una desviación estadísticamente anormal entre ventas e inventario.</li>
         </ul>
-        <p>Eso convierte el inventario en un <strong>AI Shrinkage Detection System</strong>, no en un reporte.</p>
+        <p>Eso convierte el inventario en un sistema de detección de merma, no en un reporte.</p>
       </div>
     </section>
 
     <section id="settlement">
-      <div class="sec-head"><span class="sec-num">11</span><h2>Vendor settlement</h2></div>
+      <div class="sec-head"><span class="sec-num">13</span><h2>Vendor settlement</h2></div>
       <div class="prose">
-        <p>Después de un evento existe una carga administrativa enorme para conciliar con cada vendor. Ese trabajo se puede automatizar por completo.</p>
+        <p>Después de un evento hay una carga administrativa enorme para conciliar con cada vendor. Ese trabajo se puede automatizar por completo.</p>
       </div>
 
       <div class="scroll">
@@ -662,22 +789,23 @@ footer{
           <tbody>
             <tr><th scope="row">Ventas brutas</th><td class="num">482,300.00</td></tr>
             <tr><th scope="row">Comisión del evento · 20%</th><td class="num">−96,460.00</td></tr>
-            <tr><th scope="row">Processing · 2.9%</th><td class="num">−13,986.70</td></tr>
+            <tr><th scope="row">Costo de procesamiento · 3.5%</th><td class="num">−16,880.50</td></tr>
             <tr><th scope="row">Refunds</th><td class="num">−4,200.00</td></tr>
-            <tr class="total"><th scope="row">Neto a depositar</th><td class="num">367,653.30</td></tr>
+            <tr class="total"><th scope="row">Neto a depositar</th><td class="num">364,759.50</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="prose" style="margin-top:1.5rem">
         <p>El sistema genera conciliación, estado de cuenta, comisión, impuestos y ajustes, y eventualmente ejecuta la transferencia. De ahí se abren después productos financieros: liquidación instantánea, adelanto de flujo y capital de trabajo para vendors.</p>
+        <p class="small">El 3.5% de procesamiento corresponde al costo real de adquirencia en México, no a un margen.<a class="cite" href="#f22">22</a> Ver la sección de <a href="#modelo">modelo de negocio</a>, donde importa mucho.</p>
       </div>
     </section>
 
     <section id="datos">
-      <div class="sec-head"><span class="sec-num">12</span><h2>Heatmaps y Customer 360</h2></div>
+      <div class="sec-head"><span class="sec-num">14</span><h2>Heatmaps y Customer 360</h2></div>
       <div class="prose">
-        <p>Combinando control de accesos, NFC, POS, ubicación, ticketing y compras se puede reconstruir el movimiento real del asistente dentro del evento.</p>
+        <p>Combinando accesos, NFC, POS, ubicación, ticketing y compras se reconstruye el movimiento real del asistente dentro del evento.</p>
       </div>
 
       <div class="panel" role="img" aria-label="Mapa de calor: Main Stage con la mayor concentración, VIP segundo, Stage 2 tercero, Food Court el más bajo.">
@@ -692,7 +820,7 @@ footer{
       </div>
 
       <div class="prose" style="margin-top:1.75rem">
-        <p>Con eso se responde dónde está la gente, dónde compra, cuánto tiempo permanece, qué zonas convierten mejor, qué patrocinadores reciben tráfico real y dónde deberían colocarse barras, baños y merch. Sirve durante el evento para mover recursos, y después para planear el siguiente.</p>
+        <p>Con eso se responde dónde está la gente, dónde compra, cuánto permanece, qué zonas convierten mejor, qué patrocinadores reciben tráfico real y dónde deberían ir barras, baños y merch. Sirve durante el evento para mover recursos y después para planear el siguiente.</p>
         <h3>Customer 360</h3>
         <p>Cada asistente se convierte en un perfil de comportamiento:</p>
       </div>
@@ -715,24 +843,25 @@ footer{
       </div>
 
       <div class="prose" style="margin-top:1.5rem">
-        <p>De ahí salen modelos del tipo “los clientes con gasto superior a $3,000 tienen X veces más probabilidad de comprar VIP” o “los usuarios que compran merch en su primer evento retienen mejor entre eventos”.</p>
-        <p>Toda esta información exige consentimiento explícito y una arquitectura seria de privacidad y protección de datos desde el diseño, no como parche posterior.</p>
+        <p>De ahí salen modelos como “los clientes con gasto superior a $3,000 tienen X veces más probabilidad de comprar VIP”.</p>
+        <p>Todo esto exige consentimiento explícito y una arquitectura seria de privacidad desde el diseño, con cumplimiento de la ley de protección de datos personales en posesión de particulares. No es un parche posterior: es requisito de la capa 3.</p>
       </div>
     </section>
 
     <section id="reporte">
-      <div class="sec-head"><span class="sec-num">13</span><h2>Post-event intelligence</h2></div>
+      <div class="sec-head"><span class="sec-num">15</span><h2>Post-event intelligence</h2></div>
       <div class="prose">
-        <p>Al terminar el evento, la plataforma no debería entregar un reporte de ventas. Debería entregar la cuenta de lo que se dejó de ganar y qué hacer distinto la próxima vez.</p>
+        <p>Al terminar el evento, la plataforma no entrega un reporte de ventas. Entrega la cuenta de lo que se dejó de ganar y qué hacer distinto la próxima vez.</p>
       </div>
 
       <div class="scroll">
         <table>
-          <caption>Event performance report</caption>
+          <caption>Event performance report · 12,500 asistentes, 2 días</caption>
           <thead><tr><th scope="col">Métrica</th><th scope="col" class="num">Valor</th></tr></thead>
           <tbody>
             <tr><th scope="row">Revenue total</th><td class="num">$12,400,000</td></tr>
             <tr><th scope="row">Revenue por asistente</th><td class="num">$993</td></tr>
+            <tr><th scope="row">Revenue por asistente por día</th><td class="num">$496</td></tr>
             <tr><th scope="row">Filas</th><td class="num">−$420,000</td></tr>
             <tr><th scope="row">Stockouts</th><td class="num">−$270,000</td></tr>
             <tr><th scope="row">Staffing ineficiente</th><td class="num">−$184,000</td></tr>
@@ -743,6 +872,7 @@ footer{
           </tbody>
         </table>
       </div>
+      <p class="note">Los $496 por persona por día están anclados en el gasto documentado de Corona Capital (~$500) y del Gran Premio (~$710).<a class="cite" href="#f8">8</a><a class="cite" href="#f7">7</a> El desglose de pérdidas es el modelo propuesto, no un dato de mercado: es exactamente lo que el producto tendría que medir para poder afirmarlo.</p>
 
       <div class="action">
         <div class="action-head"><span>Recomendaciones para el siguiente evento</span></div>
@@ -764,12 +894,12 @@ footer{
     <div class="part"><span class="pn">Parte IV</span><span class="pt">El negocio</span></div>
 
     <section id="escalera">
-      <div class="sec-head"><span class="sec-num">14</span><h2>La escalera</h2></div>
+      <div class="sec-head"><span class="sec-num">16</span><h2>La escalera</h2></div>
       <div class="prose">
-        <p>Todas las plataformas existentes están en algún escalón de esta secuencia. La tesis del producto es subirla completa.</p>
+        <p>Todos los competidores verificados en la sección 03 están en algún escalón de esta secuencia. Ninguno llegó al quinto. La tesis del producto es subirla completa.</p>
       </div>
       <div class="ladder">
-        <div class="rung"><span class="lvl">01</span><div><h3>Transaction</h3><p>Vendiste $10M.</p></div></div>
+        <div class="rung"><span class="lvl">01</span><div><h3>Transaction</h3><p>Vendiste $12.4M.</p></div></div>
         <div class="rung"><span class="lvl">02</span><div><h3>Analytics</h3><p>Barra 3 vende 32% más que Barra 4.</p></div></div>
         <div class="rung"><span class="lvl">03</span><div><h3>Prediction</h3><p>Barra 3 probablemente se satura en 17 minutos.</p></div></div>
         <div class="rung"><span class="lvl">04</span><div><h3>Recommendation</h3><p>Mueve dos bartenders y 400 cervezas hacia Barra 3.</p></div></div>
@@ -778,34 +908,115 @@ footer{
     </section>
 
     <section id="diferenciador">
-      <div class="sec-head"><span class="sec-num">15</span><h2>El diferenciador</h2></div>
+      <div class="sec-head"><span class="sec-num">17</span><h2>El diferenciador</h2></div>
       <div class="prose">
-        <p>El diferenciador no se formula como “tenemos más funcionalidades que Cashless”. Ni “tenemos mejores pulseras”. Ni siquiera “tenemos IA”. Se formula así:</p>
+        <p>Después de la investigación, tres formulaciones quedan descartadas porque son falsas o son paridad:</p>
+        <ul>
+          <li>“Tenemos mejores pulseras.” El hardware es commodity: un tag NTAG213 terminado cuesta entre €0.84 y €1.34 en pedidos de mil piezas.<a class="cite" href="#f29">29</a></li>
+          <li>“No necesitas recargar.” Ya lo ofrecen Billfold y Zelebrix.<a class="cite" href="#f12">12</a><a class="cite" href="#f19">19</a></li>
+          <li>“Tenemos IA.” Todos van a decirlo el año que entra.</li>
+        </ul>
+        <p>Lo que sí queda en pie son dos cosas, y funcionan juntas:</p>
       </div>
-      <p class="pull">Ayudamos al promotor a maximizar cuánto dinero genera cada asistente y a detectar exactamente dónde lo está perdiendo.</p>
-      <div class="prose" style="margin-top:1.5rem">
-        <p>La diferencia con el pitch tradicional es sutil y enorme: el promotor deja de escuchar “tenemos mejores pulseras” y escucha “te ayudamos a ganar más dinero por asistente”. Y el producto puede demostrarlo con una sola métrica.</p>
+
+      <div class="cards two">
+        <div class="card">
+          <span class="tag">Hacia el asistente</span>
+          <h3>Cero comisiones, siempre y en todas partes</h3>
+          <p>No cobramos la pulsera, ni la recarga, ni la devolución, y nunca obligamos al cashless como único medio. Es el estándar que la autoridad ya impuso arriba<a class="cite" href="#f1">1</a> y que abajo casi nadie cumple todavía.<a class="cite" href="#f32">32</a></p>
+        </div>
+        <div class="card">
+          <span class="tag">Hacia el promotor</span>
+          <h3>Rentabilidad medible por asistente</h3>
+          <p>No vendemos funcionalidades: vendemos una métrica que sube y un desglose de dónde se está perdiendo dinero. El producto se paga solo o no se paga.</p>
+        </div>
       </div>
+
+      <p class="pull">Ayudamos al promotor a maximizar cuánto dinero genera cada asistente y a detectar exactamente dónde lo está perdiendo — sin cobrarle un peso a su público.</p>
+
       <div class="scroll">
         <table>
           <caption>North Star Metric · Revenue per Attendee</caption>
-          <thead><tr><th scope="col">Periodo</th><th scope="col" class="num">Revenue / asistente</th></tr></thead>
+          <thead><tr><th scope="col">Escenario</th><th scope="col" class="num">Revenue / asistente / día</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Evento 2025 · sin plataforma</th><td class="num">$847</td></tr>
-            <tr><th scope="row">Evento 2026 · con plataforma</th><td class="num">$1,083</td></tr>
-            <tr class="total"><th scope="row">Incremento</th><td class="num">+27.8%</td></tr>
+            <tr><th scope="row">Línea base documentada · Corona Capital<a class="cite" href="#f8">8</a></th><td class="num">$500</td></tr>
+            <tr><th scope="row">Con uplift de cashless · rango de industria<a class="cite" href="#f28">28</a></th><td class="num">$575 – $650</td></tr>
+            <tr class="total"><th scope="row">Incremento a demostrar</th><td class="num">+15% a +30%</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="note">Ese rango es el que la industria reporta al pasar de efectivo a cashless, no el que produce la capa de inteligencia. El incremento adicional por optimización es precisamente lo que el producto tiene que probar con datos propios en sus primeros eventos.</p>
+    </section>
+
+    <section id="segmento">
+      <div class="sec-head"><span class="sec-num">18</span><h2>Segmento inicial</h2></div>
+      <div class="prose">
+        <p>El wedge son eventos de <strong>1,000 a 15,000 asistentes</strong>, y ahora hay tres razones verificadas para creerlo, no solo intuición:</p>
+        <ul>
+          <li><strong>Arriba está cerrado.</strong> Los eventos más grandes pertenecen a una estructura integrada verticalmente entre Live Nation, OCESA y la red de proveedores de Grupo Eco.<a class="cite" href="#f11">11</a><a class="cite" href="#f9">9</a> No es un mercado que se gane con mejor producto.</li>
+          <li><strong>Debajo de 20,000 asistentes hay menos carga regulatoria.</strong> Los lineamientos obligatorios de Profeco para venta de boletos aplican a eventos de más de 20,000 personas.<a class="cite" href="#f3">3</a> El wedge opera con menos exposición mientras se madura el sistema.</li>
+          <li><strong>El calendario no se apaga, se mueve de plaza.</strong> La Riviera Maya concentra temporada alta de diciembre a abril, con Zamna operando de enero a abril y Day Zero en enero,<a class="cite" href="#f32">32</a> justo cuando el centro del país está vacío. Un portafolio repartido entre plazas aplana la estacionalidad.</li>
+        </ul>
+      </div>
+      <div class="chips" style="margin-top:1.25rem">
+        <span class="chip">Festivales independientes</span><span class="chip">Conciertos</span><span class="chip">Ferias</span><span class="chip">Eventos universitarios</span><span class="chip">Arenas</span><span class="chip">Venues</span><span class="chip">Nightlife</span><span class="chip">Experiencias de marca</span><span class="chip">Eventos gastronómicos</span><span class="chip">Riviera Maya</span>
+      </div>
+      <div class="prose" style="margin-top:1.5rem">
+        <p>En ese segmento el competidor frecuentemente no es un sistema cashless: es el efectivo y una terminal suelta. Es una pelea muy distinta a la de arriba.</p>
+      </div>
+    </section>
+
+    <section id="modelo">
+      <div class="sec-head"><span class="sec-num">19</span><h2>Modelo de negocio</h2></div>
+      <div class="prose">
+        <p>Aquí es donde la investigación obliga a corregir la versión anterior de esta tesis. Se asumía un take rate de 1.5% a 3% sobre GMV. <strong>Eso no cierra en México</strong>: el costo de adquirencia con agregadores va de 3.39% a 3.6% más IVA.<a class="cite" href="#f22">22</a> No se puede cobrar 2.5% y pagar 3.5%.</p>
+        <p>La salida no es negociar mejor desde el día uno. Es <strong>diseñar el flujo de dinero sobre rieles baratos</strong>, que en México existen y son una ventaja real frente a cualquier competidor extranjero:</p>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <caption>Costo del riel según cómo entra el dinero</caption>
+          <thead><tr><th scope="col">Riel</th><th scope="col" class="num">Costo</th><th scope="col">Uso</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Tarjeta · agregador</th><td class="num">3.39% – 3.6% + IVA<a class="cite" href="#f22">22</a></td><td>Cada tap si se opera open loop puro</td></tr>
+            <tr><th scope="row">QR</th><td class="num">0.99%<a class="cite" href="#f22">22</a></td><td>Fondeo del wallet</td></tr>
+            <tr><th scope="row">SPEI / CoDi</th><td class="num">≈ 0%</td><td>Fondeo del wallet antes y durante el evento</td></tr>
+            <tr class="total"><th scope="row">Tap interno contra saldo</th><td class="num">$0</td><td>Todas las compras dentro del evento</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="verdict">
+        <span class="g">La economía que sí funciona</span>
+        <p><strong>Se fondea una vez barato y se gasta muchas veces gratis.</strong> Si el asistente carga $1,000 por SPEI o QR y hace ocho compras adentro, el sistema pagó riel una vez, no ocho. En open loop puro esas ocho compras habrían pagado 3.5% cada una. Ese es el argumento económico a favor del saldo, y es la razón por la que el modelo correcto es híbrido y no “sin recarga” a secas.</p>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <p>Sobre esa base, las líneas de ingreso quedan así:</p>
+      </div>
+      <div class="cards two">
+        <div class="card"><span class="tag">01 · Núcleo</span><h3>SaaS por evento o por año</h3><p>Cobro al promotor por la plataforma. Es la línea más limpia y la que no depende del riel.</p></div>
+        <div class="card"><span class="tag">02 · Núcleo</span><h3>Device fee</h3><p>Renta de POS y lectores. El tag se entrega sin costo al asistente por política.</p></div>
+        <div class="card"><span class="tag">03 · Variable</span><h3>Spread sobre el riel</h3><p>Diferencial entre el costo real de fondeo y lo cobrado al promotor. Modesto por diseño, no es el motor.</p></div>
+        <div class="card"><span class="tag">04 · Margen alto</span><h3>Intelligence</h3><p>La capa de optimización como módulo aparte. Es donde vive el margen porque no tiene costo marginal de riel.</p></div>
+        <div class="card"><span class="tag">05 · Margen alto</span><h3>Sponsor activations</h3><p>Fee por campaña medible. Presupuesto de marketing de marca, no de tecnología del promotor.</p></div>
+        <div class="card"><span class="tag">06 · Futuro</span><h3>Servicios financieros a vendors</h3><p>Liquidación instantánea y adelanto de flujo, una vez que hay historial de settlement.</p></div>
+      </div>
+
+      <div class="prose" style="margin-top:1.75rem">
+        <h3>Y lo que ya no se puede cobrar</h3>
+        <p>Venta de la pulsera, comisión por recarga, comisión por devolución y saldo no reclamado.<a class="cite" href="#f1">1</a> Ese último punto merece énfasis: el breakage llegaba a representar <strong>hasta 5% del ingreso total</strong> de un evento según la propia industria.<a class="cite" href="#f17">17</a> Cualquier modelo financiero que lo incluya está mal construido y, en México, además está mal parado frente a la autoridad.</p>
+      </div>
+      <p class="pull">Vertical SaaS + Fintech + Payments + AI Infrastructure, con la economía puesta en el software y no en el peaje.</p>
     </section>
 
     <section id="latam">
-      <div class="sec-head"><span class="sec-num">16</span><h2>México y Latinoamérica</h2></div>
+      <div class="sec-head"><span class="sec-num">20</span><h2>México y Latinoamérica</h2></div>
       <div class="prose">
-        <p>En lugar de intentar vencer globalmente a Billfold o Intellitix desde el día uno, la oportunidad es construir específicamente para México y después para Latinoamérica, diseñando desde el inicio alrededor de la infraestructura regional.</p>
+        <p>Construir desde y para la infraestructura regional deja de ser una preferencia y se vuelve la ventaja competitiva central, precisamente por lo que se acaba de explicar: <strong>los rieles mexicanos son más baratos y ningún competidor extranjero los tiene integrados</strong>. SPEI y CoDi no existen en el stack de Billfold ni de Glownet.</p>
       </div>
       <div class="chips" style="margin-top:1.25rem">
-        <span class="chip">MXN</span><span class="chip">SAT</span><span class="chip">Facturación</span><span class="chip">SPEI</span><span class="chip">CoDi</span><span class="chip">Mercado Pago</span><span class="chip">Conekta</span><span class="chip">OpenPay</span><span class="chip">WhatsApp</span><span class="chip">Spanish-first</span><span class="chip">Settlement mexicano</span><span class="chip">Vendors mexicanos</span><span class="chip">Regulación local</span>
+        <span class="chip">MXN</span><span class="chip">SAT</span><span class="chip">Facturación</span><span class="chip">SPEI</span><span class="chip">CoDi</span><span class="chip">Mercado Pago</span><span class="chip">Conekta</span><span class="chip">Clip</span><span class="chip">WhatsApp</span><span class="chip">Spanish-first</span><span class="chip">Settlement local</span><span class="chip">Criterio Profeco</span>
       </div>
       <div class="prose" style="margin-top:1.5rem">
         <p>Y después Colombia, Brasil, Chile, Argentina, Perú y Centroamérica. El posicionamiento evoluciona hacia una frase concreta:</p>
@@ -813,42 +1024,16 @@ footer{
       <p class="pull">The Operating System for Live Events in Latin America.</p>
     </section>
 
-    <section id="segmento">
-      <div class="sec-head"><span class="sec-num">17</span><h2>Segmento inicial</h2></div>
-      <div class="prose">
-        <p>No conviene arrancar intentando operar festivales de cientos de miles de personas. El wedge accesible son eventos de <strong>1,000 a 15,000 asistentes</strong>, donde se aprende rápido, se recopilan datos operativos y se desarrolla el motor de inteligencia.</p>
-      </div>
-      <div class="chips" style="margin-top:1.25rem">
-        <span class="chip">Festivales independientes</span><span class="chip">Conciertos</span><span class="chip">Ferias</span><span class="chip">Eventos universitarios</span><span class="chip">Estadios pequeños</span><span class="chip">Arenas</span><span class="chip">Venues</span><span class="chip">Nightlife</span><span class="chip">Experiencias de marca</span><span class="chip">Eventos gastronómicos</span>
-      </div>
-    </section>
-
-    <section id="modelo">
-      <div class="sec-head"><span class="sec-num">18</span><h2>Modelo de negocio</h2></div>
-      <div class="prose">
-        <p>La plataforma puede monetizar varias capas al mismo tiempo.</p>
-      </div>
-      <div class="cards two">
-        <div class="card"><span class="tag">01</span><h3>SaaS</h3><p>Cobro mensual o anual por el software.</p></div>
-        <div class="card"><span class="tag">02</span><h3>Hardware / device fee</h3><p>POS, lectores, NFC, pulseras.</p></div>
-        <div class="card"><span class="tag">03</span><h3>Payment processing</h3><p>Take rate sobre GMV, del orden de 1.5% a 3% según estructura y economics.</p></div>
-        <div class="card"><span class="tag">04</span><h3>AI optimization</h3><p>Cobro adicional por la capa de intelligence y revenue optimization.</p></div>
-        <div class="card"><span class="tag">05</span><h3>Sponsor activations</h3><p>Fee por campañas y activaciones medibles de marca.</p></div>
-        <div class="card"><span class="tag">06</span><h3>Fintech</h3><p>Working capital, vendor financing, instant settlement y embedded payments.</p></div>
-      </div>
-      <p class="pull">Vertical SaaS + Fintech + Payments + AI Infrastructure.</p>
-    </section>
-
     <section id="moat">
-      <div class="sec-head"><span class="sec-num">19</span><h2>Moat y flywheel</h2></div>
+      <div class="sec-head"><span class="sec-num">21</span><h2>Moat y flywheel</h2></div>
       <div class="prose">
-        <p>Las funcionalidades individuales son copiables. El moat se construye con otra cosa:</p>
+        <p>Las funcionalidades individuales son copiables — la investigación lo demuestra: cada pieza de este documento existe ya en algún competidor. El moat se construye con otra cosa:</p>
         <ul>
-          <li><strong>Datos.</strong> Cada evento genera información de consumo, horarios, filas, staffing, inventario, productos, pricing, layout y comportamiento.</li>
-          <li><strong>Modelos.</strong> Con suficientes eventos el sistema empieza a entender patrones: “en festivales de música electrónica de 8,000 a 12,000 personas con temperatura mayor a 30°C, esta configuración de barras maximiza throughput”.</li>
-          <li><strong>Workflow lock-in.</strong> Cuando el promotor maneja pagos, vendors, inventario, settlement, CRM, staff y reporting en la plataforma, cambiar de proveedor se vuelve difícil.</li>
-          <li><strong>Payments.</strong> Procesar GMV genera economics y datos al mismo tiempo.</li>
-          <li><strong>Red.</strong> Una wallet e identidad persistente entre eventos genera efectos de red del lado del asistente.</li>
+          <li><strong>Datos.</strong> Cada evento genera consumo, horarios, filas, staffing, inventario, pricing, layout y comportamiento.</li>
+          <li><strong>Modelos.</strong> Con suficientes eventos el sistema entiende patrones: “en festivales de electrónica de 8,000 a 12,000 personas con temperatura mayor a 30°C, esta configuración de barras maximiza throughput”.</li>
+          <li><strong>Workflow lock-in.</strong> Cuando el promotor corre pagos, vendors, inventario, settlement, CRM, staff y reporting en la plataforma, cambiar duele.</li>
+          <li><strong>Rieles locales.</strong> La integración con SPEI, CoDi y facturación mexicana es trabajo que un entrante extranjero tiene que hacer desde cero.</li>
+          <li><strong>Red.</strong> Una identidad persistente entre eventos genera efectos de red del lado del asistente.</li>
         </ul>
       </div>
       <div class="wheel" role="list">
@@ -861,26 +1046,53 @@ footer{
         <div class="wheel-step" role="listitem"><span class="ar">→</span><span>Mayor ROI para el promotor</span></div>
         <div class="wheel-close">↺ vuelve a: más eventos</div>
       </div>
-      <div class="prose" style="margin-top:1.6rem">
-        <p>Ese ciclo es la verdadera defensibilidad de la compañía.</p>
+    </section>
+
+    <section id="riesgos">
+      <div class="sec-head"><span class="sec-num">22</span><h2>Riesgos</h2></div>
+      <div class="prose">
+        <p>Los cuatro que pueden matar el proyecto, con lo que se sabe hoy.</p>
+      </div>
+      <div class="risks">
+        <div class="risk">
+          <span class="g">Riesgo 01 · operativo</span>
+          <h3>El día del evento no hay segunda oportunidad</h3>
+          <p>En Download Festival 2015 se estrenó un sistema RFID con 80,000 asistentes; la red falló el primer día, la gente no pudo comprar, muchos no encontraron el saldo que habían cargado y no había respaldo ni efectivo.<a class="cite" href="#f25">25</a> Es el modo de falla que cierra un mercado entero. La mitigación no es opcional: terminal de respaldo en cada punto y efectivo habilitado desde el día uno.</p>
+        </div>
+        <div class="risk">
+          <span class="g">Riesgo 02 · regulatorio</span>
+          <h3>La figura legal no está resuelta</h3>
+          <p>Si la operación implica custodiar saldo prepagado, la figura aplicable podría ser una IFPE, que exige <strong>5 millones de UDIS — del orden de $35 millones de pesos</strong> de capital mínimo y autorización de CNBV que toma meses.<a class="cite" href="#f23">23</a><a class="cite" href="#f24">24</a> El dato que sugiere que hay camino: Paykey opera como SAPI de CV,<a class="cite" href="#f10">10</a> lo que apunta a enrutar los fondos por un banco o agregador en lugar de custodiarlos. <strong>Es la pregunta número uno para un abogado fintech antes de firmar el primer evento.</strong></p>
+        </div>
+        <div class="risk">
+          <span class="g">Riesgo 03 · responsabilidad</span>
+          <h3>Operar en eventos masivos ahora tiene escrutinio</h3>
+          <p>Tras la muerte de dos fotoperiodistas en Axe Ceremonia en abril de 2025, la Ciudad de México emitió nuevos lineamientos para eventos masivos y la fiscalía vinculó a cuatro empresas y ocho socios.<a class="cite" href="#f26">26</a> Ser proveedor en piso implica contratos, seguros y protocolos serios, no solo software.</p>
+        </div>
+        <div class="risk">
+          <span class="g">Riesgo 04 · comercial</span>
+          <h3>Concentración de clientes</h3>
+          <p>Con pocos clientes grandes, perder uno duele de forma desproporcionada, y la renegociación ocurre una vez al año. La mitigación es deliberada: preferir promotores con muchos eventos chicos sobre uno con un evento gigante, y repartir el portafolio entre plazas con temporadas distintas.</p>
+        </div>
       </div>
     </section>
 
-    <section id="vision" style="padding-bottom:2rem">
+    <section id="vision">
       <div class="sec-head"><span class="sec-num">△</span><h2>La visión final</h2></div>
       <div class="prose">
-        <p>La compañía no debería describirse como una empresa de pulseras cashless. Ni siquiera como un POS para festivales. La visión más grande es ser <strong>la infraestructura comercial y financiera de los eventos físicos</strong>.</p>
-        <p>El POS, las pulseras, los pagos y los accesos son solamente sensores. Cada uno genera información. La verdadera compañía vive encima de esa información, y su función es entender qué está sucediendo, por qué está sucediendo, qué sucederá después y qué debería hacer el operador al respecto.</p>
+        <p>La compañía no se describe como una empresa de pulseras cashless. Ni como un POS para festivales. La visión es ser <strong>la infraestructura comercial y financiera de los eventos físicos</strong>.</p>
+        <p>El POS, las pulseras, los pagos y los accesos son solamente sensores. Cada uno genera información. La verdadera compañía vive encima de esa información, y su función es entender qué está sucediendo, por qué, qué sucederá después y qué debería hacer el operador al respecto.</p>
         <p>La pregunta central del sistema es una sola: <strong>¿cómo hacemos que este evento genere más dinero, tenga menos pérdidas y opere mejor?</strong> Y eventualmente el producto no solamente responde esa pregunta. Ejecuta la respuesta.</p>
       </div>
 
       <div class="summary">
         <dl>
-          <div class="srow"><dt>Problema</dt><dd>Los eventos tienen información fragmentada entre pagos, POS, inventario, staff, vendors, accesos y asistentes. Los sistemas actuales ayudan principalmente a ejecutar y reportar transacciones.</dd></div>
-          <div class="srow"><dt>Solución</dt><dd>Una plataforma integral que conecta toda la operación comercial del evento y usa inteligencia artificial para detectar pérdidas, predecir problemas y recomendar o ejecutar acciones.</dd></div>
-          <div class="srow"><dt>Wedge</dt><dd>POS, payments y cashless, y dashboard operativo para eventos medianos.</dd></div>
-          <div class="srow"><dt>Expansión</dt><dd>Inventario, vendor settlement, CRM, loyalty y sponsor activations.</dd></div>
-          <div class="srow"><dt>Moat</dt><dd>Datos, modelos de IA, payments, workflow lock-in e identidad cross-event.</dd></div>
+          <div class="srow"><dt>Problema</dt><dd>Los eventos tienen información fragmentada entre pagos, POS, inventario, staff, vendors, accesos y asistentes. Los sistemas actuales ayudan a ejecutar y reportar transacciones, no a ganar más dinero.</dd></div>
+          <div class="srow"><dt>Solución</dt><dd>Una plataforma que conecta toda la operación comercial del evento y usa inteligencia artificial para detectar pérdidas, predecir problemas y recomendar o ejecutar acciones.</dd></div>
+          <div class="srow"><dt>Wedge</dt><dd>Eventos de 1,000 a 15,000 asistentes, fuera del control de OCESA y debajo del umbral regulatorio de 20,000, donde el competidor suele ser el efectivo.</dd></div>
+          <div class="srow"><dt>Diferenciador</dt><dd>Cero comisiones al asistente por política, más la única capa de inteligencia del mercado que llega hasta la acción.</dd></div>
+          <div class="srow"><dt>Economía</dt><dd>Fondeo por rieles baratos (SPEI, CoDi, QR) y gasto interno sin costo marginal. El margen vive en el software, no en el peaje.</dd></div>
+          <div class="srow"><dt>Moat</dt><dd>Datos, modelos, workflow lock-in, integración con rieles mexicanos e identidad cross-event.</dd></div>
           <div class="srow"><dt>North Star</dt><dd>Revenue per Attendee.</dd></div>
           <div class="srow"><dt>Visión</dt><dd>Build the intelligence layer for live events. No solamente procesar cada transacción: entenderla, y usarla para que el siguiente minuto, la siguiente hora y el siguiente evento sean más rentables.</dd></div>
         </dl>
@@ -893,9 +1105,52 @@ footer{
       </div>
     </section>
 
+    <section id="fuentes" style="padding-bottom:2rem">
+      <div class="sec-head"><span class="sec-num">§</span><h2>Fuentes</h2></div>
+      <div class="prose">
+        <p class="small">Todo dato numérico del documento remite a esta lista. Lo que no aparece aquí es estimación propia y está marcado como tal en el texto.</p>
+      </div>
+      <div class="sources">
+        <div class="src" id="f1"><span class="n">01</span><span><span class="t">Proceso — Eliminan venta y comisiones de pulseras cashless por acuerdo entre Profeco y Ocesa</span><a href="https://www.proceso.com.mx/economia/2025/2/25/eliminan-venta-comisiones-de-pulseras-cashless-por-acuerdo-entre-profeco-ocesa-344667.html">proceso.com.mx</a></span></div>
+        <div class="src" id="f2"><span class="n">02</span><span><span class="t">Expansión — Ocesa acuerda con Profeco no cobrar por las pulseras cashless</span><a href="https://expansion.mx/empresas/2025/02/25/ocesa-profeco-no-cobrar-por-pulseras-cashless-festivales">expansion.mx</a></span></div>
+        <div class="src" id="f3"><span class="n">03</span><span><span class="t">Profeco — Lineamientos para venta de boletos de eventos masivos (DOF, feb 2026)</span><a href="https://www.gob.mx/profeco/prensa/profeco-anuncia-lineamientos-para-venta-de-boletos-de-eventos-masivos">gob.mx/profeco</a></span></div>
+        <div class="src" id="f4"><span class="n">04</span><span><span class="t">Forbes México — México, tercer mercado de entretenimiento musical en vivo del mundo</span><a href="https://forbes.com.mx/mexico-es-el-tercer-mercado-de-entretenimiento-musical-en-vivo-que-mas-facturo-en-el-mundo/">forbes.com.mx</a></span></div>
+        <div class="src" id="f5"><span class="n">05</span><span><span class="t">Mundo Ejecutivo — La industria del entretenimiento en vivo dejó más de 68 mmdp en 2025</span><a href="https://mundoejecutivocdmx.com/mundo-economico/la-industria-del-entretenimiento-en-vivo-dejo-mas-de-68-mmdp-durante-2025-en-mexico/">mundoejecutivocdmx.com</a></span></div>
+        <div class="src" id="f6"><span class="n">06</span><span><span class="t">Excélsior — EDC México confirma a la CDMX como sede de grandes festivales (aforos 2025)</span><a href="https://www.excelsior.com.mx/nacional/edc-mexico-confirma-cdmx-como-sede-grandes-festivales">excelsior.com.mx</a></span></div>
+        <div class="src" id="f7"><span class="n">07</span><span><span class="t">El Financiero — Cuánto cuesta comer en el Gran Premio de México 2025</span><a href="https://www.elfinanciero.com.mx/food-and-drink/2025/10/24/cuanto-cuesta-comer-en-el-gran-premio-de-mexico-precios-de-alimentos-y-bebidas/">elfinanciero.com.mx</a></span></div>
+        <div class="src" id="f8"><span class="n">08</span><span><span class="t">El Financiero — Gasto promedio diario por persona en Corona Capital</span><a href="https://www.elfinanciero.com.mx/food-and-drink/2022/11/19/corona-capital-2022-gasto-promedio-diario-de-cerveza-por-persona/">elfinanciero.com.mx</a></span></div>
+        <div class="src" id="f9"><span class="n">09</span><span><span class="t">Cobertura 360 — Ocho socios, 17 empresas, el monopolio tras los festivales y conciertos en CDMX</span><a href="https://cobertura360.mx/2025/05/07/negocios/ocho-socios-17-empresas-el-monopolio-tras-los-festivales-y-conciertos-en-cdmx/">cobertura360.mx</a></span></div>
+        <div class="src" id="f10"><span class="n">10</span><span><span class="t">Cobertura 360 — Grupo Eco se deslinda de Paykey y Plus</span><a href="https://cobertura360.mx/2025/05/11/seguridad/grupo-eco-se-deslinda-de-paykey-y-plus-empresas-clave-del-sistema-cashless-en-festivales-de-cdmx/">cobertura360.mx</a></span></div>
+        <div class="src" id="f11"><span class="n">11</span><span><span class="t">LexLatin — Live Nation incrementa hasta 75% su participación en OCESA</span><a href="https://lexlatin.com/noticias/live-nation-entertainment-participacion-ocesa">lexlatin.com</a></span></div>
+        <div class="src" id="f12"><span class="n">12</span><span><span class="t">Billfold — Cashless &amp; Contactless POS</span><a href="https://www.billfold.tech/features/cashless-and-contactless-pos">billfold.tech</a></span></div>
+        <div class="src" id="f13"><span class="n">13</span><span><span class="t">Crunchbase — Billfold POS, financiamiento e inversionistas</span><a href="https://www.crunchbase.com/organization/billfold-pos">crunchbase.com</a></span></div>
+        <div class="src" id="f14"><span class="n">14</span><span><span class="t">Adyen — Intellitix powers live events with fast payments</span><a href="https://www.adyen.com/knowledge-hub/intellitix-powers-live-event-experiences-with-fast-payments">adyen.com</a></span></div>
+        <div class="src" id="f15"><span class="n">15</span><span><span class="t">IQ Magazine — Intellitix takes majority stake in CrowdBlink</span><a href="https://www.iqmagazine.com/2020/01/intellitix-takes-majority-stake-in-crowdblink/">iqmagazine.com</a></span></div>
+        <div class="src" id="f16"><span class="n">16</span><span><span class="t">Tappit — Why Tappit (incremento promedio de 22% en ingreso)</span><a href="https://tappit.com/why-tappit">tappit.com</a></span></div>
+        <div class="src" id="f17"><span class="n">17</span><span><span class="t">Weezevent — A cashless guide for event organisers (breakage de hasta 5%)</span><a href="https://weezevent.com/en-gb/blog/cashless-guide-event-organisers/">weezevent.com</a></span></div>
+        <div class="src" id="f18"><span class="n">18</span><span><span class="t">Glownet — Wallets for events and venues</span><a href="https://glownet.com/products/wallets/">glownet.com</a></span></div>
+        <div class="src" id="f19"><span class="n">19</span><span><span class="t">Zelebrix — Pulseras cashless con autorecarga sin app</span><a href="https://zelebrix.com/pulseras-cashless/">zelebrix.com</a></span></div>
+        <div class="src" id="f20"><span class="n">20</span><span><span class="t">Apple Newsroom — Apple habilita Tap to Pay en iPhone en México (marzo 2026)</span><a href="https://www.apple.com/mx/newsroom/2026/03/apple-brings-tap-to-pay-on-iphone-to-mexico/">apple.com/mx</a></span></div>
+        <div class="src" id="f21"><span class="n">21</span><span><span class="t">Clip — Tap to Pay en Android: requisitos y límites de transacción</span><a href="https://www.clip.mx/soluciones/tap-to-pay-android">clip.mx</a></span></div>
+        <div class="src" id="f22"><span class="n">22</span><span><span class="t">Banxico — Tasas de descuento por giro de negocio, agregadores (abril 2026); comisiones publicadas por Clip, Mercado Pago y Conekta</span><a href="https://www.banxico.org.mx/servicios/tasas-de-descuento-para-tarjetas-de-credito-por-gi/">banxico.org.mx</a></span></div>
+        <div class="src" id="f23"><span class="n">23</span><span><span class="t">Legal Paradox — Ley Fintech México: requisitos de capital para IFPE</span><a href="https://www.legalparadox.com/es/ley-fintech">legalparadox.com</a></span></div>
+        <div class="src" id="f24"><span class="n">24</span><span><span class="t">Ley para Regular las Instituciones de Tecnología Financiera (texto oficial)</span><a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LRITF.pdf">diputados.gob.mx</a></span></div>
+        <div class="src" id="f25"><span class="n">25</span><span><span class="t">Gigwise — Cashless system causes problems at Download Festival</span><a href="https://www.gigwise.com/news/101100/download-festival-cashless-wristband-system-causes-problems/">gigwise.com</a></span></div>
+        <div class="src" id="f26"><span class="n">26</span><span><span class="t">N+ — Nuevos lineamientos para eventos masivos en CDMX tras el caso Axe Ceremonia</span><a href="https://www.nmas.com.mx/ciudad-de-mexico/nuevos-lineamientos-eventos-masivos-cdmx-caso-axe-ceremonia-2025-estas-son-normas/">nmas.com.mx</a></span></div>
+        <div class="src" id="f27"><span class="n">27</span><span><span class="t">Mundo Ejecutivo — Qué es Digicash by Banamex y cómo funciona en Vive Latino 2025</span><a href="https://mundoejecutivocdmx.com/mundo-economico/que-es-digicash-by-banamex-y-como-funciona-para-el-vive-latino-2025/">mundoejecutivocdmx.com</a></span></div>
+        <div class="src" id="f28"><span class="n">28</span><span><span class="t">Ticket Fairy — Benchmarks de uplift y estrategias offline para festivales</span><a href="https://www.ticketfairy.com/blog/cashless-at-scale-offline-fallback-strategies-for-large-festivals">ticketfairy.com</a></span></div>
+        <div class="src" id="f29"><span class="n">29</span><span><span class="t">Shop NFC — Precios de pulseras NTAG213 en volumen</span><a href="https://shopnfc.com/en/27-nfc-wristbands">shopnfc.com</a></span></div>
+        <div class="src" id="f30"><span class="n">30</span><span><span class="t">Adyen Docs — Offline payments, floor limits y autenticación offline</span><a href="https://docs.adyen.com/point-of-sale/offline-payment">docs.adyen.com</a></span></div>
+        <div class="src" id="f31"><span class="n">31</span><span><span class="t">Growth Market Reports — Festival Cashless Payment Platforms Market</span><a href="https://growthmarketreports.com/report/festival-cashless-payment-platforms-market">growthmarketreports.com</a></span></div>
+        <div class="src" id="f32"><span class="n">32</span><span><span class="t">Your Tulum Concierge — Zamna Festival: cashless con WeezPay, saldo no reembolsable</span><a href="https://yourtulumconcierge.com/party-categories/tulum-music-festivals/zamna-music-festival/">yourtulumconcierge.com</a></span></div>
+        <div class="src" id="f33"><span class="n">33</span><span><span class="t">Bloomberg Línea — Pulseras cashless: ¿las van a quitar en México? Esto dicen Profeco y OCESA</span><a href="https://www.bloomberglinea.com/latinoamerica/mexico/pulseras-cashless-las-van-a-quitar-en-mexico-esto-dicen-profeco-y-ocesa/">bloomberglinea.com</a></span></div>
+      </div>
+      <p class="note">Sigue sin verificarse, y hay que resolverlo antes de comprometerse: si un cashless de evento requiere licencia IFPE en México, la estructura de comisiones real que cobra Paykey al promotor, y el calendario completo por plaza y por tamaño de evento. Las cifras de tamaño de mercado global provienen de reportes comerciales y valen como orden de magnitud.</p>
+    </section>
+
     <footer>
-      <span>Event Intelligence OS</span>
-      <span>Tesis de producto</span>
+      <span>Event Intelligence OS · v1.0</span>
+      <span>33 fuentes verificadas · Agosto 2026</span>
     </footer>
 
   </main>
@@ -903,7 +1158,7 @@ footer{
 
 <script>
 (function(){
-  var fills = document.querySelectorAll('.fill');
+  var fills = document.querySelectorAll('.fill, .dfill');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function paint(el){ el.style.width = el.getAttribute('data-w') + '%'; }
   if (reduce || !('IntersectionObserver' in window)) {
