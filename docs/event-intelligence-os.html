@@ -351,7 +351,7 @@ footer{
       <div class="hero-top">
         <span class="eyebrow">Documento de estrategia</span>
         <span class="eyebrow">Eventos de entretenimiento · México</span>
-        <span class="eyebrow">v0.2 · Agosto 2026</span>
+        <span class="eyebrow">v0.3 · Agosto 2026</span>
       </div>
       <h1>Event<br>Intelligence <em>OS</em></h1>
       <p class="hero-lede">No vendemos pulseras. Vendemos <strong>más dinero por asistente</strong> y la capacidad de saber exactamente dónde se está perdiendo.</p>
@@ -833,7 +833,7 @@ footer{
           <div class="dmeter"><div class="dtrack"><span class="dfill mid" data-w="70"></span></div><span class="dnum">7/10</span></div>
         </div>
         <div class="drow">
-          <div class="dname">Confiabilidad en piso<span class="dnote">La barrera real. No es una función que se programe: se acumula evento tras evento.</span></div>
+          <div class="dname">Confiabilidad en piso<span class="dnote">La barrera real. No es una función que se programe: se acumula evento tras evento. Es la única de la lista que no se resuelve con tiempo de desarrollo, sino con repeticiones.</span></div>
           <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="80"></span></div><span class="dnum">8/10</span></div>
         </div>
         <div class="drow">
@@ -849,6 +849,8 @@ footer{
           <div class="dmeter"><div class="dtrack"><span class="dfill high" data-w="90"></span></div><span class="dnum">9/10</span></div>
         </div>
       </div>
+
+      <div class="note" style="border-left-color:var(--signal)">Sobre la confiabilidad en piso hay una ventaja que casi nadie tiene y que conviene explotar a fondo: <strong>acceso a eventos propios donde acumular repeticiones sin arriesgar a un cliente.</strong> Un competidor que empieza de cero tiene que aprender en el evento de alguien más, y ahí el primer error cuesta la cuenta. Nosotros podemos fallar en serie, en privado y barato. Eso no baja el 8/10 —la barrera sigue siendo la misma— pero sí acorta muchísimo el tiempo de subirla, y es la razón principal para empezar por ahí. La única salvedad: las repeticiones enseñan la escala en la que ocurren. Correr bien una fiesta de 800 personas no prepara para 12,000; construye el escalón siguiente, no el atajo.</div>
 
       <div class="prose" style="margin-top:2rem">
         <h3>El costo escondido del diferenciador principal</h3>
@@ -881,7 +883,7 @@ footer{
             <tr><th scope="row">Clientes para ~$20M MXN</th><td>≈ 500 sucursales</td><td>8 a 10 promotores</td></tr>
             <tr><th scope="row">GMV por cliente</th><td>$4–8M MXN al año</td><td>$8M MXN en un fin de semana</td></tr>
             <tr><th scope="row">Motor de venta</th><td>Máquina de volumen, puerta por puerta</td><td>Relación, pocos tratos, cada uno grande</td></tr>
-            <tr><th scope="row">Ritmo del ingreso</th><td>Recurrente, 365 días</td><td>Por temporada; enero y febrero no facturas</td></tr>
+            <tr><th scope="row">Ritmo del ingreso</th><td>Recurrente, 365 días</td><td>Por evento, no por mes; la estacionalidad se compensa mezclando plazas</td></tr>
             <tr><th scope="row">Concentración</th><td>Perder un cliente es 0.2%</td><td class="gap">Perder un festival grande puede ser 30%</td></tr>
             <tr><th scope="row">Capital de trabajo</th><td>Bajo</td><td class="gap">Alto: hardware por adelantado y gente en piso</td></tr>
             <tr><th scope="row">Lock-in</th><td>Fuerte: se usa todos los días para operar</td><td>Medio: se renegocia una vez al año</td></tr>
@@ -892,6 +894,12 @@ footer{
       </div>
 
       <div class="prose" style="margin-top:1.75rem">
+        <h3>La estacionalidad es regional, no nacional</h3>
+        <p>Una versión anterior de este documento daba por muerto el ingreso en enero y febrero. Es falso, y el error importa porque cambiaba la calidad del negocio. <strong>El calendario no se apaga: se mueve de plaza.</strong> La Riviera Maya y Tulum concentran su temporada alta justo cuando el centro del país está vacío — ahí hay eventos todo el mes, prácticamente todos los días, y eventos de masa que caen en febrero.</p>
+        <p>Eso cambia dos cosas. La primera es financiera: un portafolio repartido entre plazas — Riviera Maya de diciembre a febrero, centro y norte de marzo a abril y de septiembre a noviembre — aplana la curva y acerca el ingreso del evento al perfil recurrente, sin necesidad de que el nightlife lo tape.</p>
+        <p>La segunda es más importante y es estratégica: <strong>un mercado con eventos diarios de tamaño chico y mediano es exactamente el wedge descrito en la sección 11</strong>, y probablemente sin incumbente. El operador dominante despliega miles de dispositivos en festivales grandes; una fiesta de 800 personas un martes no es su cliente. Ahí se cobra con efectivo o con una terminal suelta — o sea, el competidor a vencer no es Hey Key, es el efectivo.</p>
+        <p class="small">Pendiente concreto: mapear el calendario real por plaza y por tamaño, con nombres y fechas. Es la diferencia entre una intuición correcta y un plan de ventas.</p>
+
         <h3>La pregunta incómoda del techo</h3>
         <p>Toast vale decenas de miles de millones de dólares vendiendo POS de restaurante. No existe una empresa de cashless de eventos de ese tamaño: Billfold, Intellitix y Tappit son buenos negocios, no unicornios. El mercado de eventos es más chico que el de restaurantes, y eso hay que decirlo.</p>
       </div>
@@ -945,9 +953,10 @@ footer{
           <div class="step-n">Fase 03<em>Evento propio</em></div>
           <div>
             <h3>Cashless prepagado, donde fallar es barato</h3>
-            <p>Ahora sí NFC y ledger, con <strong>saldo prepagado</strong> — el modelo probado, no el cargo directo. En un evento propio, donde una falla no cuesta un cliente.</p>
+            <p>Ahora sí NFC y ledger, con <strong>saldo prepagado</strong> — el modelo probado, no el cargo directo. En eventos propios, en serie, donde una falla no cuesta un cliente.</p>
+            <p>Y en serie es literal: la confiabilidad de piso es la única barrera de 8/10 que no se resuelve programando, sino repitiendo. Conviene quemar todas las repeticiones posibles en casa antes de cobrarle a un tercero.</p>
             <p>Regla no negociable: terminal tradicional de respaldo en cada barra desde el día uno.</p>
-            <p class="out">→ Entregable: throughput real por terminal y costo operativo real por evento.</p>
+            <p class="out">→ Entregable: throughput real por terminal, costo operativo por evento y una lista de todo lo que se rompió.</p>
           </div>
         </div>
         <div class="step">
@@ -963,13 +972,14 @@ footer{
           <div>
             <h3>Cinco clientes ancla, no cincuenta</h3>
             <p>Cinco grupos que hagan de cuatro a diez eventos al año dan entre 30 y 50 eventos: ingreso e historial al mismo tiempo. Y conviene el que hace muchos eventos chicos sobre el que hace uno gigante — más iteraciones, menos riesgo de ruina, mejor base de datos.</p>
+            <p>La Riviera Maya merece atención específica: eventos casi diarios, tamaño manejable y un competidor que probablemente no es Hey Key sino el efectivo. Es el mejor lugar del país para acumular repeticiones y datos al mismo tiempo.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-n">Fase 06</div>
           <div>
             <h3>Nightlife como puente</h3>
-            <p>Bares y antros son cliente de Fullsite y, muchas veces, el mismo dueño que organiza eventos. Ahí el ingreso de temporada se vuelve recurrente y se tapa el hueco de enero y febrero.</p>
+            <p>Bares y antros son cliente de Fullsite y, muchas veces, el mismo dueño que organiza eventos. Ahí el ingreso por evento se vuelve recurrente y el mismo software trabaja los días en que no hay nada montado.</p>
           </div>
         </div>
         <div class="step">
@@ -1131,8 +1141,25 @@ footer{
       <p class="pull">Build the intelligence layer for live events. No procesar cada transacción: entenderla, y usarla para que el siguiente minuto, la siguiente hora y el siguiente evento sean más rentables.</p>
     </section>
 
+    <section id="cambios" style="padding-bottom:2rem">
+      <div class="sec-head"><span class="sec-num">△</span><h2>Qué cambió en la v0.3</h2></div>
+      <div class="prose">
+        <p class="small">Este documento se corrige con lo que se sabe de la operación real. Dos cambios de fondo sobre la versión anterior:</p>
+      </div>
+      <ul class="qs">
+        <li><span class="box" aria-hidden="true" style="border-color:var(--crit)"></span><div>
+          <div class="q">Se eliminó la afirmación de que enero y febrero no facturan</div>
+          <div class="a">Era falsa. Hay eventos diarios en Tulum durante esos meses y eventos de masa que caen en febrero. La estacionalidad es regional, no nacional, y eso <b>mejora</b> el perfil de ingreso del negocio además de abrir un mercado de alta frecuencia sin incumbente claro. Ver sección 14.</div>
+        </div></li>
+        <li><span class="box" aria-hidden="true" style="border-color:var(--signal)"></span><div>
+          <div class="q">La confiabilidad de piso deja de ser solo un riesgo y pasa a ser una ventaja aprovechable</div>
+          <div class="a">Sigue siendo la barrera de 8/10, pero tener eventos propios donde acumular repeticiones en privado cambia el tiempo de superarla. Eso refuerza la fase 03 del plan: <b>fallar en serie, en casa, antes de cobrarle a un tercero</b>. Ver secciones 13 y 15.</div>
+        </div></li>
+      </ul>
+    </section>
+
     <footer>
-      <span>Event Intelligence OS · v0.2</span>
+      <span>Event Intelligence OS · v0.3</span>
       <span>Documento interno · para discusión</span>
     </footer>
 
