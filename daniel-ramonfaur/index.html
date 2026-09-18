@@ -19,20 +19,23 @@
 <meta property="og:title" content="Daniel Ramonfaur — Fundador y CEO de Fullsite">
 <meta property="og:description" content="Fundador y CEO de Fullsite, la empresa de Monterrey que construye el sistema operativo con inteligencia artificial para restaurantes.">
 <meta property="og:url" content="https://fullsite.mx/daniel-ramonfaur/">
+<meta property="og:image" content="https://fullsite.mx/daniel-ramonfaur.jpg">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta property="og:image:alt" content="Daniel Ramonfaur, fundador y CEO de Fullsite">
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="Fullsite">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fullsite.mx/daniel-ramonfaur.jpg">
 <meta name="twitter:title" content="Daniel Ramonfaur — Fundador y CEO de Fullsite">
 <meta name="twitter:description" content="Fundador y CEO de Fullsite, la empresa de Monterrey que construye el sistema operativo con inteligencia artificial para restaurantes.">
 
 <link rel="icon" href="/favicon.ico">
 
 <!--
-  PENDIENTE (Daniel): para reforzar la identidad de entidad ante Google, agregar aqui
-  y en el bloque Person de abajo:
-    1. "sameAs": URL exacta de LinkedIn personal, X, GitHub, Crunchbase.
-    2. "image": foto profesional en /daniel-ramonfaur.jpg (minimo 1200x1200).
-  Ambos campos estan marcados mas abajo como PENDIENTE.
+  Entidad: Person @id https://fullsite.mx/#daniel-ramonfaur, compartido por la version ES,
+  la EN y el Organization del home. sameAs e image ya poblados (LinkedIn + foto 1254px).
+  Si se agregan X, GitHub o Crunchbase, van dentro del arreglo "sameAs" de abajo.
 -->
 
 <script type="application/ld+json">
@@ -78,6 +81,16 @@
     }
   },
   "nationality": { "@type": "Country", "name": "Mexico" },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://fullsite.mx/daniel-ramonfaur.jpg",
+    "width": 1254,
+    "height": 1254,
+    "caption": "Daniel Ramonfaur, fundador y CEO de Fullsite"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/danielramonfaur"
+  ],
   "knowsLanguage": ["es", "en"],
   "knowsAbout": [
     "software para restaurantes",
@@ -237,9 +250,13 @@ footer{padding:64px var(--pad) 32px;border-top:1px solid var(--line)}
 <header class="sec profile-hero">
   <div class="wrap">
     <div class="profile-grid">
-      <!-- PENDIENTE (Daniel): sustituir la inicial por la foto real.
-           <img src="/daniel-ramonfaur.jpg" alt="Daniel Ramonfaur, fundador y CEO de Fullsite" width="132" height="132"> -->
-      <div class="profile-avatar reveal" aria-hidden="true">D</div>
+      <div class="profile-avatar reveal">
+        <img src="/daniel-ramonfaur-264.jpg"
+             srcset="/daniel-ramonfaur-264.jpg 264w, /daniel-ramonfaur.jpg 1254w"
+             sizes="132px"
+             alt="Daniel Ramonfaur, fundador y CEO de Fullsite"
+             width="264" height="264" fetchpriority="high" decoding="async">
+      </div>
       <div>
         <p class="eyebrow reveal">Fundador</p>
         <h1 class="reveal">Daniel Ramonfaur</h1>
@@ -251,6 +268,7 @@ footer{padding:64px var(--pad) 32px;border-top:1px solid var(--line)}
         </p>
         <div class="profile-actions reveal rd3">
           <a href="https://wa.me/528112741000?text=Hola%20Daniel%2C%20te%20contacto%20desde%20tu%20perfil%20en%20fullsite.mx" class="btn-primary">Contactar a Daniel &rarr;</a>
+          <a href="https://www.linkedin.com/in/danielramonfaur" class="btn-secondary" target="_blank" rel="me noopener">LinkedIn</a>
           <a href="/nosotros.html" class="btn-secondary">La historia de Fullsite</a>
         </div>
       </div>

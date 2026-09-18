@@ -19,18 +19,23 @@
 <meta property="og:title" content="Daniel Ramonfaur — Founder &amp; CEO of Fullsite">
 <meta property="og:description" content="Founder and CEO of Fullsite, the Monterrey-based company building the AI-native operating system for restaurants.">
 <meta property="og:url" content="https://fullsite.mx/en/daniel-ramonfaur/">
+<meta property="og:image" content="https://fullsite.mx/daniel-ramonfaur.jpg">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta property="og:image:alt" content="Daniel Ramonfaur, founder and CEO of Fullsite">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Fullsite">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fullsite.mx/daniel-ramonfaur.jpg">
 <meta name="twitter:title" content="Daniel Ramonfaur — Founder &amp; CEO of Fullsite">
 <meta name="twitter:description" content="Founder and CEO of Fullsite, the Monterrey-based company building the AI-native operating system for restaurants.">
 
 <link rel="icon" href="/favicon.ico">
 
 <!--
-  TODO (Daniel): to strengthen entity identity for Google, add here and in the Person block:
-    1. "sameAs": exact LinkedIn / X / GitHub / Crunchbase URLs.
-    2. "image": professional photo at /daniel-ramonfaur.jpg (1200x1200 minimum).
+  Entity: Person @id https://fullsite.mx/#daniel-ramonfaur, shared by the ES page, this EN
+  page and the home Organization. sameAs and image are populated (LinkedIn + 1254px photo).
+  Additional profiles (X, GitHub, Crunchbase) go inside the "sameAs" array below.
 -->
 
 <script type="application/ld+json">
@@ -76,6 +81,16 @@
     }
   },
   "nationality": { "@type": "Country", "name": "Mexico" },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://fullsite.mx/daniel-ramonfaur.jpg",
+    "width": 1254,
+    "height": 1254,
+    "caption": "Daniel Ramonfaur, founder and CEO of Fullsite"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/danielramonfaur"
+  ],
   "knowsLanguage": ["es", "en"],
   "knowsAbout": [
     "restaurant software",
@@ -235,9 +250,13 @@ footer{padding:64px var(--pad) 32px;border-top:1px solid var(--line)}
 <header class="sec profile-hero">
   <div class="wrap">
     <div class="profile-grid">
-      <!-- TODO (Daniel): replace the initial with the real photo.
-           <img src="/daniel-ramonfaur.jpg" alt="Daniel Ramonfaur, founder and CEO of Fullsite" width="132" height="132"> -->
-      <div class="profile-avatar reveal" aria-hidden="true">D</div>
+      <div class="profile-avatar reveal">
+        <img src="/daniel-ramonfaur-264.jpg"
+             srcset="/daniel-ramonfaur-264.jpg 264w, /daniel-ramonfaur.jpg 1254w"
+             sizes="132px"
+             alt="Daniel Ramonfaur, founder and CEO of Fullsite"
+             width="264" height="264" fetchpriority="high" decoding="async">
+      </div>
       <div>
         <p class="eyebrow reveal">Founder</p>
         <h1 class="reveal">Daniel Ramonfaur</h1>
@@ -249,6 +268,7 @@ footer{padding:64px var(--pad) 32px;border-top:1px solid var(--line)}
         </p>
         <div class="profile-actions reveal rd3">
           <a href="https://wa.me/528112741000?text=Hi%20Daniel%2C%20I%20found%20your%20profile%20on%20fullsite.mx" class="btn-primary">Contact Daniel &rarr;</a>
+          <a href="https://www.linkedin.com/in/danielramonfaur" class="btn-secondary" target="_blank" rel="me noopener">LinkedIn</a>
           <a href="/en/nosotros.html" class="btn-secondary">The Fullsite story</a>
         </div>
       </div>
