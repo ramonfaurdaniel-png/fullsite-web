@@ -576,4 +576,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://fullsite.mx/en/terminos.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://fullsite.mx/terminos.html"/>
   </url>
+  <url>
+    <loc>https://fullsite.mx/daniel-ramonfaur/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fullsite.mx/daniel-ramonfaur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fullsite.mx/en/daniel-ramonfaur/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fullsite.mx/daniel-ramonfaur/"/>
+  </url>
+  <url>
+    <loc>https://fullsite.mx/en/daniel-ramonfaur/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://fullsite.mx/daniel-ramonfaur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fullsite.mx/en/daniel-ramonfaur/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fullsite.mx/daniel-ramonfaur/"/>
+  </url>
 </urlset>
