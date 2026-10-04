@@ -3,6 +3,10 @@
 Estilo: rondesignlab — minimalista, dark, metricas bold, case studies con ROI.
 Formato: 1080x1080px HTML cards. Abrir en browser → screenshot para publicar.
 
+> **Precio vigente (propuesto):** $1,990 MXN + IVA al mes por sucursal. Implementacion, hardware, capacitacion adicional y excedentes de IA se cotizan aparte.
+>
+> **Antes de publicar:** las cifras de ahorro, ROI, porcentajes y testimonios de estos posts son ilustrativas. No publicarlas como resultados de clientes hasta tener datos medidos.
+
 ---
 
 ## Semana 1: Identifica fugas operativas (posts 11-15)
@@ -22,8 +26,8 @@ Formato: 1080x1080px HTML cards. Abrir en browser → screenshot para publicar.
 | 16 | post-16.html | 30 agentes autonomos | No es un chatbot. Son 30 agentes autonomos. Detectan anomalias, fraudes, merma. Predicen cierre, compras, staffing. Actuan: auto-86, ordenes, alertas. #IA #agentic |
 | 17 | post-17.html | Bot Telegram | "Como vamos hoy?" — $34,200 en ventas, ticket promedio $287, Omar lleva $8,400. Preguntale lo que sea por Telegram. Sabe todo. En tiempo real. #chatbot #restaurantes |
 | 18 | post-18.html | POS que piensa | El POS que piensa, no solo registra. Auto-86, compras predictivas, costeo automatico, inventario fisico digital. Todo integrado. #POS #tecnologia |
-| 19 | post-19.html | ROI desglosado | Reduccion merma +$39K. Fraudes evitados +$4.1K. Food cost optimizado +$22K. Upselling +$8.5K. Reportes eliminados +$6.4K. Costo Fullsite -$4,999. ROI neto: +$75,001/mes. #ROI #restaurantes |
-| 20 | post-20.html | POS vs Fullsite | "Tu POS te dice cuanto vendiste ayer. Fullsite te dice que hacer hoy." POS tradicional $2,500 (0 agentes). Wansoft $3,500 (0 agentes). Fullsite $4,999 (30 agentes IA). #comparativa |
+| 19 | post-19.html | ROI desglosado | Reduccion merma +$39K. Fraudes evitados +$4.1K. Food cost optimizado +$22K. Upselling +$8.5K. Reportes eliminados +$6.4K. Costo Fullsite -$1,990. ROI neto: +$78,010/mes. #ROI #restaurantes |
+| 20 | post-20.html | POS vs Fullsite | "Tu POS te dice cuanto vendiste ayer. Fullsite te dice que hacer hoy." POS tradicional $2,500 (0 agentes). Wansoft $3,500 (0 agentes). Fullsite $1,990 + IVA (30 agentes IA). #comparativa |
 
 ## Semana 3: Resultados probados (posts 21-25)
 
@@ -39,11 +43,11 @@ Formato: 1080x1080px HTML cards. Abrir en browser → screenshot para publicar.
 
 | # | Archivo | Titulo | Caption |
 |---|---------|--------|---------|
-| 26 | post-26.html | Cuanto te cuesta no saber | Merma $47K + fraudes $4.1K + food cost $22K + upselling $8.5K + reportes $6.4K = $88,000/mes. Fullsite cuesta $4,999. Tu decides. #costos #restaurantes |
+| 26 | post-26.html | Cuanto te cuesta no saber | Merma $47K + fraudes $4.1K + food cost $22K + upselling $8.5K + reportes $6.4K = $88,000/mes. Fullsite cuesta $1,990 + IVA. Tu decides. #costos #restaurantes |
 | 27 | post-27.html | 3 pasos | Empieza en 3 pasos. 01 Demo en vivo (30 min). 02 Setup (conectamos tu POS). 03 Live (30 agentes trabajando). Resultados en 7 dias. fullsite.mx #demo #POS |
 | 28 | post-28.html | Numeros que hablan | 30 agentes autonomos. 412 ingredientes con costeo real. 24/7 monitoreo sin pausas. No es un POS. Es un sistema operativo para tu restaurante. #numeros #IA |
 | 29 | post-29.html | Testimonial operador | "Antes le dedicaba toda la manana del lunes a revisar numeros. Ahora me llega un mensaje a las 7am con todo listo." 12h → 0 en reportes semanales. #testimonio #restaurantes |
-| 30 | post-30.html | CTA final | El futuro de tu restaurante empieza hoy. POS + 30 agentes IA + Dashboard + Bot 24/7. $4,999/mes. Setup en 7 dias. Sin contrato anual. Soporte WhatsApp. fullsite.mx #restaurantes #IA |
+| 30 | post-30.html | CTA final | El futuro de tu restaurante empieza hoy. POS + 30 agentes IA + Dashboard + Bot 24/7. Desde $1,990 + IVA al mes. Setup en 7 dias. Sin contrato anual. Soporte WhatsApp. fullsite.mx #restaurantes #IA |
 
 ---
 
