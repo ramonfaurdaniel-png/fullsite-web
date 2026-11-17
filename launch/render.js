@@ -21,9 +21,12 @@ fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive:
     }
   }));
   await b.close();
-  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, 'f%05d.jpg'),
-    '-i', path.resolve(__dirname, 'assets/soundtrack.wav'),
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '22M', '-bufsize', '44M', '-pix_fmt', 'yuv420p',
+  const src = ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, 'f%05d.jpg'), '-i', path.resolve(__dirname, 'assets/soundtrack.wav')];
+  // HQ 1080p60 for LinkedIn upload
+  execFileSync('ffmpeg', [...src, '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-maxrate', '20M', '-bufsize', '40M', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', path.resolve(__dirname, OUT)], { stdio: 'inherit' });
+  // light 1080p30 that opens anywhere (phones, chat apps)
+  execFileSync('ffmpeg', [...src, '-vf', 'fps=30', '-c:v', 'libx264', '-preset', 'slow', '-profile:v', 'high', '-level', '4.0', '-b:v', '2200k', '-maxrate', '3000k', '-bufsize', '6000k', '-pix_fmt', 'yuv420p',
+    '-c:a', 'aac', '-b:a', '160k', '-shortest', '-movflags', '+faststart', path.resolve(__dirname, OUT.replace('.mp4', '-ligero.mp4'))], { stdio: 'inherit' });
   console.log('done', OUT, ((Date.now() - t0) / 1000).toFixed(0) + 's');
 })();

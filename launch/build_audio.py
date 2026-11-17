@@ -137,41 +137,18 @@ def hz(midi): return 440 * 2 ** ((midi - 69) / 12)
 # chords per 2-second bar: Am  F  C  G  (roots in midi)
 PROG = [(45, [57, 60, 64]), (41, [57, 60, 65]), (48, [55, 60, 64]), (43, [55, 59, 62])]
 
-# ---------------- ARRANGEMENT ----------------
-# 0-5: tension — clock ticks + drone
-n = int(SR * 7); tt = np.arange(n) / SR
-drone = (np.sin(2 * np.pi * 55 * tt) + 0.5 * np.sin(2 * np.pi * 82.4 * tt)) * np.minimum(1, tt / 3) * 0.12
-drone *= np.where(tt < 5, 1, np.maximum(0, 1 - (tt - 5) / 0.3))
-add(drone, 0)
-for i in range(10):
-    add(tick(), i * 0.5, 0.5 if i % 2 else 0.8, 0.3 if i % 2 else -0.3)
-for t0 in (1.0, 1.5, 2.0):
-    add(thud(), t0, 0.9)
-add(whoosh(0.5), 2.1, 0.6)
-add(thud(), 2.55, 1.0)
-for i, t0 in enumerate([2.7, 2.88, 3.06, 3.24, 3.42]):
-    add(tick(), t0, 0.7, (-1) ** i * 0.6)
-for i in range(24):
-    add(tick(), 3.6 + i * 0.05, 0.25, 0)
-add(blip(520), 5.0, 0.6)
-add(riser(2.0), 5.0, 0.9)
-add(impact(), 7.0, 1.0)
-add(whoosh(0.6, False), 7.4, 0.5)
-
 
 def groove(t_start, t_end, energy=1.0, bass=True):
-    t = t_start
-    i = 0
+    t = t_start; i = 0
     while t < t_end - 1e-6:
         b = i % 4
-        add(kick(), t, 0.9)
-        if b in (1, 3): add(clap(), t, 0.55 * energy)
+        add(kick(), t, 0.9 * min(1, energy + 0.2))
+        if b in (1, 3): add(clap(), t, 0.5 * energy)
         add(hat(), t + 0.25, 0.4 * energy, 0.25)
         if energy > 1.05 and b == 3: add(hat(True), t + 0.25, 0.3, -0.25)
         add(hat(), t, 0.18 * energy, -0.25)
-        bar = int((t + 1e-6) // 2.0) % 4
         if bass:
-            root = PROG[bar][0]
+            root = PROG[int((t + 1e-6) // 2.0) % 4][0]
             add(note(hz(root), 0.22, 'bass'), t + 0.25, 1.0)
         t += BEAT; i += 1
 
@@ -189,45 +166,73 @@ def pads(t_start, t_end, gain=1.0):
 def plucks(t_start, t_end, gain=1.0):
     t = t_start; i = 0
     while t < t_end - 1e-6:
-        bar = int((t + 1e-6) // 2.0) % 4
-        notes = PROG[bar][1]
+        notes = PROG[int((t + 1e-6) // 2.0) % 4][1]
         m = notes[[0, 2, 1, 2][i % 4]] + 12
         add(note(hz(m), 0.6, 'pluck'), t, gain, (-1) ** i * 0.4)
         t += 0.25; i += 1
 
-# brand reveal: pads only, then groove from Connect title
-pads(7.0, 11.0, 0.8)
-add(riser(1.0), 10.0, 0.6)
-groove(11.0, 32.4, 1.0)
-pads(11.0, 32.4, 0.6)
-plucks(17.0, 22.0, 0.7)       # phone scene sparkle
-plucks(26.0, 32.0, 0.6)       # mosaic
-for t0 in (12.3, 16.8, 25.7):
-    add(whoosh(0.5), t0, 0.7)
-add(whoosh(0.45), 23.95, 0.9)  # whip pan
-for t0 in (18.3, 19.2, 20.2, 21.2):
-    add(blip(), t0, 0.8)
-for t0 in (27.0, 27.5, 28.0, 28.6, 29.9, 30.4, 30.9):
-    add(tick(), t0, 0.6)
-# offline: everything drops, glitches
-for k in range(9):
-    add(glitch(rng.uniform(0.04, 0.12)), 33.2 + k * 0.09, 0.8, rng.uniform(-0.7, 0.7))
-add(riser(0.8), 33.4, 0.7)
-add(impact(), 34.2, 0.95)
-groove(34.2, 44.6, 1.15)
-pads(34.2, 44.6, 0.6)
-plucks(39.0, 44.6, 0.7)
-for t0 in (36.4, 36.9, 37.4):
-    add(thud(), t0, 0.6)
-for t0 in (41.4, 41.9, 42.4, 42.9):
-    add(tick(), t0, 0.7)
-add(riser(0.6), 44.6, 0.8)
-add(impact(), 45.2, 1.0)
-# final resolve chord C add9, long
+# ---------------- ARRANGEMENT (v3 timeline) ----------------
+# soft intro pad + arp
+pads(0.0, 6.0, 0.55)
+plucks(0.5, 6.0, 0.35)
+for t0 in (3.25, 3.55, 3.85, 4.15, 4.45):        # loss rows on receipt
+    add(tick(), t0, 0.6, 0.2)
+for i in range(20):
+    add(tick(), 4.6 + i * 0.045, 0.18)          # counter
+add(riser(1.2), 4.8, 0.6)
+add(impact(), 6.0, 0.75)
+add(blip(880), 6.35, 0.6)                       # square bounce
+add(whoosh(0.6), 6.6, 0.55)
+pads(6.0, 10.0, 0.6)
+groove(7.0, 9.5, 0.7, bass=False)
+add(blip(1320), 8.4, 0.4); add(blip(1560), 8.6, 0.4)
+add(riser(0.5), 9.5, 0.7)
+add(impact(), 10.0, 0.9)
+# CONNECT (dark)
+n2 = int(SR * 11); t2 = np.arange(n2) / SR
+add(np.sin(2 * np.pi * 41.2 * t2) * np.minimum(1, t2 / 1.5) * np.minimum(1, (11 - t2) / 0.5) * 0.12, 10.0)
+groove(11.0, 20.6, 1.0)
+pads(10.0, 21.0, 0.55)
+plucks(16.0, 20.6, 0.55)
+add(whoosh(0.6), 13.9, 0.6)
+for i in range(16):
+    add(tick(), 14.7 + i * 0.06, 0.35, 0.3)     # typing
+add(tick(), 15.8, 0.9)
+for t0 in (16.0, 16.35, 16.7):
+    add(blip(1100), t0, 0.55)
+add(blip(1480), 19.5, 0.9); add(blip(1975), 19.62, 0.6)   # notification
+add(whoosh(0.5), 20.55, 0.7)
+add(impact(), 21.0, 0.8)
+# POS (light)
+groove(21.0, 34.6, 1.1)
+pads(21.0, 35.0, 0.55)
+plucks(21.0, 24.0, 0.5)
+add(whoosh(0.5), 23.5, 0.6)
+for t0 in (24.8, 25.3, 25.8, 26.7):
+    add(tick(), t0, 0.9)
+for i, m in enumerate((76, 79, 84)):
+    add(note(hz(m), 0.8, 'pluck'), 26.9 + i * 0.07, 0.8)   # paid chime
+add(whoosh(0.4), 27.35, 0.5)
+for k in range(5):
+    add(glitch(0.05), 28.9 + k * 0.08, 0.35)
+for i, m in enumerate((72, 79)):
+    add(note(hz(m), 0.8, 'pluck'), 30.2 + i * 0.08, 0.8)
+add(whoosh(0.5), 30.5, 0.5)
+add(riser(0.6), 34.4, 0.7)
+add(impact(), 35.0, 0.85)
+# TOGETHER
+groove(35.0, 42.5, 1.15)
+pads(35.0, 43.0, 0.6)
+plucks(35.0, 42.5, 0.6)
+for t0 in (36.0, 37.0, 38.0):
+    add(tick(), t0, 0.8)
+add(riser(0.6), 42.4, 0.8)
+add(impact(), 43.0, 1.0)
+add(blip(880), 43.4, 0.5)
 for m in (48, 55, 60, 62, 64, 67):
-    add(note(hz(m), 5.8, 'pad'), 45.2, 1.3, rng.uniform(-0.6, 0.6))
+    add(note(hz(m), 7.6, 'pad'), 43.0, 1.3, rng.uniform(-0.6, 0.6))
 for i, m in enumerate((72, 76, 79, 84)):
-    add(note(hz(m), 1.5, 'pluck'), 46.2 + i * 0.25, 0.6, (-1) ** i * 0.4)
+    add(note(hz(m), 1.5, 'pluck'), 44.4 + i * 0.25, 0.6, (-1) ** i * 0.4)
 
 # master: soft-clip, normalise, fade
 mix = np.stack([L, R], 1)

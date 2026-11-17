@@ -1,6 +1,8 @@
 # Fullsite — Launch video (Connect + POS)
 
-- `fullsite-launch-es.mp4` / `fullsite-launch-en.mp4`: final cuts, 1920×1080 at 60 fps, 51 s, with soundtrack.
+- `fullsite-launch-es.mp4` / `fullsite-launch-en.mp4`: final cuts, 1920×1080 at 60 fps, 51 s, with soundtrack (for uploading to LinkedIn).
+- `fullsite-launch-es-ligero.mp4` / `fullsite-launch-en-ligero.mp4`: light 1080p30 versions under 15 MB that open on any phone.
+- Style: light, airy SaaS launch look. The product UI floats in real CSS 3D space with depth of field, a cursor drives the POS, and one dark "Connect" scene has glowing orbits.
 - `fullsite-launch.html`: the live, code-driven version. Open it in a browser and press play. Space pauses, there's a scrub bar at the bottom, and the button in the corner switches language (`?lang=en` / `?lang=es`).
 - All the copy lives in the `COPY` object (ES / EN) at the top of the script.
 - `build_audio.py`: synthesizes the 120 BPM soundtrack (`python3 build_audio.py assets/soundtrack.wav`).
