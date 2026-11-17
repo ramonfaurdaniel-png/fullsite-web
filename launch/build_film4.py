@@ -53,7 +53,7 @@ SHOTS = [
     ('4296.mp4', 1.0, MD[1], [('leaks', 0.3)]),                  # dónde se te va el dinero
     ('20847.mp4', 0.2, MD[2], [('ticket', 0.5)]),                # una venta no es solo un ticket
     ('4118.mp4', 20.0, MD[3], [q(0)]), ('9409.mp4', 3.0, MD[4], [q(1)]), ('22660.mp4', 5.0, MD[5], [q(2)]),
-    ('1737.mp4', 5.0, MD[6], [q(3)]), ('4533.mp4', 5.0, MD[7], [q(4)]), ('47627.mp4', 7.0, MD[8], [q(5)]),
+    ('1737.mp4', 5.0, MD[6], [q(3)]), ('4533.mp4', 5.0, MD[7], [q(4)]), ('4533.mp4', 13.0, MD[8], [q(5)]),
     ('24405.mp4', 6.0, MD[9], [q(6)]), ('9338.mp4', 8.0, MD[10], [q(7)]),
     ('SYS', 9.0, MD[11], [('sys_tile', 0.15, 0.6), ('sys_cap', 0.9, 0.6)] + [('mod%d' % k, t - BT[11] - 0.1, 0.3) for k, t in enumerate(T['mods'])]),
     ('4043.mp4', 1.0, MD[12], [('live', 0.4)]),                  # una IA lo vigila durante el turno
