@@ -114,16 +114,16 @@ def run(a):
 # ---------- text cards ----------
 SH = (0, 0, 0, 160)
 line_png(f'{TMP}/owner.png', C['owner'], 92, y=800, shadow=SH)
-line_png(f'{TMP}/r1.png', C['r1'], 76, y=140, shadow=SH)
-line_png(f'{TMP}/r2.png', C['r2'], 76, y=240, shadow=SH)
-wordmark_png(f'{TMP}/wm_dark.png', 560, 760, (255, 255, 255, 255))
-line_png(f'{TMP}/pre.png', [(C['pre'], (255, 255, 255, 170))], 22, FM, y=880)
+line_png(f'{TMP}/r1.png', C['r1'], 76, y=90, shadow=SH)
+line_png(f'{TMP}/r2.png', C['r2'], 76, y=185, shadow=SH)
+wordmark_png(f'{TMP}/wm_dark.png', 520, 830, (255, 255, 255, 255))
+line_png(f'{TMP}/pre.png', [(C['pre'], (255, 255, 255, 170))], 22, FM, y=960)
 line_png(f'{TMP}/orbit.png', C['orbit'], 72, y=900, shadow=SH)
 line_png(f'{TMP}/cards.png', C['cards'], 80, y=880, shadow=SH)
 line_png(f'{TMP}/phone.png', C['phone'], 80, y=880, shadow=SH)
 # POS title: white-on-light needs dark ink
 wordmark_png(f'{TMP}/wm_pos.png', 420, 120, (10, 10, 10, 255))
-line_png(f'{TMP}/tablet.png', C['tablet'], 84, y=110, shadow=(255, 255, 255, 200))
+line_png(f'{TMP}/tablet.png', C['tablet'], 84, y=70, shadow=(255, 255, 255, 200))
 line_png(f'{TMP}/bar.png', C['bar'], 80, y=880, shadow=SH)
 line_png(f'{TMP}/helix.png', C['helix'], 72, y=110, shadow=(255, 255, 255, 230))
 line_png(f'{TMP}/dash.png', C['dash'], 80, y=100, shadow=(255, 255, 255, 230))
@@ -151,28 +151,49 @@ SHOTS = [  # (src, start, use, dur, overlays)
     ('c9.mp4', 0.0, 5.0, 55.0 - (17.5 + 7 * b), [('wm_end', 0.5, 99), ('tag', 1.3, 99), ('cta', 2.1, 99)]),
 ]
 FADE = 0.45
+BASE = os.path.join(CLIPS, 'base'); os.makedirs(BASE, exist_ok=True)
+GRADS = {  # readability gradients behind the text, per source clip
+    'owner.mp4': 'gb', 'c0.mp4': 'gt', 'c1.mp4': 'gb', 'c2.mp4': 'gb', 'c3.mp4': 'gb', 'c4.mp4': 'gb',
+    'c6.mp4': 'lt', 'bartender.mp4': 'gb', 'c7.mp4': 'lt', 'dashreal.mp4': 'lt',
+}
+def grad_png(path, top, color, strength):
+    g = Image.new('RGBA', (1920, 1080), (0, 0, 0, 0)); px = g.load()
+    import numpy as np
+    a = np.zeros((1080, 1920, 4), np.uint8); a[..., :3] = color
+    yy = np.arange(1080) / 1080.0
+    ramp = np.clip((0.42 - (yy if top else 1 - yy)) / 0.42, 0, 1) ** 1.6
+    a[..., 3] = (ramp[:, None] * 255 * strength).astype(np.uint8)
+    Image.fromarray(a, 'RGBA').save(path)
+grad_png(f'{TMP}/gt.png', True, (0, 0, 0), .78)
+grad_png(f'{TMP}/gb.png', False, (0, 0, 0), .72)
+grad_png(f'{TMP}/lt.png', True, (250, 250, 248), .9)
+
 parts = []
 for i, (src, ss, use, dur, ovs) in enumerate(SHOTS):
+    # stage 1 (cached, language independent): trim, slow-mo, upscale, grade
+    bp = f"{BASE}/b{i}_{src.replace('.mp4', '')}_{ss}_{use}_{dur:.3f}.mp4"
+    if not os.path.exists(bp):
+        crop = {'bartender.mp4': 'crop=960:540:0:330,', 'dashreal.mp4': 'crop=960:540:0:180,'}.get(src, '')
+        k = dur / use
+        slow = f"setpts={k:.4f}*PTS,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1," if k > 1.05 else 'fps=60,'
+        base = crop + slow + "scale=1920:1080:flags=lanczos,setsar=1,unsharp=5:5:0.45,eq=contrast=1.03:saturation=0.97"
+        if src == 'c4.mp4':  # hide the model's gibberish notification text
+            base += ",split[m][bb];[bb]crop=1300:380:310:50,gblur=sigma=28[bl];[m][bl]overlay=310:50"
+        base += f",tpad=stop_mode=clone:stop_duration=2,trim=duration={dur:.3f},format=yuv420p"
+        run(['-ss', str(ss), '-t', f'{use:.3f}', '-i', os.path.join(CLIPS, src), '-filter_complex', f'[0:v]{base}[v]', '-map', '[v]',
+             '-c:v', 'libx264', '-preset', 'medium', '-crf', '14', '-r', '60', '-an', bp])
+    # stage 2: gradient + text overlays
     p = f'{TMP}/s{i}.mp4'; parts.append(p)
-    inputs = ['-ss', str(ss), '-t', f'{use:.3f}', '-i', os.path.join(CLIPS, src)]
-    crop = {'bartender.mp4': 'crop=960:540:0:330,', 'dashreal.mp4': 'crop=960:540:0:180,'}.get(src, '')
-    k = dur / use
-    slow = f"setpts={k:.4f}*PTS,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1," if k > 1.05 else 'fps=60,'
-    base = crop + slow + "scale=1920:1080:flags=lanczos,setsar=1,unsharp=5:5:0.45,eq=contrast=1.03:saturation=0.97"
-    if src == 'c4.mp4':  # hide the model's gibberish notification text
-        base += ",split[m][bb];[bb]crop=1300:380:310:50,gblur=sigma=28[bl];[m][bl]overlay=310:50"
-
-    # slow-down guard: if the source is shorter than needed, hold the last frame
-    base += f",tpad=stop_mode=clone:stop_duration=2,trim=duration={dur:.3f}"
-    fc = f"[0:v]{base}[v0];"
-    last = 'v0'
+    inputs = ['-i', bp]; fc = ''; last = '0:v'; n = 1
+    if src in GRADS:
+        inputs += ['-loop', '1', '-t', f'{dur:.3f}', '-i', f'{TMP}/{GRADS[src]}.png']
+        fc += f"[{last}][1:v]overlay[g];"; last = 'g'; n = 2
     for j, (png, ti, to) in enumerate(ovs):
         inputs += ['-loop', '1', '-t', f'{dur:.3f}', '-i', f'{TMP}/{png}.png']
-        k = j + 1
+        k = n + j
         fade = f"fade=in:st={ti}:d={FADE}:alpha=1"
         if to < dur:
             fade += f",fade=out:st={to}:d=0.3:alpha=1"
-        # text drifts up 18px while fading in
         fc += f"[{k}:v]format=rgba,{fade}[t{k}];[{last}][t{k}]overlay=x=0:y='18*max(0,1-(t-{ti})/0.8)'[o{k}];"
         last = f'o{k}'
     fc += f"[{last}]format=yuv420p[v]"
