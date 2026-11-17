@@ -1,5 +1,4 @@
-// Renders fullsite-launch.html -> MP4 with real motion blur.
-// Frames are rendered at 60 fps, then each pair is blended (180° shutter) into 30 fps.
+// Renders fullsite-launch.html -> 1080p60 MP4 with the soundtrack.
 // usage: node render.js <lang es|en> [out.mp4]
 const { chromium } = require('playwright');
 const path = require('path'), fs = require('fs'), os = require('os'), { execFileSync } = require('child_process');
@@ -24,8 +23,7 @@ fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive:
   await b.close();
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, 'f%05d.jpg'),
     '-i', path.resolve(__dirname, 'assets/soundtrack.wav'),
-    '-vf', "tmix=frames=2,select='mod(n\\,2)',setpts=N/30/TB", '-r', '30',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-maxrate', '16M', '-bufsize', '32M', '-pix_fmt', 'yuv420p',
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '22M', '-bufsize', '44M', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', path.resolve(__dirname, OUT)], { stdio: 'inherit' });
   console.log('done', OUT, ((Date.now() - t0) / 1000).toFixed(0) + 's');
 })();
