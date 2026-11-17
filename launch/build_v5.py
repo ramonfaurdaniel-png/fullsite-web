@@ -40,7 +40,7 @@ C = {
         'r2': [("It doesn't know what ", W_), ('you lost.', (239, 68, 68, 255))],
         'pre': 'INTRODUCING',
         'orbit': [('Your whole restaurant, ', W_), ('connected.', G)],
-        'cards': [('AI watches ', W_), ('every peso.', G)],
+        'cards': [('AI watches ', W_), ('every dollar.', G)],
         'phone': [('It tells you ', W_), ('before closing.', G)],
         'tablet': [('Charge in ', K), ('seconds.', G)],
         'bar': [('Built for ', W_), ('real service.', G)],
