@@ -254,7 +254,7 @@ for (a_, b_), at in T['vo']:
     mix.append(f'[v{n}]'); n += 1
 ins += ['-i', f'{AUD}/mid3_{LANG}.mp3']
 fc += f"[{n}:a]volume=1.5,adelay={int(mid_start * 1000)}|{int(mid_start * 1000)}[v{n}];"; mix.append(f'[v{n}]'); n += 1
-fc += ''.join(mix) + f"amix=inputs={len(mix)}:normalize=0[vo];[vo]asplit[vo1][vo2];"
+fc += ''.join(mix) + f"amix=inputs={len(mix)}:normalize=0,apad=whole_dur={total}[vo];[vo]asplit[vo1][vo2];"
 sfx = []   # no ambience SFX: the opening sounded odd; music + voice only
 s0 = n
 for j, (name, at, g) in enumerate(sfx):
