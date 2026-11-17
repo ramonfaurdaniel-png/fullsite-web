@@ -170,7 +170,9 @@ def bubble(path, text, me, y):
 # ---- overlay assets: HTML cards (+ masks) rendered by cards_render.js
 import json, cards4
 json.dump(cards4.build(LANG), open(f'{TMP}/cards.json', 'w'))
-subprocess.run(['node', os.path.join(HERE, 'cards_render.js'), f'{TMP}/cards.json', TMP], check=True)
+AUDIO_ONLY = os.environ.get('AUDIO_ONLY') == '1'   # remix sound on an existing render
+if not AUDIO_ONLY:
+    subprocess.run(['node', os.path.join(HERE, 'cards_render.js'), f'{TMP}/cards.json', TMP], check=True)
 im = canvas(); wm_w = 640; h = wordmark(im, wm_w, (1920 - wm_w) // 2, 430); im.save(f'{TMP}/end_wm.png')
 im = canvas(); d = ImageDraw.Draw(im); f = ImageFont.truetype(FM, 44)
 d.text(((1920 - d.textlength(T['tag'], font=f)) / 2, 430 + h + 50), T['tag'], font=f, fill=(255, 255, 255, 235)); im.save(f'{TMP}/end_tag.png')
@@ -180,6 +182,8 @@ parts = []; t_cursor = 0.0; cuts = []
 for i, (src, ss, dur, ovs) in enumerate(SHOTS):
     dur = round(dur * 60) / 60
     cuts.append(t_cursor); t_cursor += dur
+    if AUDIO_ONLY:
+        parts.append(f'{TMP}/p{i:02d}.mp4'); continue
     out = f'{TMP}/p{i:02d}.mp4'; parts.append(out)
     if src == 'BLACK':
         run(['-f', 'lavfi', '-t', f'{dur}', '-i', 'color=c=black:s=1920x1080:r=60', '-c:v', 'libx264', '-crf', '18', '-pix_fmt', 'yuv420p', out]); continue
@@ -211,7 +215,8 @@ for i, (src, ss, dur, ovs) in enumerate(SHOTS):
 with open(f'{TMP}/list.txt', 'w') as fh:
     for p in parts:
         fh.write(f"file '{p}'\n")
-run(['-f', 'concat', '-safe', '0', '-i', f'{TMP}/list.txt', '-c', 'copy', f'{TMP}/video.mp4'])
+if not AUDIO_ONLY:
+    run(['-f', 'concat', '-safe', '0', '-i', f'{TMP}/list.txt', '-c', 'copy', f'{TMP}/video.mp4'])
 total = t_cursor
 
 # ---- audio
@@ -250,7 +255,7 @@ for (a_, b_), at in T['vo']:
 ins += ['-i', f'{AUD}/mid3_{LANG}.mp3']
 fc += f"[{n}:a]volume=1.5,adelay={int(mid_start * 1000)}|{int(mid_start * 1000)}[v{n}];"; mix.append(f'[v{n}]'); n += 1
 fc += ''.join(mix) + f"amix=inputs={len(mix)}:normalize=0[vo];[vo]asplit[vo1][vo2];"
-sfx = [('wok', 0.0, -6), ('chop', 2.0, -6), ('wok', 4.0, -10), ('city', 8.0, -14), ('wok', cuts[6], -12), ('rain', cuts[8], -10)]
+sfx = []   # no ambience SFX: the opening sounded odd; music + voice only
 s0 = n
 for j, (name, at, g) in enumerate(sfx):
     ins += ['-i', f'{AUD}/{name}.mp3']
