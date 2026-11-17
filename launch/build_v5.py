@@ -114,8 +114,8 @@ def run(a):
 # ---------- text cards ----------
 SH = (0, 0, 0, 160)
 line_png(f'{TMP}/owner.png', C['owner'], 92, y=800, shadow=SH)
-line_png(f'{TMP}/r1.png', C['r1'], 76, y=90, shadow=SH)
-line_png(f'{TMP}/r2.png', C['r2'], 76, y=185, shadow=SH)
+line_png(f'{TMP}/r1.png', C['r1'], 72, y=70, shadow=SH)
+line_png(f'{TMP}/r2.png', C['r2'], 72, y=160, shadow=SH)
 wordmark_png(f'{TMP}/wm_dark.png', 520, 830, (255, 255, 255, 255))
 line_png(f'{TMP}/pre.png', [(C['pre'], (255, 255, 255, 170))], 22, FM, y=960)
 line_png(f'{TMP}/orbit.png', C['orbit'], 72, y=900, shadow=SH)
@@ -123,13 +123,13 @@ line_png(f'{TMP}/cards.png', C['cards'], 80, y=880, shadow=SH)
 line_png(f'{TMP}/phone.png', C['phone'], 80, y=880, shadow=SH)
 # POS title: white-on-light needs dark ink
 wordmark_png(f'{TMP}/wm_pos.png', 420, 120, (10, 10, 10, 255))
-line_png(f'{TMP}/tablet.png', C['tablet'], 84, y=70, shadow=(255, 255, 255, 200))
+line_png(f'{TMP}/tablet.png', C['tablet'], 76, y=60, shadow=(255, 255, 255, 200))
 line_png(f'{TMP}/bar.png', C['bar'], 80, y=880, shadow=SH)
 line_png(f'{TMP}/helix.png', C['helix'], 72, y=110, shadow=(255, 255, 255, 230))
-line_png(f'{TMP}/dash.png', C['dash'], 80, y=100, shadow=(255, 255, 255, 230))
-wordmark_png(f'{TMP}/wm_end.png', 640, 330, (10, 10, 10, 255))
-line_png(f'{TMP}/tag.png', C['tag'], 60, y=520)
-line_png(f'{TMP}/cta.png', [(C['cta'], (60, 60, 60, 255))], 30, FM, y=640)
+line_png(f'{TMP}/dash.png', C['dash'], 74, y=70, shadow=(255, 255, 255, 230))
+wordmark_png(f'{TMP}/wm_end.png', 640, 240, (10, 10, 10, 255))
+line_png(f'{TMP}/tag.png', C['tag'], 60, y=430)
+line_png(f'{TMP}/cta.png', [(C['cta'], (40, 40, 40, 255))], 40, FM, y=530)
 notif_png(f'{TMP}/notif.png')
 line_png(f'{TMP}/connect.png', [('Connect', W_), ('.', G)], 150, y=420, shadow=SH)
 line_png(f'{TMP}/pos.png', [('POS', K), ('.', G)], 110, y=230)
@@ -161,10 +161,11 @@ def grad_png(path, top, color, strength):
     import numpy as np
     a = np.zeros((1080, 1920, 4), np.uint8); a[..., :3] = color
     yy = np.arange(1080) / 1080.0
-    ramp = np.clip((0.42 - (yy if top else 1 - yy)) / 0.42, 0, 1) ** 1.6
+    span = 0.5 if top else 0.42
+    ramp = np.clip((span - (yy if top else 1 - yy)) / span, 0, 1) ** 1.3
     a[..., 3] = (ramp[:, None] * 255 * strength).astype(np.uint8)
     Image.fromarray(a, 'RGBA').save(path)
-grad_png(f'{TMP}/gt.png', True, (0, 0, 0), .78)
+grad_png(f'{TMP}/gt.png', True, (0, 0, 0), 1.0)
 grad_png(f'{TMP}/gb.png', False, (0, 0, 0), .72)
 grad_png(f'{TMP}/lt.png', True, (250, 250, 248), .9)
 
@@ -173,7 +174,7 @@ for i, (src, ss, use, dur, ovs) in enumerate(SHOTS):
     # stage 1 (cached, language independent): trim, slow-mo, upscale, grade
     bp = f"{BASE}/b{i}_{src.replace('.mp4', '')}_{ss}_{use}_{dur:.3f}.mp4"
     if not os.path.exists(bp):
-        crop = {'bartender.mp4': 'crop=960:540:0:330,', 'dashreal.mp4': 'crop=960:540:0:180,'}.get(src, '')
+        crop = {'bartender.mp4': 'crop=960:540:0:330,', 'dashreal.mp4': 'crop=960:540:0:40,'}.get(src, '')
         k = dur / use
         slow = f"setpts={k:.4f}*PTS,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1," if k > 1.05 else 'fps=60,'
         base = crop + slow + "scale=1920:1080:flags=lanczos,setsar=1,unsharp=5:5:0.45,eq=contrast=1.03:saturation=0.97"
