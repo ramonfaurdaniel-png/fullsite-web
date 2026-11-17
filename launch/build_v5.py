@@ -32,6 +32,7 @@ C = {
         'dash': [('Un solo sistema para ', K), ('operar y crecer.', G)],
         'tag': [('Deja de enterarte ', K), ('al cierre.', G)],
         'cta': 'Agenda tu demo  ·  fullsite.mx',
+        'nf': ('Fullsite IA', 'ahora', 'Cancelaciones +38% en Sucursal Valle.'),
     },
     'en': {
         'owner': [('Saturday. ', W_), ('11:47 PM.', G)],
@@ -47,6 +48,7 @@ C = {
         'dash': [('One system to ', K), ('run and grow.', G)],
         'tag': [('Stop finding out ', K), ('at closing time.', G)],
         'cta': 'Book a demo  ·  fullsite.mx',
+        'nf': ('Fullsite AI', 'now', 'Voids +38% at the Valle location.'),
     },
 }[LANG]
 
@@ -82,6 +84,29 @@ def wordmark_png(path, width=720, y=420, color=(10, 10, 10, 255), extra=None):
     return x0, y, width, h
 
 
+def notif_png(path, y=110):
+    app, when, msg = C['nf']
+    im = Image.new('RGBA', (1920, 1080), (0, 0, 0, 0))
+    w, h = 1000, 168; x = (1920 - w) // 2
+    sh = Image.new('RGBA', (1920, 1080), (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rounded_rectangle([x, y + 18, x + w, y + h + 18], 44, fill=(0, 0, 0, 150))
+    im = Image.alpha_composite(im, sh.filter(ImageFilter.GaussianBlur(30)))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([x, y, x + w, y + h], 44, fill=(246, 246, 244, 245))
+    ix, iy = x + 34, y + 38
+    d.rounded_rectangle([ix, iy, ix + 92, iy + 92], 22, fill=(10, 10, 10, 255))
+    fm = Image.open(os.path.join(HERE, 'assets/fmark.png')); fh = 58; fw = int(fm.width * fh / fm.height)
+    fm = fm.resize((fw, fh), Image.LANCZOS); im.alpha_composite(fm, (ix + 22, iy + 17))
+    d = ImageDraw.Draw(im)
+    sqx = ix + 22 + int(.679 * fw); sqy = iy + 17 + int(.7675 * fh); sz = int(.321 * fw)
+    d.rectangle([sqx, sqy, sqx + sz, sqy + sz], fill=G)
+    ft = ImageFont.truetype(FB, 32); fb = ImageFont.truetype(FM, 34); fs = ImageFont.truetype(FM, 28)
+    d.text((ix + 122, y + 34), app, font=ft, fill=(17, 17, 17, 255))
+    d.text((x + w - 40 - d.textlength(when, font=fs), y + 38), when, font=fs, fill=(130, 130, 130, 255))
+    d.text((ix + 122, y + 86), msg, font=fb, fill=(30, 30, 30, 255))
+    im.save(path)
+
+
 def run(a):
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error'] + a, check=True)
 
@@ -105,32 +130,38 @@ line_png(f'{TMP}/dash.png', C['dash'], 80, y=100, shadow=(255, 255, 255, 230))
 wordmark_png(f'{TMP}/wm_end.png', 640, 330, (10, 10, 10, 255))
 line_png(f'{TMP}/tag.png', C['tag'], 60, y=520)
 line_png(f'{TMP}/cta.png', [(C['cta'], (60, 60, 60, 255))], 30, FM, y=640)
+notif_png(f'{TMP}/notif.png')
 line_png(f'{TMP}/connect.png', [('Connect', W_), ('.', G)], 150, y=420, shadow=SH)
 line_png(f'{TMP}/pos.png', [('POS', K), ('.', G)], 110, y=230)
 
 # ---------- shot list: (src, src_start, dur, overlays[(png, t_in, t_out)], grade) ----------
 b = BAR
-SHOTS = [
-    ('owner.mp4', 0.3, 4.4, [('owner', 0.6, 9)]),
-    ('c0.mp4', 0.2, 4.2, [('r1', 0.3, 9), ('r2', 1.9, 9)]),
-    ('c1.mp4', 0.0, 4.4, [('wm_dark', 1.6, 9), ('pre', 2.6, 9)]),
-    ('c2.mp4', 0.3, 4.5, [('connect', 0.3, 2.6), ('orbit', 2.0, 9)]),
-    ('c3.mp4', 0.2, b, [('cards', 0.4, 9)]),
-    ('c4.mp4', 0.2, b, [('phone', 0.4, 9)]),
-    ('c5.mp4', 0.2, b, [('wm_pos', 0.3, 9), ('pos', 0.5, 9)]),
-    ('c6.mp4', 0.2, b, [('tablet', 0.4, 9)]),
-    ('bartender.mp4', 0.6, b, [('bar', 0.4, 9)]),
-    ('c7.mp4', 0.2, b, [('helix', 0.4, 9)]),
-    ('c8.mp4', 0.2, b, [('dash', 0.4, 9)]),
-    ('c9.mp4', 0.0, 55.0 - (17.5 + 7 * b), [('wm_end', 0.5, 99), ('tag', 1.3, 99), ('cta', 2.1, 99)]),
+SHOTS = [  # (src, start, use, dur, overlays)
+    ('owner.mp4', 0.3, 4.4, 4.4, [('owner', 0.6, 99)]),
+    ('c0.mp4', 0.1, 3.4, 4.2, [('r1', 0.3, 99), ('r2', 1.9, 99)]),
+    ('c1.mp4', 0.0, 2.7, 4.4, [('wm_dark', 1.6, 99), ('pre', 2.6, 99)]),
+    ('c2.mp4', 0.2, 3.6, 4.5, [('connect', 0.3, 2.6), ('orbit', 2.0, 99)]),
+    ('c3.mp4', 0.1, 2.7, b, [('cards', 0.4, 99)]),
+    ('c4.mp4', 0.1, 3.2, b, [('notif', 0.5, 99), ('phone', 1.1, 99)]),
+    ('c5.mp4', 0.1, 3.6, b, [('wm_pos', 0.3, 99), ('pos', 0.5, 99)]),
+    ('c6.mp4', 0.1, 3.0, b, [('tablet', 0.4, 99)]),
+    ('bartender.mp4', 0.6, 3.4, b, [('bar', 0.4, 99)]),
+    ('c7.mp4', 0.1, 2.5, b, [('helix', 0.4, 99)]),
+    ('dashreal.mp4', 0.2, 3.8, b, [('dash', 0.4, 99)]),
+    ('c9.mp4', 0.0, 5.0, 55.0 - (17.5 + 7 * b), [('wm_end', 0.5, 99), ('tag', 1.3, 99), ('cta', 2.1, 99)]),
 ]
 FADE = 0.45
 parts = []
-for i, (src, ss, dur, ovs) in enumerate(SHOTS):
+for i, (src, ss, use, dur, ovs) in enumerate(SHOTS):
     p = f'{TMP}/s{i}.mp4'; parts.append(p)
-    inputs = ['-ss', str(ss), '-t', f'{dur:.3f}', '-i', os.path.join(CLIPS, src)]
-    sq = src == 'bartender.mp4'
-    base = ('crop=960:540:0:330,' if sq else '') + "scale=1920:1080:flags=lanczos,setsar=1,unsharp=5:5:0.5,eq=contrast=1.04:saturation=1.05,fps=60"
+    inputs = ['-ss', str(ss), '-t', f'{use:.3f}', '-i', os.path.join(CLIPS, src)]
+    crop = {'bartender.mp4': 'crop=960:540:0:330,', 'dashreal.mp4': 'crop=960:540:0:180,'}.get(src, '')
+    k = dur / use
+    slow = f"setpts={k:.4f}*PTS,minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1," if k > 1.05 else 'fps=60,'
+    base = crop + slow + "scale=1920:1080:flags=lanczos,setsar=1,unsharp=5:5:0.45,eq=contrast=1.03:saturation=0.97"
+    if src == 'c4.mp4':  # hide the model's gibberish notification text
+        base += ",split[m][bb];[bb]crop=1300:380:310:50,gblur=sigma=28[bl];[m][bl]overlay=310:50"
+
     # slow-down guard: if the source is shorter than needed, hold the last frame
     base += f",tpad=stop_mode=clone:stop_duration=2,trim=duration={dur:.3f}"
     fc = f"[0:v]{base}[v0];"
@@ -155,7 +186,7 @@ run(['-f', 'concat', '-safe', '0', '-i', f'{TMP}/list.txt', '-c', 'copy', f'{TMP
 
 # ---------- audio: score + sound design ----------
 cuts = [0]
-for (_, _, d, _) in SHOTS:
+for (_, _, _, d, _) in SHOTS:
     cuts.append(cuts[-1] + d)
 sfx = [  # (file, time, gain dB)
     ('impact', cuts[2] - 0.05, -6), ('glass', cuts[3], -14), ('whoosh', cuts[4] - 0.35, -12),
