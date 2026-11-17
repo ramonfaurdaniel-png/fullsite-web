@@ -60,7 +60,7 @@ SHOTS = [
     ('REVEAL', 0, 4.0, []),            # music lift: logo + features
     ('4043.mp4', 2.0, 3.5, [('card_sales', 0.6)]),                    # "fullsite ve tu restaurante…"
     ('14669.mp4', 1.0, 3.0, [('card_nf', 0.3)]),                      # "…y te avisa"
-    ('45448.mp4', 2.0, 3.0, []),       # toast              "para que dejes de enterarte al cierre"
+    ('24405.mp4', 6.0, 3.0, []),       # waiter taking an order              "para que dejes de enterarte al cierre"
     ('23046.mp4', 2.0, 4.0, []),       # family dinner      "y vuelvas a casa a tiempo"
     ('2597.mp4', 1.0, 10.0, [('end_wm', 1.0), ('end_tag', 1.8)]),     # storefront + logo
 ]
@@ -178,7 +178,7 @@ for i, (src, ss, dur, ovs) in enumerate(SHOTS):
         fc += f"[{j + 1}:v]format=rgba,fade=in:st={ti}:d=0.5:alpha=1[t{j}];[{last}][t{j}]overlay=y='16*max(0,1-(t-{ti})/0.7)'[o{j}];"
         last = f'o{j}'
     if i == len(SHOTS) - 1:
-        fc += f"[{last}]fade=out:st={dur - 1.2}:d=1.2[fo];"; last = 'fo'
+        fc += f"[{last}]eq=brightness=-0.08,fade=out:st={dur - 1.2}:d=1.2[fo];"; last = 'fo'
     run(inputs + ['-filter_complex', fc + f"[{last}]format=yuv420p[v]", '-map', '[v]', '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-r', '60', out])
 
 with open(f'{TMP}/list.txt', 'w') as fh:
