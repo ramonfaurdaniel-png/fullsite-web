@@ -25,14 +25,14 @@ COPY = {
         'receipt': [[('y cortes de caja', W)], [('que llegan tarde.', W)]],
         'owner': [[('te enteras', W)], [('al cierre.', W)]],
         'clock': [[('estamos', W)], [('viviendo', W)], [('otros tiempos.', W)]],
-        'brand': [[('connect + pos', (255, 255, 255, 190))]],
+        'brand': [[('connect + pos', (255, 255, 255, 225))]],
         'waiter': [[('cobra en', W)], [('segundos.', G)]],
         'phone': [[('la ia te avisa', W)], [('antes del cierre.', G)]],
         'kitchen': [[('la cocina lo ve', W)], [('al instante.', G)]],
         'dining': [[('todo', W)], [('conectado.', G)]],
         'dash': [[('todo tu negocio,', W)], [('en un solo lugar.', G)]],
         'morning': [[('así van a operar', W)], [('los restaurantes.', G)]],
-        'end': [[('fullsite.mx', (255, 255, 255, 200))]],
+        'end': [[('agenda tu demo · fullsite.mx', (255, 255, 255, 225))]],
         'nf': ('Fullsite IA', 'ahora', 'Cancelaciones +38% en Sucursal Valle.'),
     },
     'en': {
@@ -43,34 +43,34 @@ COPY = {
         'receipt': [[('and end-of-day reports', W)], [('that arrive too late.', W)]],
         'owner': [[('you find out', W)], [('at closing time.', W)]],
         'clock': [[('times', W)], [('have', W)], [('changed.', W)]],
-        'brand': [[('connect + pos', (255, 255, 255, 190))]],
+        'brand': [[('connect + pos', (255, 255, 255, 225))]],
         'waiter': [[('charge in', W)], [('seconds.', G)]],
         'phone': [[('ai tells you', W)], [('before closing.', G)]],
         'kitchen': [[('the kitchen sees it', W)], [('instantly.', G)]],
         'dining': [[('everything', W)], [('connected.', G)]],
         'dash': [[('your whole business,', W)], [('in one place.', G)]],
         'morning': [[('this is how restaurants', W)], [('will run.', G)]],
-        'end': [[('fullsite.mx', (255, 255, 255, 200))]],
+        'end': [[('book a demo · fullsite.mx', (255, 255, 255, 225))]],
         'nf': ('Fullsite AI', 'now', 'Voids +38% at the Valle location.'),
     },
 }[LANG]
 
 # (key, src, src_start, use_seconds, crop, grade)
-SHOTS = [
-    ('pen', 'e0.mp4', 0.2, 4.4, None, 'era'),
-    ('register', 'e1.mp4', 0.2, 4.4, None, 'era'),
-    ('spike', 'e2.mp4', 0.1, 2.4, 'crop=1180:664:50:26,', 'era'),
-    ('pos90', 'e3.mp4', 0.2, 4.0, None, 'era'),
-    ('receipt', 'n1.mp4', 0.2, 4.2, None, 'now_dark'),
-    ('owner', 'n0.mp4', 0.2, 4.4, None, 'now_dark'),
-    ('clock', 'e4.mp4', 0.2, 4.6, None, 'era'),
+SHOTS = [  # all real footage (Mixkit free licence) + the real Fullsite terminal photo
+    ('pen', '22855.mp4', 3.0, 9, None, 'era'),
+    ('register', '10396.mp4', 1.0, 9, None, 'era'),
+    ('spike', '1737.mp4', 3.0, 9, None, 'era'),
+    ('pos90', '20847.mp4', 0.5, 9, None, 'era'),
+    ('receipt', '47627.mp4', 2.0, 9, None, 'era'),
+    ('owner', '4533.mp4', 4.0, 9, None, 'era'),
+    ('clock', '28892.mp4', 1.0, 9, None, 'era'),
     ('brand', 'BLACK', 0, 0, None, 'none'),
-    ('waiter', 'n3.mp4', 0.2, 4.2, None, 'now'),
-    ('phone', 'n2.mp4', 0.2, 4.5, None, 'now_dark'),
-    ('kitchen', 'n4.mp4', 0.2, 4.2, None, 'now'),
-    ('dining', 'n5.mp4', 0.2, 4.2, None, 'now'),
-    ('dash', 'dashreal.mp4', 0.2, 3.8, 'crop=960:540:0:40,', 'now'),
-    ('morning', 'n6.mp4', 0.1, 2.6, None, 'now'),
+    ('waiter', 'TERMINAL', 0, 0, None, 'now_dark'),
+    ('phone', '14669.mp4', 1.0, 9, None, 'now_dark'),
+    ('kitchen', '4678.mp4', 2.0, 9, None, 'now_dark'),
+    ('dining', '4043.mp4', 2.0, 9, None, 'now'),
+    ('dash', '6161.mp4', 3.0, 9, None, 'now'),
+    ('morning', '24405.mp4', 6.0, 9, None, 'now'),
     ('end', 'BLACK', 0, 0, None, 'none'),
 ]
 # era section cut on the piano notes; Fullsite section on the electronic score (drop lands on the brand card)
@@ -162,6 +162,11 @@ for i, ((key, src, ss, use, crop, grade), dur) in enumerate(zip(SHOTS, DUR)):
     if src == 'BLACK':
         inputs = ['-f', 'lavfi', '-t', f'{dur:.3f}', '-i', 'color=c=0x0b0b0a:s=1920x1080:r=60']
         base = f"[0:v]{FILM}[b];"
+    elif src == 'TERMINAL':  # the real product photo with a slow push-in
+        inputs = ['-loop', '1', '-t', f'{dur:.3f}', '-i', os.path.join(HERE, 'assets/img-terminal.jpg')]
+        n_fr = int(dur * 60)
+        base = (f"[0:v]scale=2400:-1,crop=2400:1350:0:820,zoompan=z='1+0.06*on/{n_fr}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=60,"
+                f"{GRADE[grade]},{FILM}[b];")
     else:
         bp = f"{BASE}/{src.replace('.mp4', '')}_{ss}_{use}_{dur:.3f}.mp4"
         if not os.path.exists(bp):
@@ -186,7 +191,7 @@ for i, ((key, src, ss, use, crop, grade), dur) in enumerate(zip(SHOTS, DUR)):
     if key == 'end':
         wordmark(f'{TMP}/wm_end.png', 620, 400)
         ovl.append((f'{TMP}/wm_end.png', 0.4))
-    lines = text_lines(key, 46 if key in ('brand', 'end') else 104)
+    lines = text_lines(key, 58 if key in ('brand', 'end') else 104)
     if key in ('brand', 'end'):  # small line under the wordmark
         for p in lines:
             im = Image.open(p); moved = Image.new('RGBA', im.size, (0, 0, 0, 0)); moved.paste(im, (0, 200)); moved.save(p)
