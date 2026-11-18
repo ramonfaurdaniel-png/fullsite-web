@@ -19,23 +19,23 @@ G = (16, 185, 129, 255); W = (255, 255, 255, 255); RED = (248, 113, 113, 255)
 
 T = {
     'es': {
-        'tag': 'para los que viven su restaurante',
+        'tag': 'Entiende tu restaurante.',
         # phrase starts inside mid3_es.mp3 (one per shot), last value = end of the file
         'beats': [0, 2.59, 5.46, 7.98, 9.05, 10.09, 11.13, 12.13, 12.85, 13.70, 14.57, 15.56, 22.73, 26.56, 30.16, 33.66, 37.13, 41.64, 43.77, 46.8],
         'mods': [18.58, 19.55, 20.34, 20.91, 21.85],   # punto de venta, cocina, caja, inventario, personal
         'approve': 40.34, 'online': 45.30,
         'vo': [((0.0, 2.86), 8.3), ((3.23, 4.57), 12.4), ((5.01, 6.93), 15.0), ((7.24, 9.14), 18.0),
                ((9.56, 12.48), 21.2), ((12.86, 17.74), 24.3), ((18.23, 20.54), 29.5), ((20.88, 21.46), 32.15),
-               ((27.14, 28.92), 'OUT1'), ((29.13, 30.80), 'OUT2'), ((31.16, 34.08), 'OUT3')],
+               ((27.14, 28.92), 'OUT1'), ((29.13, 30.80), 'OUT2'), ((31.16, 31.84), 'OUT3')],
     },
     'en': {
-        'tag': 'for the people who live their restaurant',
+        'tag': 'Understands your restaurant.',
         'beats': [0, 2.66, 5.02, 7.32, 8.38, 9.38, 10.42, 11.36, 12.12, 13.00, 13.89, 14.93, 21.62, 24.65, 27.63, 30.90, 34.20, 38.44, 40.86, 44.0],
         'mods': [17.53, 18.50, 19.13, 19.75, 20.55],
         'approve': 37.25, 'online': 42.54,
         'vo': [((0.0, 3.01), 8.3), ((3.59, 4.74), 12.4), ((5.36, 7.17), 15.0), ((7.63, 9.17), 18.0),
                ((9.70, 11.61), 21.4), ((12.14, 17.01), 24.3), ((17.51, 19.48), 29.5), ((19.97, 20.80), 32.15),
-               ((25.90, 27.80), 'OUT1'), ((28.20, 29.31), 'OUT2'), ((29.73, 32.76), 'OUT3')],
+               ((25.90, 27.80), 'OUT1'), ((28.20, 29.31), 'OUT2'), ((29.73, 30.25), 'OUT3')],
     },
 }[LANG]
 
@@ -171,10 +171,10 @@ def bubble(path, text, me, y):
 import json, cards4
 json.dump(cards4.build(LANG), open(f'{TMP}/cards.json', 'w'))
 AUDIO_ONLY = os.environ.get('AUDIO_ONLY') == '1'   # remix sound on an existing render
-if not AUDIO_ONLY:
+if not AUDIO_ONLY and not os.environ.get('RERENDER'):
     subprocess.run(['node', os.path.join(HERE, 'cards_render.js'), f'{TMP}/cards.json', TMP], check=True)
 im = canvas(); wm_w = 640; h = wordmark(im, wm_w, (1920 - wm_w) // 2, 430); im.save(f'{TMP}/end_wm.png')
-im = canvas(); d = ImageDraw.Draw(im); f = ImageFont.truetype(FM, 44)
+im = canvas(); d = ImageDraw.Draw(im); f = ImageFont.truetype(FM, 50)
 d.text(((1920 - d.textlength(T['tag'], font=f)) / 2, 430 + h + 50), T['tag'], font=f, fill=(255, 255, 255, 235)); im.save(f'{TMP}/end_tag.png')
 
 # ---- shots
@@ -182,7 +182,8 @@ parts = []; t_cursor = 0.0; cuts = []
 for i, (src, ss, dur, ovs) in enumerate(SHOTS):
     dur = round(dur * 60) / 60
     cuts.append(t_cursor); t_cursor += dur
-    if AUDIO_ONLY:
+    ONLY = os.environ.get('RERENDER')    # e.g. RERENDER=32 re-renders just that shot
+    if AUDIO_ONLY or (ONLY and str(i) not in ONLY.split(',') and os.path.exists(f'{TMP}/p{i:02d}.mp4')):
         parts.append(f'{TMP}/p{i:02d}.mp4'); continue
     out = f'{TMP}/p{i:02d}.mp4'; parts.append(out)
     if src == 'BLACK':
