@@ -79,7 +79,7 @@ S = [
     (f(P['cancela']) - 0.1, '24405.mp4', 16.0, [('q_cancel', 0.2)], ''),
     (f(P['faltar']) - 0.1, '22660.mp4', 8.0, [('q_falta', 0.2)], ''),
     (f(P['cerrar']) - 0.1, '205.mp4', 10.0, [('pred', 0.25)], ''),
-    (f(P['numeros']) - 0.1, 'BLUR', 0, [('ty_num', 0.1, 0.35, f(P['respuestas']) - f(P['numeros']) - 0.15), ('ty_resp', f(P['respuestas']) - f(P['numeros']), 0.35)], ''),
+    (f(P['numeros']) - 0.1, 'BLUR', 0, [('ty_num', 0.1, 0.35, f(P['respuestas']) - f(P['numeros']) - 0.42), ('ty_resp', f(P['respuestas']) - f(P['numeros']) - 0.05, 0.3)], ''),
     (f(P['hacer']) - 0.1, '6161.mp4', 3.0, [('rec', 0.15, 0.3), ('rec_ok', f(P['pos']) - f(P['hacer']) - 0.55, 0.2)], ''),
     (f(P['pos']) - 0.1, '6367.mp4', 3.0, [('pos_sales', 0.2, 0.3)], ''),
     (f(P['porque']) - 0.1, '14669.mp4', 5.0, [('why', 0.2, 0.35)], ''),
