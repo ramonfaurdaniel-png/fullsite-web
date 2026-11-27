@@ -79,3 +79,4 @@ Agenda tu demo → link en bio · fullsite.mx
 #restaurantes #POS #inteligenciaartificial #foodcost #merma #restauranttech #monterrey #gastronomia
 
 | 32 | carrusel-32/ (6 slides) | Liquid Glass: dónde se te va el dinero | 1080x1350 · caption en carrusel-32/CAPTION.md |
+| 33 | carrusel-33/ (6 slides) | Se busca gerente (IA como empleado) | 1080x1350 · caption en carrusel-33/CAPTION.md |

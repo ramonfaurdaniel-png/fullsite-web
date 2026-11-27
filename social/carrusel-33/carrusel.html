@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fullsite — Se busca gerente</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0d0d0d;--paper:#f3efe4;--lime:#c6ff3d;--mint:#10b981;--orange:#ff5a1f;--pink:#ff7ad9;--blue:#3d5bff}
+body{background:#222;font-family:'Inter Tight',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;padding:64px 72px;display:flex;flex-direction:column}
+.paper{background:var(--paper)}
+.lime{background:var(--lime)}
+.black{background:var(--ink);color:var(--paper)}
+
+/* textura de papel + puntos de semitono */
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.black::before{mix-blend-mode:screen;opacity:.10}
+.dots{position:absolute;pointer-events:none;background-image:radial-gradient(var(--ink) 2.2px,transparent 2.6px);background-size:18px 18px}
+
+.top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Inter Tight';font-size:26px;font-weight:900;letter-spacing:-.04em;text-transform:none}
+.brand i{display:inline-block;width:9px;height:9px;background:var(--mint);margin-left:1px}
+.black .brand i{background:var(--lime)}
+.pg{border:2.5px solid currentColor;border-radius:999px;padding:8px 18px}
+
+.anton{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:-.005em;line-height:.86}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+
+.sticker{position:absolute;z-index:5;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center}
+.tape{position:absolute;width:170px;height:46px;background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.08);z-index:6}
+
+.swipe{position:absolute;right:72px;bottom:64px;z-index:6;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono';font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.08em}
+.swipe b{width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:30px}
+.black .swipe b{background:var(--lime);color:var(--ink)}
+
+/* ===== 01 ===== */
+.s1 .wanted{margin-top:70px;position:relative;z-index:2}
+.s1 .se{font-size:120px}
+.s1 .gerente{font-size:290px;margin-top:18px;margin-left:-8px}
+.s1 .reqs{margin-top:44px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:2}
+.s1 .req{display:flex;align-items:center;gap:20px;font-size:42px;font-weight:800;letter-spacing:-.03em}
+.s1 .req span{width:46px;height:46px;border:4px solid var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:30px;flex:none;background:var(--paper)}
+.s1 .sticker.found{right:56px;bottom:180px;width:330px;height:330px;border-radius:50%;background:var(--orange);color:#fff;font-size:44px;line-height:1;letter-spacing:-.03em;transform:rotate(-12deg);font-family:'Anton';text-transform:uppercase;font-weight:400}
+.s1 .sticker.found small{display:block;font-family:'JetBrains Mono';font-size:17px;letter-spacing:.1em;margin-top:12px}
+.s1 .tear{position:absolute;left:0;right:0;bottom:0;height:120px;background:var(--ink);
+  -webkit-mask:radial-gradient(18px at 22px 0,#0000 98%,#000) -22px 0/44px 100%;mask:radial-gradient(18px at 22px 0,#0000 98%,#000) -22px 0/44px 100%;
+  display:flex;align-items:center;padding:30px 72px 0;gap:40px;color:var(--lime)}
+.s1 .tear .mono{font-size:18px}
+
+/* ===== 02 gafete ===== */
+.s2 h2{font-size:150px;margin-top:56px;position:relative;z-index:2}
+.s2 h2 em{font-style:normal;color:var(--lime);-webkit-text-stroke:0}
+.lanyard{position:absolute;left:50%;top:-40px;width:70px;height:420px;margin-left:-35px;background:repeating-linear-gradient(90deg,var(--ink) 0 10px,#2b2b2b 10px 20px);z-index:1}
+.badge{position:relative;z-index:3;margin:60px auto 0;width:720px;background:var(--paper);color:var(--ink);border-radius:36px;border:4px solid var(--ink);box-shadow:14px 14px 0 var(--lime);transform:rotate(-3deg);overflow:hidden}
+.badge .clip{width:150px;height:28px;margin:22px auto 0;border-radius:999px;background:var(--ink)}
+.badge .bh{display:flex;justify-content:space-between;align-items:center;padding:22px 40px 18px;border-bottom:3px solid var(--ink)}
+.badge .bh .brand{font-size:30px}
+.badge .bh .mono{font-size:15px}
+.badge .bb{display:flex;gap:34px;padding:34px 40px}
+.face{width:220px;height:260px;flex:none;border-radius:26px;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;position:relative;overflow:hidden}
+.face .eyes{display:flex;gap:30px}
+.face .eyes i{width:42px;height:72px;border-radius:22px;background:var(--lime);box-shadow:0 0 30px rgba(198,255,61,.7)}
+.face .mouth{width:70px;height:16px;border-bottom:7px solid var(--lime);border-radius:0 0 40px 40px}
+.face::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 2px,transparent 2px 6px)}
+.info .mono.lbl{font-size:14px;color:#777;margin-top:16px}
+.info .mono.lbl:first-child{margin-top:0}
+.info .val{font-size:38px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.badge .bf{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--ink)}
+.badge .bf div{padding:22px 10px;text-align:center;border-right:3px solid var(--ink)}
+.badge .bf div:last-child{border-right:0}
+.badge .bf b{display:block;font-family:'Anton';font-size:64px;line-height:1}
+.badge .bf span{font-family:'JetBrains Mono';font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#555}
+.badge .barcode{height:56px;margin:0 40px 26px;background:repeating-linear-gradient(90deg,var(--ink) 0 3px,transparent 3px 6px,var(--ink) 6px 11px,transparent 11px 13px,var(--ink) 13px 15px,transparent 15px 21px)}
+
+/* ===== 03 CV ===== */
+.s3 h2{font-size:168px;margin-top:50px;position:relative;z-index:2}
+.cv{margin-top:44px;position:relative;z-index:2;display:flex;flex-direction:column;gap:18px}
+.skill{display:grid;grid-template-columns:96px 1fr auto;align-items:center;gap:26px;background:var(--paper);border:4px solid var(--ink);border-radius:26px;padding:24px 30px;box-shadow:8px 8px 0 var(--ink)}
+.skill:nth-child(2){transform:rotate(1deg) translateX(18px)}
+.skill:nth-child(3){transform:rotate(-1deg)}
+.skill:nth-child(4){transform:rotate(.8deg) translateX(10px)}
+.skill .n{font-family:'Anton';font-size:76px;line-height:1}
+.skill h3{font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.skill p{font-size:22px;color:#444;margin-top:6px;line-height:1.3}
+.skill .lvl{font-family:'JetBrains Mono';font-weight:700;font-size:15px;letter-spacing:.06em;background:var(--ink);color:var(--lime);padding:10px 14px;border-radius:10px;text-transform:uppercase}
+.s3 .sticker.ref{left:420px;top:165px;background:var(--pink);padding:18px 26px;font-size:24px;transform:rotate(8deg);border-radius:14px;font-family:'JetBrains Mono';text-transform:uppercase;letter-spacing:.04em}
+
+/* ===== 04 chat ===== */
+.s4 h2{font-size:150px;margin-top:50px;position:relative;z-index:2}
+.s4 h2 em{font-style:normal;color:var(--lime)}
+.chat{margin-top:44px;display:flex;flex-direction:column;gap:20px;position:relative;z-index:2}
+.msg{display:flex;gap:22px;align-items:flex-start}
+.msg .t{flex:none;width:118px;font-family:'Anton';font-size:42px;color:var(--lime);line-height:1;padding-top:16px}
+.bub{background:#1c1c1c;border:2px solid #333;border-radius:8px 30px 30px 30px;padding:22px 28px;font-size:27px;line-height:1.35;color:#eaeaea;max-width:780px}
+.bub b{color:#fff}
+.bub .tag{display:inline-block;font-family:'JetBrains Mono';font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:8px;margin-bottom:10px}
+.tag.g{background:var(--lime);color:var(--ink)}
+.tag.o{background:var(--orange);color:#fff}
+.tag.b{background:var(--blue);color:#fff}
+.tag.p{background:var(--pink);color:var(--ink)}
+.bub.you{background:var(--lime);color:var(--ink);border-color:var(--lime);border-radius:30px 8px 30px 30px;margin-left:auto;font-weight:700}
+
+/* ===== 05 versus ===== */
+.s5 h2{font-size:132px;margin-top:50px;position:relative;z-index:2}
+.vs{margin-top:46px;position:relative;z-index:2;border:4px solid var(--ink);border-radius:30px;overflow:hidden;background:var(--paper);box-shadow:12px 12px 0 var(--ink)}
+.vs .row{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-bottom:3px solid var(--ink)}
+.vs .row:last-child{border-bottom:0}
+.vs .row>div{padding:24px 26px;font-size:26px;font-weight:700;display:flex;align-items:center;letter-spacing:-.02em}
+.vs .row>div:nth-child(2){border-left:3px solid var(--ink);color:#666}
+.vs .row>div:nth-child(3){border-left:3px solid var(--ink);background:var(--ink);color:var(--lime);font-weight:900}
+.vs .hd>div{font-family:'JetBrains Mono';font-size:17px !important;text-transform:uppercase;letter-spacing:.06em}
+.vs .hd>div:nth-child(2){color:var(--ink) !important}
+.vs .lbl{color:#555;font-weight:600 !important}
+.s5 .note{position:relative;z-index:2;margin-top:40px;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.15;max-width:700px}
+.s5 .note span{background:var(--ink);color:var(--lime);padding:0 10px}
+
+/* ===== 06 CTA ===== */
+.s6 .big{position:relative;z-index:2;margin-top:70px;font-size:205px;color:var(--paper)}
+.s6 .big em{font-style:normal;color:var(--lime)}
+.s6 .sub{position:relative;z-index:2;margin-top:70px;font-size:36px;line-height:1.3;color:#cfcfcf;max-width:800px;font-weight:500}
+.s6 .sub b{color:#fff}
+.ticket{position:relative;z-index:2;margin-top:80px;display:flex;background:var(--lime);color:var(--ink);border-radius:28px;overflow:hidden}
+.ticket .l{flex:1;padding:36px 40px}
+.ticket .l .mono{font-size:16px}
+.ticket .l b{display:block;font-size:46px;font-weight:900;letter-spacing:-.04em;margin-top:6px}
+.ticket .l small{display:block;font-size:22px;font-weight:600;margin-top:8px}
+.ticket .r{width:300px;border-left:4px dashed var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.ticket .r .anton{font-size:92px}
+.ticket .r .mono{font-size:15px;text-align:center}
+.s6 .foot{position:absolute;left:72px;right:72px;bottom:64px;display:flex;justify-content:space-between;align-items:flex-end;z-index:3}
+.s6 .foot .mono{font-size:20px;color:#bbb}
+.s6 .foot .url{font-size:52px;font-weight:900;letter-spacing:-.04em}
+.s6 .sticker.free{right:70px;top:370px;width:220px;height:220px;border-radius:50%;background:var(--orange);color:#fff;transform:rotate(14deg);font-family:'Anton';font-size:46px;line-height:.95;font-weight:400;text-transform:uppercase;border-color:var(--paper);box-shadow:6px 6px 0 var(--lime)}
+</style>
+</head>
+<body>
+
+<!-- 01 · SE BUSCA -->
+<section class="slide paper s1" id="s1">
+  <div class="dots" style="right:-40px;top:120px;width:420px;height:520px;opacity:.13;border-radius:50%"></div>
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">01/06</div></div>
+  <div class="wanted anton">
+    <div class="se">Se busca</div>
+    <div class="gerente">Gerente</div>
+  </div>
+  <div class="reqs">
+    <div class="req"><span>✓</span>Que nunca duerma</div>
+    <div class="req"><span>✓</span>Que no falte los lunes</div>
+    <div class="req"><span>✓</span>Que vea caja, cocina e inventario</div>
+    <div class="req"><span>✓</span>Que te avise <u>antes</u> del corte</div>
+  </div>
+  <div class="sticker found"><div>Ya lo<br>encontramos<small>desliza →</small></div></div>
+  <div class="tear"><span class="mono">Turno: 24/7</span><span class="mono">Monterrey · MX</span><span class="mono">Inicio: inmediato</span></div>
+</section>
+
+<!-- 02 · GAFETE -->
+<section class="slide black s2" id="s2">
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">02/06</div></div>
+  <h2 class="anton">Te presento<br>a tu <em>nuevo</em></h2>
+  <div class="badge">
+    <div class="clip"></div>
+    <div class="bh"><div class="brand">fullsite<i></i></div><div class="mono">Empleado #001</div></div>
+    <div class="bb">
+      <div class="face"><div class="eyes"><i></i><i></i></div><div class="mouth"></div></div>
+      <div class="info">
+        <div class="mono lbl">Nombre</div><div class="val">Fullsite IA</div>
+        <div class="mono lbl">Puesto</div><div class="val">Gerente de turno</div>
+        <div class="mono lbl">Horario</div><div class="val">Siempre</div>
+      </div>
+    </div>
+    <div class="bf">
+      <div><b>0</b><span>Horas dormidas</span></div>
+      <div><b>0</b><span>Faltas</span></div>
+      <div><b>0</b><span>Lunes de cruda</span></div>
+    </div>
+    <div class="barcode"></div>
+  </div>
+  <div class="swipe">Su CV <b>→</b></div>
+</section>
+
+<!-- 03 · CV -->
+<section class="slide lime s3" id="s3">
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">03/06</div></div>
+  <h2 class="anton">Su<br>currículum</h2>
+  <div class="sticker ref">Contratación inmediata ★</div>
+  <div class="cv">
+    <div class="skill"><div class="n">01</div><div><h3>Cacha lo raro en caja</h3><p>Cancelaciones y descuentos sospechosos, al momento.</p></div><div class="lvl">Experto</div></div>
+    <div class="skill"><div class="n">02</div><div><h3>Cuida tu merma</h3><p>Compara lo que sale de cocina contra la receta.</p></div><div class="lvl">Experto</div></div>
+    <div class="skill"><div class="n">03</div><div><h3>Pide antes de que se acabe</h3><p>Inventario al día y órdenes de compra listas.</p></div><div class="lvl">Experto</div></div>
+    <div class="skill"><div class="n">04</div><div><h3>Te reporta sin que le pidas</h3><p>Resumen a las 7 am y alertas al celular.</p></div><div class="lvl">Experto</div></div>
+  </div>
+</section>
+
+<!-- 04 · UN DÍA CON ÉL -->
+<section class="slide black s4" id="s4">
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">04/06</div></div>
+  <h2 class="anton">Un día<br><em>con él</em></h2>
+  <div class="chat">
+    <div class="msg"><div class="t">7:00</div><div class="bub"><span class="tag g">Briefing</span><br>Buenos días ☀️ Ayer: <b>$68,400</b> en ventas, food cost <b>29%</b>. Hoy viene lleno, refuerza la barra.</div></div>
+    <div class="msg"><div class="t">13:20</div><div class="bub"><span class="tag b">Inventario</span><br>El aguacate no llega a la cena. <b>Ya dejé lista la orden</b> al proveedor.</div></div>
+    <div class="msg"><div class="t">21:42</div><div class="bub"><span class="tag o">Alerta</span><br>Mesa 12: <b>$1,240</b> cancelado después de cobrar. Tercera vez hoy, mismo mesero.</div></div>
+    <div class="msg"><div class="t"></div><div class="bub you">Gracias, ahorita lo checo 🙌</div></div>
+    <div class="msg"><div class="t">23:59</div><div class="bub"><span class="tag p">Corte</span><br>Corte listo y cuadrado ✅ Descansa, yo sigo aquí.</div></div>
+  </div>
+</section>
+
+<!-- 05 · VERSUS -->
+<section class="slide paper s5" id="s5">
+  <div class="dots" style="left:-60px;bottom:-60px;width:520px;height:420px;opacity:.12;border-radius:50%"></div>
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">05/06</div></div>
+  <h2 class="anton">Hagamos<br>cuentas</h2>
+  <div class="vs">
+    <div class="row hd"><div></div><div>Otro gerente</div><div>Fullsite IA</div></div>
+    <div class="row"><div class="lbl">Costo</div><div>Sueldo + prestaciones</div><div>$4,999 / mes</div></div>
+    <div class="row"><div class="lbl">Horario</div><div>Un turno</div><div>24/7</div></div>
+    <div class="row"><div class="lbl">Ve todo a la vez</div><div>Imposible</div><div>Caja · cocina · inventario</div></div>
+    <div class="row"><div class="lbl">Te avisa</div><div>Al día siguiente</div><div>En el momento</div></div>
+    <div class="row"><div class="lbl">Vacaciones</div><div>Sí</div><div>Ni las pide</div></div>
+  </div>
+  <div class="note">No reemplaza a tu gente. <span>La hace imparable.</span></div>
+  <div class="swipe">Contrátalo <b>→</b></div>
+</section>
+
+<!-- 06 · CTA -->
+<section class="slide black s6" id="s6">
+  <div class="top"><div class="brand">fullsite<i></i></div><div class="pg">06/06</div></div>
+  <div class="big anton">Contrátalo<br><em>hoy.</em></div>
+  <div class="sub">Agenda una <b>entrevista de 30 min</b> (o sea, una demo) y velo trabajar con los datos de tu restaurante.</div>
+  <div class="ticket">
+    <div class="l"><div class="mono">Entrevista · demo en vivo</div><b>Agenda tu demo gratis</b><small>Setup en 7 días · sin contrato anual</small></div>
+    <div class="r"><div class="anton">30</div><div class="mono">minutos<br>sin costo</div></div>
+  </div>
+  <div class="sticker free">Hecho<br>en MTY</div>
+  <div class="foot"><div><div class="mono">Link en bio</div><div class="url">fullsite.mx</div></div><div class="mono">POS con IA para restaurantes</div></div>
+</section>
+
+</body>
+</html>
