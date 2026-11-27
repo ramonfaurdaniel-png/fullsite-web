@@ -77,3 +77,5 @@ Tu POS sabe cuánto vendiste. Fullsite te dice dónde se te va el dinero.
 Agenda tu demo → link en bio · fullsite.mx
 
 #restaurantes #POS #inteligenciaartificial #foodcost #merma #restauranttech #monterrey #gastronomia
+
+| 32 | carrusel-32/ (6 slides) | Liquid Glass: dónde se te va el dinero | 1080x1350 · caption en carrusel-32/CAPTION.md |
