@@ -54,3 +54,26 @@ Formato: 1080x1080px HTML cards. Abrir en browser → screenshot para publicar.
 3. Subir a Instagram / LinkedIn con el caption correspondiente
 4. Horarios recomendados: Lun/Mie/Vie 9am (LinkedIn), Mar/Jue 12pm (Instagram)
 5. Hashtags: #restaurantes #POS #IA #foodcost #monterrey #gastronomia #restauranttech
+
+---
+
+## Extra: mensaje de la home (post 31)
+
+| # | Archivo | Titulo | Formato |
+|---|---------|--------|---------|
+| 31 | post-31.html / post-31.png | Dónde se te va el dinero | 1080x1350 (4:5 feed) |
+
+**Caption:**
+Viernes, 9:42 pm. Mesa 12: $1,240 cancelados después de cobrar. Tercera vez hoy, mismo mesero.
+
+Con un POS normal te enteras en el corte de caja… o nunca.
+Con Fullsite te llega al celular en el momento, mientras todavía puedes hacer algo.
+
+Tu POS sabe cuánto vendiste. Fullsite te dice dónde se te va el dinero.
+🔴 Cancelaciones y descuentos sospechosos
+🟠 Merma fuera de receta
+🟢 Ventas y metas del turno en tiempo real
+
+Agenda tu demo → link en bio · fullsite.mx
+
+#restaurantes #POS #inteligenciaartificial #foodcost #merma #restauranttech #monterrey #gastronomia

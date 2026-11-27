@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a1a;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+/* 1080x1350 = formato 4:5 de Instagram feed */
+.card{width:1080px;height:1350px;background:#1a1a1a;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:72px 72px 56px}
+.card::before{content:"";position:absolute;width:900px;height:900px;right:-360px;top:420px;background:radial-gradient(circle,rgba(16,185,129,.16),transparent 62%);pointer-events:none}
+
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:30px;font-weight:800;color:#fff;letter-spacing:-0.03em}
+.logo span{display:inline-block;width:9px;height:9px;background:#10b981;margin-left:2px;margin-bottom:2px}
+.tag{font-size:15px;color:#777;font-weight:500;border:1px solid #333;padding:8px 16px;border-radius:999px}
+
+.headline{margin-top:64px;font-size:68px;font-weight:800;color:#fff;letter-spacing:-0.045em;line-height:1.04}
+.muted{color:#555}
+.green{color:#10b981}
+.desc{font-size:22px;color:#888;margin-top:24px;max-width:780px;line-height:1.5}
+
+.lock{position:relative;margin-top:72px;align-self:center;width:640px;background:#111;border:1px solid #2a2a2a;border-radius:44px;padding:40px 28px 32px}
+.time{text-align:center;font-size:64px;font-weight:700;color:#eee;letter-spacing:-0.03em}
+.date{text-align:center;font-size:16px;color:#777;margin-top:2px;margin-bottom:28px}
+
+.notif{background:#1f1f1f;border:1px solid #2c2c2c;border-radius:20px;padding:18px 20px;display:flex;gap:16px;margin-top:12px}
+.icon{flex:none;width:44px;height:44px;border-radius:12px;background:#10b981;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
+.icon.red{background:#ef4444}
+.icon.amber{background:#f59e0b}
+.nbody{flex:1;min-width:0}
+.nhead{display:flex;justify-content:space-between;font-size:14px;color:#888;font-weight:500}
+.ntitle{font-size:18px;font-weight:700;color:#fff;margin-top:4px;letter-spacing:-0.01em}
+.ntext{font-size:16px;color:#aaa;margin-top:4px;line-height:1.4}
+.ntext b{color:#10b981;font-weight:600}
+.ntext .r{color:#f87171;font-weight:600}
+
+.bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.url{font-size:18px;color:#888;font-weight:600}
+.cta{background:#10b981;color:#fff;padding:16px 32px;border-radius:12px;font-size:18px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="logo">fullsite<span></span></div>
+    <div class="tag">POS con IA para restaurantes</div>
+  </div>
+
+  <div class="headline"><span class="muted">Tu POS sabe cuánto vendiste.</span><br>Fullsite te dice <span class="green">dónde se te va el dinero.</span></div>
+  <div class="desc">La IA vigila caja, cocina e inventario durante el turno y te avisa al celular mientras todavía puedes hacer algo.</div>
+
+  <div class="lock">
+    <div class="time">21:42</div>
+    <div class="date">viernes · turno de cena</div>
+
+    <div class="notif">
+      <div class="icon red">!</div>
+      <div class="nbody">
+        <div class="nhead"><span>Fullsite IA</span><span>ahora</span></div>
+        <div class="ntitle">Cancelación sospechosa · Mesa 12</div>
+        <div class="ntext"><span class="r">$1,240</span> cancelado tras cobrar · 3ra vez hoy, mismo mesero</div>
+      </div>
+    </div>
+
+    <div class="notif">
+      <div class="icon amber">%</div>
+      <div class="nbody">
+        <div class="nhead"><span>Fullsite IA</span><span>hace 18 min</span></div>
+        <div class="ntitle">Merma fuera de receta</div>
+        <div class="ntext">Aguacate <span class="r">+18%</span> sobre lo que piden tus platillos.</div>
+      </div>
+    </div>
+
+    <div class="notif">
+      <div class="icon">✓</div>
+      <div class="nbody">
+        <div class="nhead"><span>Fullsite IA</span><span>hace 1 h</span></div>
+        <div class="ntitle">Vas arriba de tu meta</div>
+        <div class="ntext"><b>$34,200</b> vendidos · ticket promedio <b>$287</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="url">fullsite.mx</div>
+    <div class="cta">Agenda tu demo &rarr;</div>
+  </div>
+</div>
+</body>
+</html>
